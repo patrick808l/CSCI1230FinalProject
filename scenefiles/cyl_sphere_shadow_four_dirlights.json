@@ -1,0 +1,208 @@
+{
+  
+  "name": "root",
+  "globalData": {
+    "ambientCoeff": 0.5,
+    "diffuseCoeff": 0.5,
+    "specularCoeff": 0.5,
+    "transparentCoeff": 0
+  },
+  "cameraData": {
+    "position": [
+      -6,
+      4,
+      4
+    ],
+    "up": [
+      0,
+      1,
+      0
+    ],
+    "heightAngle": 30,
+    "focus": [
+      0,
+      0,
+      0
+    ]
+  },
+  "groups": [
+    {
+      "lights": [
+        {
+          "type": "directional",
+          "color": [
+            0.05,
+            0.5,
+            0.05
+          ],
+          "direction": [
+            0.25,
+            -0.25,
+            0.25
+          ],
+          
+          "penumbra": 0,
+          "angle": 0,
+          "attenuationCoeff": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "type": "directional",
+          "color": [
+            0.05,
+            0.5,
+            0.05
+          ],
+          "direction": [
+            -0.25,
+            -0.25,
+            0.25
+          ],
+          
+          "penumbra": 0,
+          "angle": 0,
+          "attenuationCoeff": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "type": "directional",
+          "color": [
+            0.05,
+            0.5,
+            0.05
+          ],
+          "direction": [
+            0.25,
+            -0.25,
+            -0.25
+          ],
+          
+          "penumbra": 0,
+          "angle": 0,
+          "attenuationCoeff": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "type": "directional",
+          "color": [
+            0.05,
+            0.5,
+            0.05
+          ],
+          "direction": [
+            -0.25,
+            -0.25,
+            -0.25
+          ],
+          
+          "penumbra": 0,
+          "angle": 0,
+          "attenuationCoeff": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]},
+    {
+      "groups": [
+        {
+          "primitives": [
+            {
+              "ambient": [
+                0.1,
+                0.1,
+                0.1
+              ],
+              "diffuse": [
+                0.8,
+                0.6,
+                0.6
+              ],
+              "specular": [
+                1,
+                1,
+                1
+              ],
+              "shininess": 15,
+              "type": "cylinder"}
+          ],
+          "translate": [
+            -0.73,
+            0.51,
+            0.65
+          ],
+          "rotate": [
+            1,
+            0,
+            1,
+            46
+          ]},
+        {
+          "primitives": [
+            {
+              "ambient": [
+                0.1,
+                0.1,
+                0.1
+              ],
+              "diffuse": [
+                0.6,
+                0.8,
+                0.6
+              ],
+              "specular": [
+                1,
+                1,
+                1
+              ],
+              "shininess": 15,
+              "type": "sphere"}
+          ],
+          "translate": [
+            1.06,
+            0.27,
+            -1.09
+          ],
+          "scale": [
+            2,
+            1,
+            2
+          ]},
+        {
+          "primitives": [
+            {
+              "ambient": [
+                0.1,
+                0.1,
+                0.1
+              ],
+              "diffuse": [
+                0.1,
+                0.4,
+                0.8
+              ],
+              "type": "cube"}
+          ],
+          "translate": [
+            0,
+            -0.6,
+            0
+          ],
+          "scale": [
+            6,
+            0.1,
+            6
+          ]}
+      ]}
+  ]
+}
