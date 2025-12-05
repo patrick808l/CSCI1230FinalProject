@@ -12,23 +12,50 @@ Shape Cone() {
                                            const glm::vec3& topRight,
                                            const glm::vec3& bottomLeft,
                                            const glm::vec3& bottomRight) {
+        glm::vec3 n1(0.f, -1.f, 0.f);
+        glm::vec2 uvTL = computeConeUV(topLeft, n1);
+        glm::vec2 uvBL = computeConeUV(bottomLeft, n1);
+        glm::vec2 uvBR = computeConeUV(bottomRight, n1);
+        glm::vec2 uvTR = computeConeUV(topRight, n1);
+
+        glm::vec3 tan1 = computeTangent(topLeft, bottomRight, bottomLeft,
+                                        uvTL, uvBR, uvBL);
+        glm::vec3 tan2 = computeTangent(topLeft, topRight, bottomRight,
+                                        uvTL, uvTR, uvBR);
+
         glm::vec3 normal1 = -glm::normalize(glm::cross(bottomRight - bottomLeft, topLeft - bottomLeft));
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan1);
+
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan1);
+
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvBL);
+        insertVec3(vertexData, tan1);
 
         glm::vec3 normal2 = -glm::normalize(glm::cross(topLeft - topRight, bottomRight - topRight));
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan2);
+
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvTR);
+        insertVec3(vertexData, tan2);
+
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan2);
     };
 
     MakeCapSliceSignature makeCapSlice = [=](float currentTheta, float nextTheta) {
@@ -73,19 +100,46 @@ Shape Cone() {
             topRightNorm = calcNorm(topRight);
         }
 
-        insertVec3(vertexData, topLeft);
-        insertVec3(vertexData, topLeftNorm);
-        insertVec3(vertexData, bottomRight);
-        insertVec3(vertexData, bottomRightNorm);
-        insertVec3(vertexData, bottomLeft);
-        insertVec3(vertexData, bottomLeftNorm);
+        glm::vec2 uvTL = computeConeUV(topLeft, topLeftNorm);
+        glm::vec2 uvBL = computeConeUV(bottomLeft, bottomLeftNorm);
+        glm::vec2 uvBR = computeConeUV(bottomRight, bottomRightNorm);
+        glm::vec2 uvTR = computeConeUV(topRight, topRightNorm);
+
+        glm::vec3 tan1 = computeTangent(topLeft, bottomRight, bottomLeft,
+                                        uvTL, uvBR, uvBL);
+        glm::vec3 tan2 = computeTangent(topLeft, topRightNorm, bottomRight,
+                                        uvTL, uvTR, uvBR);
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, topLeftNorm);
-        insertVec3(vertexData, topRight);
-        insertVec3(vertexData, topRightNorm);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan1);
+
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, bottomRightNorm);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan1);
+
+        insertVec3(vertexData, bottomLeft);
+        insertVec3(vertexData, bottomLeftNorm);
+        insertVec2(vertexData, uvBL);
+        insertVec3(vertexData, tan1);
+
+
+        insertVec3(vertexData, topLeft);
+        insertVec3(vertexData, topLeftNorm);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan2);
+
+        insertVec3(vertexData, topRight);
+        insertVec3(vertexData, topRightNorm);
+        insertVec2(vertexData, uvTR);
+        insertVec3(vertexData, tan2);
+
+        insertVec3(vertexData, bottomRight);
+        insertVec3(vertexData, bottomRightNorm);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan2);
     };
 
     GetRadiusSignature getRadius = [=](float y) {
@@ -139,4 +193,27 @@ Shape Cone() {
             return vertexData;
         }
     };
+}
+
+glm::vec2 computeConeUV(glm::vec3 ptObjSpace, glm::vec3 n){
+    float margin = 0.00001f;
+
+    // bottom flat surface
+    if(n.y == -1.0f){
+        float u = ptObjSpace.x + 0.5f;
+        float v = ptObjSpace.z + 0.5f;
+        return glm::vec2(u, v);
+    }
+
+    // body
+    float v = ptObjSpace.y + 0.5f;
+
+    float theta = atan2(ptObjSpace.z, ptObjSpace.x);
+    float u;
+    if(theta < 0.f)
+        u = -theta / (2.f * M_PI);
+    else
+        u = 1.f - (theta / (2.f * M_PI));
+
+    return glm::vec2(u, v);
 }

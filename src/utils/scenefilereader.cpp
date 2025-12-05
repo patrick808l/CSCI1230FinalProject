@@ -808,7 +808,8 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
     QStringList requiredFields = {"type"};
     QStringList optionalFields = {
         "meshFile", "ambient", "diffuse", "specular", "reflective", "transparent", "shininess", "ior",
-        "blend", "textureFile", "textureU", "textureV", "bumpMapFile", "bumpMapU", "bumpMapV"};
+        "blend", "textureFile", "textureU", "textureV", "bumpMapFile", "bumpMapU", "bumpMapV",
+        "normalMapFile", "normalMapU", "normalMapV"};
 
     QStringList allFields = requiredFields + optionalFields;
     for (auto field : prim.keys()) {
@@ -837,6 +838,7 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
     primitive->type = PrimitiveType::PRIMITIVE_CUBE;
     mat.textureMap.isUsed = false;
     mat.bumpMap.isUsed = false;
+    mat.normalMap.isUsed = false;
     mat.cDiffuse.r = mat.cDiffuse.g = mat.cDiffuse.b = 1;
     node->primitives.push_back(primitive);
 
@@ -1024,6 +1026,19 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
         mat.bumpMap.repeatU = prim.contains("bumpMapU") && prim["bumpMapU"].isDouble() ? prim["bumpMapU"].toDouble() : 1;
         mat.bumpMap.repeatV = prim.contains("bumpMapV") && prim["bumpMapV"].isDouble() ? prim["bumpMapV"].toDouble() : 1;
         mat.bumpMap.isUsed = true;
+    }
+
+    if (prim.contains("normalMapFile")) {
+        if (!prim["normalMapFile"].isString()) {
+            std::cout << "primitive normalMapFile must be of type string" << std::endl;
+            return false;
+        }
+        std::filesystem::path fileRelativePath(prim["normalMapFile"].toString().toStdString());
+
+        mat.normalMap.filename = (basepath / fileRelativePath).string();
+        mat.normalMap.repeatU = prim.contains("normalMapU") && prim["normalMapU"].isDouble() ? prim["normalMapU"].toDouble() : 1;
+        mat.normalMap.repeatV = prim.contains("normalMapV") && prim["normalMapV"].isDouble() ? prim["normalMapV"].toDouble() : 1;
+        mat.normalMap.isUsed = true;
     }
 
     return true;

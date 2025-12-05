@@ -10,23 +10,50 @@ Shape Cube() {
                                      const glm::vec3& topRight,
                                      const glm::vec3& bottomLeft,
                                      const glm::vec3& bottomRight) {
+
         glm::vec3 normal1 = glm::normalize(glm::cross(bottomRight - bottomLeft, topLeft - bottomLeft));
+
+        glm::vec2 uvTL = computeCubeUV(topLeft, normal1);
+        glm::vec2 uvBL = computeCubeUV(bottomLeft, normal1);
+        glm::vec2 uvBR = computeCubeUV(bottomRight, normal1);
+        glm::vec2 uvTR = computeCubeUV(topRight, normal1);
+
+        glm::vec3 tan1 = computeTangent(topLeft, bottomLeft, bottomRight,
+                                        uvTL, uvBL, uvBR);
+        glm::vec3 tan2 = computeTangent(topLeft, bottomRight, topRight,
+                                        uvTL, uvBR, uvTR);
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan1);
+
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvBL);
+        insertVec3(vertexData, tan1);
+
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan1);
 
         glm::vec3 normal2 = glm::normalize(glm::cross(topLeft - topRight, bottomRight - topRight));
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan2);
+
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan2);
+
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvTR);
+        insertVec3(vertexData, tan2);
     };
 
     MakeFaceSignature makeFace = [=](const glm::vec3& topLeft,
@@ -88,4 +115,35 @@ Shape Cube() {
             return vertexData;
         }
     };
+}
+
+glm::vec2 computeCubeUV(glm::vec3 ptObjSpace, glm::vec3 n){
+    float u = 0.f, v = 0.f;
+
+    if (fabs(n.x) > 0.5f) {
+        v = ptObjSpace.y + 0.5f;
+
+        if (n.x > 0) //+X
+            u = 0.5f - ptObjSpace.z;
+        else //-X
+            u = ptObjSpace.z + 0.5f;
+    }
+    else if (fabs(n.y) > 0.5f) {
+        u = ptObjSpace.x + 0.5f;
+
+        if (n.y > 0) //+Y
+            v = 0.5f - ptObjSpace.z;
+        else //-Y
+            v = ptObjSpace.z + 0.5f;
+    }
+    else {
+        v = ptObjSpace.y + 0.5f;
+
+        if (n.z > 0) //+Z
+            u = ptObjSpace.x + 0.5f;
+        else //-Z
+            u = 0.5f - ptObjSpace.x;
+    }
+
+    return glm::vec2(u, v);
 }

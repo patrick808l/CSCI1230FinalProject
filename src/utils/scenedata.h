@@ -120,7 +120,8 @@ struct SceneMaterial {
     float blend;             // Used for texture mapping
 
     SceneColor cEmissive; // Not used
-    SceneFileMap bumpMap; // Not used
+    SceneFileMap bumpMap; // Used for bump mapping
+    SceneFileMap normalMap; // Used for normal mapping
 
     void clear()
     {

@@ -37,12 +37,20 @@ struct Shape {
         glBindVertexArray(vao);
         // position
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GL_FLOAT),
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GL_FLOAT),
                               reinterpret_cast<void*>(0));
         // normal
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GL_FLOAT),
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GL_FLOAT),
                               reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+        // uv
+        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), reinterpret_cast<void*>(6 * sizeof(GLfloat)));
+
+        // tangent
+        glEnableVertexAttribArray(3);
+        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), reinterpret_cast<void*>(8 * sizeof(GLfloat)));
 
         // unbind
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -62,8 +70,12 @@ struct Shape {
 
 
 void insertVec3(std::shared_ptr<std::vector<GLfloat>> data, const glm::vec3& v);
+void insertVec2(std::shared_ptr<std::vector<float>> data, glm::vec2& v);
 
 glm::vec3 sphericalToCartesian(float phi, float theta);
 glm::vec3 cylindricalToCartesian(float r, float theta, float y);
+
+glm::vec3 computeTangent(glm::vec3 p0, glm::vec3 p1, glm::vec3 p2,
+                         glm::vec2 uv0, glm::vec2 uv1, glm::vec2 uv2);
 
 #endif // SHAPE_H

@@ -26,4 +26,6 @@ using MakeWedgeSignature = std::function<void(float currentTheta, float nextThet
 
 Shape Cone();
 
+glm::vec2 computeConeUV(glm::vec3 ptObjSpace, glm::vec3 n);
+
 #endif // CONE_H

@@ -15,21 +15,50 @@ Shape Cylinder() {
                                            const glm::vec3& bottomRight) {
         glm::vec3 normal1 = -glm::normalize(glm::cross(bottomRight - bottomLeft, topLeft - bottomLeft));
 
+        glm::vec3 n(0.f, -1.f, 0.f);
+        if(normal1.y > 0.0) n = glm::vec3(0.f, 1.f, 0.f);
+
+        glm::vec2 uvTL = computeCylinderUV(topLeft, n);
+        glm::vec2 uvBL = computeCylinderUV(bottomLeft, n);
+        glm::vec2 uvBR = computeCylinderUV(bottomRight, n);
+        glm::vec2 uvTR = computeCylinderUV(topRight, n);
+
+        glm::vec3 tan1 = computeTangent(topLeft, bottomRight, bottomLeft,
+                                        uvTL, uvBR, uvBL);
+        glm::vec3 tan2 = computeTangent(topLeft, topRight, bottomRight,
+                                        uvTL, uvTR, uvBR);
+
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan1);
+
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan1);
+
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, normal1);
+        insertVec2(vertexData, uvBL);
+        insertVec3(vertexData, tan1);
 
         glm::vec3 normal2 = -glm::normalize(glm::cross(topLeft - topRight, bottomRight - topRight));
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan2);
+
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvTR);
+        insertVec3(vertexData, tan2);
+
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal2);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan2);
     };
 
     MakeCylCapSliceSignature makeCapSlice = [=](float currentTheta, float nextTheta, bool isTopCap) {
@@ -65,19 +94,45 @@ Shape Cylinder() {
         glm::vec3 leftNorm = glm::normalize(glm::vec3{topLeft.x, 0, topLeft.z});
         glm::vec3 rightNorm = glm::normalize(glm::vec3{topRight.x, 0, topRight.z});
 
-        insertVec3(vertexData, topLeft);
-        insertVec3(vertexData, leftNorm);
-        insertVec3(vertexData, bottomRight);
-        insertVec3(vertexData, rightNorm);
-        insertVec3(vertexData, bottomLeft);
-        insertVec3(vertexData, leftNorm);
+        glm::vec2 uvTL = computeCylinderUV(topLeft, leftNorm);
+        glm::vec2 uvBL = computeCylinderUV(bottomLeft, leftNorm);
+        glm::vec2 uvBR = computeCylinderUV(bottomRight, rightNorm);
+        glm::vec2 uvTR = computeCylinderUV(topRight, rightNorm);
+
+        glm::vec3 tan1 = computeTangent(topLeft, bottomRight, bottomLeft,
+                                        uvTL, uvBR, uvBL);
+        glm::vec3 tan2 = computeTangent(topLeft, topRight, bottomRight,
+                                        uvTL, uvTR, uvBR);
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, leftNorm);
-        insertVec3(vertexData, topRight);
-        insertVec3(vertexData, rightNorm);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan1);
+
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, rightNorm);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan1);
+
+        insertVec3(vertexData, bottomLeft);
+        insertVec3(vertexData, leftNorm);
+        insertVec2(vertexData, uvBL);
+        insertVec3(vertexData, tan1);
+
+        insertVec3(vertexData, topLeft);
+        insertVec3(vertexData, leftNorm);
+        insertVec2(vertexData, uvTL);
+        insertVec3(vertexData, tan2);
+
+        insertVec3(vertexData, topRight);
+        insertVec3(vertexData, rightNorm);
+        insertVec2(vertexData, uvTR);
+        insertVec3(vertexData, tan2);
+
+        insertVec3(vertexData, bottomRight);
+        insertVec3(vertexData, rightNorm);
+        insertVec2(vertexData, uvBR);
+        insertVec3(vertexData, tan2);
     };
 
     MakeWallSliceSignature makeWallSlice = [=](float currentTheta, float nextTheta) {
@@ -128,3 +183,31 @@ Shape Cylinder() {
         }
     };
 }
+
+glm::vec2 computeCylinderUV(glm::vec3 ptObjSpace, glm::vec3 n){
+    // top cap
+    if(n.y == 1.0f){
+        float u = ptObjSpace.x + 0.5f;
+        float v = 0.5f - ptObjSpace.z;
+        return glm::vec2(u, v);
+    }
+    // bot cap
+    else if(n.y == -1.0f){
+        float u = ptObjSpace.x + 0.5f;
+        float v = ptObjSpace.z + 0.5f;
+        return glm::vec2(u, v);
+    }
+
+    // body
+    float v = ptObjSpace.y + 0.5f;
+
+    float theta = atan2(ptObjSpace.z, ptObjSpace.x);
+    float u;
+    if(theta < 0.f)
+        u = -theta / (2.f * M_PI);
+    else
+        u = 1.f - (theta / (2.f * M_PI));
+
+    return glm::vec2(u, v);
+}
+

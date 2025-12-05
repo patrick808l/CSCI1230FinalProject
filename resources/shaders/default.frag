@@ -5,6 +5,9 @@ in vec3 normalWorldSpace;
 in vec4 shadowCoords[8];
 in float eyeDepth;
 
+in vec2 uv;
+in mat3 TBN;
+
 out vec4 fragColor;
 
 uniform float ka, kd, ks, shininess;
@@ -21,6 +24,17 @@ uniform bool shadowsEnabled;
 uniform sampler2D depthTextures[8];
 
 uniform int numLights;
+
+// texture related uniform
+struct ShapeTexture {
+    sampler2D  textureSampler;
+    bool textureIsUsed;
+    vec2 textureRepeat;
+};
+uniform ShapeTexture myTextures;
+uniform ShapeTexture myNormals;
+uniform ShapeTexture myBumps;
+uniform float blend;
 
 /*
  * lightType: 0 = point light
@@ -47,9 +61,14 @@ uniform Light lights[8];
 const float bias = 0.01;
 const float shadowVisibility = 0.5;
 
+// texture helper functions
+vec4 blendDiffuseWithText();
+vec3 getNormalValue();
+
 void main() {
     vec4 dirToCam = normalize(cameraPos - posWorldSpace);
     vec4 illumination = ka * cAmbient;
+    vec3 normal = getNormalValue();
 
     for (int i = 0; i < numLights; i++) {
         float visibility = 1.0;
@@ -106,10 +125,14 @@ void main() {
             break;
         }
 
-        float NdotL = dot(normalize(normalWorldSpace), vec3(dirToLight));
+
+        //float NdotL = dot(normalize(normalWorldSpace), vec3(dirToLight));
+        float NdotL = dot(normal, vec3(dirToLight));
         if (NdotL < 0) continue;
 
-        vec4 diffuseTerm = kd * cDiffuse * NdotL;
+        //vec4 diffuseTerm = kd * cDiffuse * NdotL;
+        vec4 diffuse = blendDiffuseWithText();
+        vec4 diffuseTerm = diffuse * NdotL;
 
         vec3 reflectedLightDir = reflect(vec3(-dirToLight), normalize(normalWorldSpace));
         float RdotV = dot(reflectedLightDir, vec3(dirToCam));
@@ -132,4 +155,60 @@ void main() {
     }
 
     fragColor = mix(fog_color, illumination, fog_factor);
+}
+
+vec4 blendDiffuseWithText(){
+
+    vec4 diffuse = kd * cDiffuse;
+
+    if(myTextures.textureIsUsed && blend != 0.0f){
+        vec2 uvRepeat = uv * myTextures.textureRepeat;
+        vec4 textureColor = texture(myTextures.textureSampler, uvRepeat);
+        return (1.f - blend) * diffuse + blend * textureColor;
+    }
+    else{
+        return diffuse;
+    }
+}
+
+vec3 getNormalValue(){
+    vec3 normal = normalize(normalWorldSpace);
+
+    // normal mapping take priority if both mapping are used somehow...
+    if(myNormals.textureIsUsed){
+        vec3 normalMap = texture(myNormals.textureSampler, uv * myNormals.textureRepeat).xyz;
+        normalMap = normalMap * 2.0 - 1.0;
+        normal = normalize(TBN * normalMap);
+    }
+    else if(myBumps.textureIsUsed){
+        vec2 uvRepeat = uv * myBumps.textureRepeat;
+        ivec2 bumpTextureSize = textureSize(myBumps.textureSampler, 0);
+        vec2 texel = 1.0 / vec2(bumpTextureSize);
+
+        float height = texture(myBumps.textureSampler, uvRepeat).x;
+
+        // height from neighboring pixels
+        float heightRight = texture(myBumps.textureSampler, uvRepeat + vec2(texel.x, 0.0)).x;
+        float heightUp = texture(myBumps.textureSampler, uvRepeat + vec2(0.0, texel.y)).x;
+
+        // finite difference to approximate partial derivatives of Height(u, v) or the height
+        float dHdu = heightRight - height;
+        float dHdv = heightUp - height;
+
+        float bumpScale = 3.0f;
+        dHdu *= bumpScale;
+        dHdv *= bumpScale;
+
+        vec3 dpdu = vec3(1.0, 0.0, 0.0);
+        vec3 dpdv = vec3(0.0, 1.0, 0.0);
+        vec3 n = vec3(0.0, 0.0, 1.0);
+
+        vec3 perturbedPtU = dpdu + dHdu * n; //dpdu + dHdu * n + h * dndu, dndu = 0
+        vec3 perturbedPtV = dpdv + dHdv * n; //dpdv + dHdv * n + h * dndv, dndv = 0
+
+        vec3 normalBump = normalize(cross(perturbedPtU, perturbedPtV));
+        normal = normalize(TBN * normalBump);
+    }
+
+    return normal;
 }

@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <iostream>
 #include "settings.h"
+#include "vertexcreator.h"
 #include "utils/shaderloader.h"
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -201,7 +202,7 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
         GLint modelMatrixLoc = glGetUniformLocation(m_shadowmap_shader, "modelMatrix");
         glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.ctm[0][0]);
 
-        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 6);
+        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 11);
 
         glBindVertexArray(0);
     }
@@ -335,9 +336,13 @@ void Realtime::paintGL() {
         glUniform1f(shininessLoc, shapeData.primitive.material.shininess);
         glUniform4fv(cAmbientLoc, 1, &shapeData.primitive.material.cAmbient[0]);
         glUniform4fv(cDiffuseLoc, 1, &shapeData.primitive.material.cDiffuse[0]);
-        glUniform4fv(cSpecularLoc, 1, &shapeData.primitive.material.cSpecular[0]);        
+        glUniform4fv(cSpecularLoc, 1, &shapeData.primitive.material.cSpecular[0]);
 
-        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 6);
+        GLint m_blendLocation = glGetUniformLocation(m_default_shader, "blend");
+        glUniform1f(m_blendLocation, shapeData.primitive.material.blend);
+        activeTexture(shapeData.primitive.material);
+
+        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 11);
 
         glBindVertexArray(0);
     }
@@ -370,6 +375,7 @@ void Realtime::parseScene() {
 
 void Realtime::sceneChanged() {
     parseScene();
+    createTextureAndNormal();
 
     update(); // asks for a PaintGL() call to occur
 }
@@ -462,6 +468,80 @@ void Realtime::timerEvent(QTimerEvent *event) {
 
 
     update(); // asks for a PaintGL() call to occur
+}
+
+/**
+ * @brief Helpers for textures
+ */
+// generate openGL textures and store ids to hash if textures are used
+void Realtime::createTextureAndNormal(){
+    this->makeCurrent();
+
+    vertexCreator::createTexture(m_textures, m_renderData.shapes);
+    vertexCreator::createNormalText(m_normalTextures, m_renderData.shapes);
+    vertexCreator::createBumpText(m_bumpTextures, m_renderData.shapes);
+
+    this->doneCurrent();
+}
+
+// active texture slots and pass uniforms to fragment shader
+void Realtime::activeTexture(const SceneMaterial& shapeMat){
+    if(shapeMat.textureMap.isUsed){
+        GLuint textureId = m_textures[shapeMat.textureMap.filename];
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, textureId);
+
+        GLint m_textSampLocation = glGetUniformLocation(m_default_shader, "myTextures.textureSampler");
+        GLint m_textIsUsedLocation = glGetUniformLocation(m_default_shader, "myTextures.textureIsUsed");
+        glUniform1i(m_textSampLocation, 0);
+        glUniform1i(m_textIsUsedLocation, true);
+
+        glm::vec2 repeatUV = glm::vec2(shapeMat.textureMap.repeatU, shapeMat.textureMap.repeatV);
+        GLint  m_textRepeatLocation = glGetUniformLocation(m_default_shader, "myTextures.textureRepeat");
+        glUniform2fv(m_textRepeatLocation, 1, &repeatUV[0]);
+    }
+    else{
+        GLint m_textIsUsedLocation = glGetUniformLocation(m_default_shader, "myTextures.textureIsUsed");
+        glUniform1i(m_textIsUsedLocation, false);
+    }
+
+    if(shapeMat.normalMap.isUsed){
+        GLuint normalId = m_normalTextures[shapeMat.normalMap.filename];
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, normalId);
+
+        GLint m_normSampLocation = glGetUniformLocation(m_default_shader, "myNormals.textureSampler");
+        GLint m_normIsUsedLocation = glGetUniformLocation(m_default_shader, "myNormals.textureIsUsed");
+        glUniform1i(m_normSampLocation, 1);
+        glUniform1i(m_normIsUsedLocation, true);
+
+        glm::vec2 repeatUV = glm::vec2(shapeMat.normalMap.repeatU, shapeMat.normalMap.repeatV);
+        GLint m_normRepeatLocation = glGetUniformLocation(m_default_shader, "myNormals.textureRepeat");
+        glUniform2fv(m_normRepeatLocation, 1, &repeatUV[0]);
+    }
+    else{
+        GLint m_normIsUsedLocation = glGetUniformLocation(m_default_shader, "myNormals.textureIsUsed");
+        glUniform1i(m_normIsUsedLocation, false);
+    }
+
+    if(shapeMat.bumpMap.isUsed){
+        GLuint bumpId = m_bumpTextures[shapeMat.bumpMap.filename];
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, bumpId);
+
+        GLint m_bumpSampLocation = glGetUniformLocation(m_default_shader, "myBumps.textureSampler");
+        GLint m_bumpIsUsedLocation = glGetUniformLocation(m_default_shader, "myBumps.textureIsUsed");
+        glUniform1i(m_bumpSampLocation, 2);
+        glUniform1i(m_bumpIsUsedLocation, true);
+
+        glm::vec2 repeatUV = glm::vec2(shapeMat.bumpMap.repeatU, shapeMat.bumpMap.repeatV);
+        GLint m_bumpRepeatLocation = glGetUniformLocation(m_default_shader, "myBumps.textureRepeat");
+        glUniform2fv(m_bumpRepeatLocation, 1, &repeatUV[0]);
+    }
+    else{
+        GLint m_bumpIsUsedLocation = glGetUniformLocation(m_default_shader, "myBumps.textureIsUsed");
+        glUniform1i(m_bumpIsUsedLocation, false);
+    }
 }
 
 // DO NOT EDIT
