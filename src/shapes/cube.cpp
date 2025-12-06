@@ -113,6 +113,14 @@ Shape Cube() {
 
         .getVertexData = [=]() {
             return vertexData;
+        },
+
+        .Ibody = [=](double mass){
+            return glm::mat3(
+                mass / 6.0f, 0, 0,
+                0, mass / 6.0f, 0,
+                0, 0, mass / 6.0f
+            );
         }
     };
 }

@@ -11,11 +11,13 @@ using GetTypeSignature = auto()->PrimitiveType;
 // compute vertices using tessellation parameters
 using UpdateVertexDataSignature = auto(int param1, int param2)->void;
 using GetVertexDataSignature = auto()->std::shared_ptr<std::vector<GLfloat>>;
+using GetIBodySignature = auto(double mass)->glm::mat3;
 
 struct Shape {
     std::function<GetTypeSignature> getType;
     std::function<UpdateVertexDataSignature> updateVertexData;
     std::function<GetVertexDataSignature> getVertexData;
+    std::function<GetIBodySignature> Ibody;
 
     GLuint vbo;
     GLuint vao;

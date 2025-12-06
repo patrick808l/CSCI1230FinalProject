@@ -53,6 +53,10 @@ add_executable(${PROJECT_NAME}
     src/utils/objfilereader.h src/utils/objfilereader.cpp
     src/shapes/mesh.h src/shapes/mesh.cpp
     src/vertexcreator.cpp src/vertexcreator.h
+
+    src/force.h src/force.cpp
+    src/collider.h src/collider.cpp
+    src/rigidbody.h src/rigidbody.cpp
 )
 
 # GLM: this creates its library and allows you to `#include "glm/..."`

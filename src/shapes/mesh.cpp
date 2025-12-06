@@ -24,6 +24,16 @@ Shape Mesh(std::string meshfile) {
 
         .getVertexData = [=]() {
             return vertexData;
+        },
+
+        .Ibody = [=](double mass) {
+            // (represents all meshes as spheres with regards to rotation)
+            double I = (mass * 0.25) * (2.0 / 5.0);
+            return glm::mat3(
+                I, 0, 0,
+                0, I, 0,
+                0, 0, I
+            );
         }
     };
 }

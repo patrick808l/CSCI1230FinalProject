@@ -200,7 +200,7 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
         glBindVertexArray(m_shapeManager.getVao(shapeData));
 
         GLint modelMatrixLoc = glGetUniformLocation(m_shadowmap_shader, "modelMatrix");
-        glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.ctm[0][0]);
+        glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.getMovedCTM()[0][0]);
 
         glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 11);
 
@@ -324,7 +324,7 @@ void Realtime::paintGL() {
         GLint modelMatrixLoc = glGetUniformLocation(m_default_shader, "modelMatrix");
         GLint viewMatrixLoc = glGetUniformLocation(m_default_shader, "viewMatrix");
         GLint projectionMatrixLoc = glGetUniformLocation(m_default_shader, "projectionMatrix");
-        glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.ctm[0][0]);
+        glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.getMovedCTM()[0][0]);
         glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.getViewMatrix()[0][0]);
         glUniformMatrix4fv(projectionMatrixLoc, 1, GL_FALSE, &m_camera.getProjMatrix()[0][0]);
 

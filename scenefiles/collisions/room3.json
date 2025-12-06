@@ -54,7 +54,7 @@
           "type": "cube",
           "collide": true,
           "is_ground": true,
-          "energy_absorb": 0.05,
+          "energy_loss": 0.05,
           "ambient": [ 0.5, 0.5, 0.5 ],
           "diffuse": [ 0.3, 0.3, 0.3 ],
           "specular": [ 0.1, 0.1, 0.1 ],
@@ -71,7 +71,7 @@
           "type": "cube",
           "collide": true,
           "is_ground": true,
-          "energy_absorb": 0.05,
+          "energy_loss": 0.05,
           "ambient": [ 0.5, 0.5, 0.5 ],
           "diffuse": [ 0.3, 0.3, 0.3 ],
           "specular": [ 0.1, 0.1, 0.1 ],
@@ -88,7 +88,7 @@
           "type": "cube",
           "collide": true,
           "is_ground": true,
-          "energy_absorb": 0.05,
+          "energy_loss": 0.05,
           "ambient": [ 0.5, 0.5, 0.5 ],
           "diffuse": [ 0.3, 0.3, 0.3 ],
           "specular": [ 0.1, 0.1, 0.1 ],
@@ -105,7 +105,7 @@
           "type": "cube",
           "collide": true,
           "is_ground": true,
-          "energy_absorb": 0.05,
+          "energy_loss": 0.05,
           "ambient": [ 0.5, 0.5, 0.5 ],
           "diffuse": [ 0.3, 0.3, 0.3 ],
           "specular": [ 0.1, 0.1, 0.1 ],
@@ -122,7 +122,7 @@
           "type": "cube",
           "collide": true,
           "is_ground": true,
-          "energy_absorb": 0.05,
+          "energy_loss": 0.05,
           "ambient": [ 0.5, 0.5, 0.5 ],
           "diffuse": [ 0.3, 0.3, 0.3 ],
           "specular": [ 0.1, 0.1, 0.1 ],
@@ -139,7 +139,7 @@
           "type": "cube",
           "collide": true,
           "is_ground": true,
-          "energy_absorb": 0.05,
+          "energy_loss": 0.05,
           "ambient": [ 0.5, 0.5, 0.5 ],
           "diffuse": [ 0.3, 0.3, 0.3 ],
           "specular": [ 0.1, 0.1, 0.1 ],
@@ -163,7 +163,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {
@@ -190,7 +190,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {
@@ -217,7 +217,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {
@@ -244,7 +244,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {
@@ -271,7 +271,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {
@@ -298,7 +298,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {
@@ -325,7 +325,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {
@@ -352,7 +352,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {
@@ -379,7 +379,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.05,
+              "energy_loss": 0.05,
               "mass": 0.5,
               "forces": [
                 {

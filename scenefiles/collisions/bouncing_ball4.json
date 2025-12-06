@@ -109,7 +109,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0.5,
+              "energy_loss": 0.5,
               "forces": [
                 {
                   "type": "constant",

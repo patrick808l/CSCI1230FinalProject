@@ -100,6 +100,15 @@ Shape Sphere() {
 
         .getVertexData = [=]() {
             return vertexData;
+        },
+
+        .Ibody = [=](double mass) {
+            double I = (mass * 0.25) * (2.0 / 5.0);
+            return glm::mat3(
+                I, 0, 0,
+                0, I, 0,
+                0, 0, I
+            );
         }
     };
 }
