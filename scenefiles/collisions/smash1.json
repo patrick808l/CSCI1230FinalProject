@@ -1,0 +1,165 @@
+{
+  "name": "TwoSmashingCubes",
+  "globalData": {
+    "ambientCoeff": 0.3,
+    "diffuseCoeff": 0.6,
+    "specularCoeff": 0.5,
+    "transparentCoeff": 0
+  },
+  "cameraData": {
+    "position": [
+      0,
+      2.0,
+      4.5
+    ],
+    "up": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "heightAngle": 30.0,
+    "focus": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "groups": [
+    {
+      "lights": [
+        {
+          "type": "directional",
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "direction": [
+            -0.5,
+            -1.0,
+            -1.0
+          ]
+        },
+        {
+          "type": "directional",
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "direction": [
+            0.5,
+            -1.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BallL",
+      "groups": [
+        {
+          "translate": [
+            1.5,
+            0,
+            0
+          ],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [
+                0.2572515863209599,
+                0.11958367897741007,
+                0.04303244699661457
+              ],
+              "diffuse": [
+                0.5347821253787146,
+                0.7144361981306429,
+                0.053189301688676194
+              ],
+              "specular": [
+                0.22946852528312922,
+                0.3426629754748818,
+                0.17371395299781378
+              ],
+              "shininess": 3,
+              "t_offset": 0,
+              "collide": true,
+              "is_ground": false,
+              "energy_absorb": 0,
+              "mass": 1,
+              "forces": [
+                {
+                  "type": "constant",
+                  "translation": [
+                    -1,
+                    0,
+                    0
+                  ],
+                  "torque": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BallR",
+      "groups": [
+        {
+          "translate": [
+            -1.5,
+            0,
+            0
+          ],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [
+                0.04303244699661457,
+                0.11958367897741007,
+                0.2572515863209599
+              ],
+              "diffuse": [
+                0.053189301688676194,
+                0.7144361981306429,
+                0.5347821253787146
+              ],
+              "specular": [
+                0.17371395299781378,
+                0.3426629754748818,
+                0.22946852528312922
+              ],
+              "shininess": 3,
+              "t_offset": 0,
+              "collide": true,
+              "is_ground": false,
+              "energy_absorb": 0,
+              "mass": 1,
+              "forces": [
+                {
+                  "type": "constant",
+                  "translation": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "torque": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
