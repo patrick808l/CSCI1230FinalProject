@@ -809,7 +809,7 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
     QStringList optionalFields = {
         "meshFile", "ambient", "diffuse", "specular", "reflective", "transparent", "shininess", "ior",
         "blend", "textureFile", "textureU", "textureV", "bumpMapFile", "bumpMapU", "bumpMapV",
-        "normalMapFile", "normalMapU", "normalMapV", "collide", "energy_absorb", "mass", "is_ground", "forces", "t_offset" };
+        "normalMapFile", "normalMapU", "normalMapV", "collide", "energy_loss", "mass", "is_ground", "forces", "t_offset" };
 
     QStringList allFields = requiredFields + optionalFields;
     for (auto field : prim.keys()) {
@@ -870,16 +870,16 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
         return false;
     }
 
-    // primitive->t_offset = prim["t_offset"].toDouble(0);
-    // primitive->collide = prim["collide"].toBool(false);
-    // primitive->energy_absorb = prim["energy_absorb"].toDouble(0);
-    // primitive->mass = prim["mass"].toDouble(1);
-    // primitive->is_ground = prim["is_ground"].toBool(true);
-    // if (prim.contains("forces")) {
-    //     if (!prim["forces"].isArray()) {
-    //         std::cout << "primitive forces must be of type array" << std::endl;
-    //         return false;
-    //     }
+    primitive->t_offset = prim["t_offset"].toDouble(0);
+    primitive->collide = prim["collide"].toBool(false);
+    primitive->energy_loss = prim["energy_loss"].toDouble(0);
+    primitive->mass = prim["mass"].toDouble(1);
+    primitive->is_ground = prim["is_ground"].toBool(true);
+    if (prim.contains("forces")) {
+        if (!prim["forces"].isArray()) {
+            std::cout << "primitive forces must be of type array" << std::endl;
+            return false;
+        }
 
     //     // Parse a list of forces
     //     QJsonArray forces = prim["forces"].toArray();

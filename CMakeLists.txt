@@ -54,6 +54,10 @@ add_executable(${PROJECT_NAME}
     src/shapes/mesh.h src/shapes/mesh.cpp
     src/postprocessing.h src/postprocessing.cpp
     src/vertexcreator.cpp src/vertexcreator.h
+
+    src/force.h src/force.cpp
+    src/collider.h src/collider.cpp
+    src/rigidbody.h src/rigidbody.cpp
     src/lsystem.h src/lsystem.cpp
 )
 

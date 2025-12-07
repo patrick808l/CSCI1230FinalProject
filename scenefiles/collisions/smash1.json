@@ -86,7 +86,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0,
+              "energy_loss": 0,
               "mass": 1,
               "forces": [
                 {
@@ -139,7 +139,7 @@
               "t_offset": 0,
               "collide": true,
               "is_ground": false,
-              "energy_absorb": 0,
+              "energy_loss": 0,
               "mass": 1,
               "forces": [
                 {

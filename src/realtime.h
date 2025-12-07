@@ -58,7 +58,6 @@ private:
     // Device Correction Variables
     double m_devicePixelRatio;
 
-
     RenderData m_renderData;
     SceneParser m_sceneParser;
     ShapeManager m_shapeManager;

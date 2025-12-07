@@ -180,6 +180,19 @@ Shape Cylinder() {
 
         .getVertexData = [=]() {
             return vertexData;
+        },
+
+        .Ibody = [=](double mass) {
+            double h2 = 1.0;
+            double r2 = 0.25;
+            double Ixx = ((mass / 12.0f) * h2) + ((mass / 4.0f) * r2);
+            double Iyy = Ixx;
+            double Izz = 0.5 * mass * r2;
+            return glm::mat3(
+                Ixx, 0, 0,
+                0, Iyy, 0,
+                0, 0, Izz
+            );
         }
     };
 }

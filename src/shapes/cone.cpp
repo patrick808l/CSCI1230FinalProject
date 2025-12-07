@@ -191,6 +191,19 @@ Shape Cone() {
 
         .getVertexData = [=]() {
             return vertexData;
+        },
+
+        .Ibody = [=](double mass) {
+            double h2 = 1.0;
+            double r2 = 0.25;
+            double Ixx = (mass * h2) / 10.0f + (3.0f * mass * r2) / 20.0f;
+            double Iyy = Ixx;
+            double Izz = 0.3f * mass * r2;
+            return glm::mat3(
+                Ixx, 0, 0,
+                0, Iyy, 0,
+                0, 0, Izz
+            );
         }
     };
 }

@@ -5,10 +5,23 @@
 #include "scenedata.h"
 #include "shapes/shape.h"
 
+// Forward declaration of rigid body and collider
+struct RigidBody;
+struct Collider;
+
 // Struct which contains data for a single primitive, to be used for rendering
 struct RenderShapeData {
     // Shape shape;
     ScenePrimitive primitive;
+    RigidBody* rb; // a rigid body to describe how to shape moves
+
+    /// Get the raw cumulative transform matrix, w/o rigid body transformations
+    glm::mat4 getCTM();
+    /// Get the cumulative transform matrix with the rigid body transformation applied to it
+    glm::mat4 getMovedCTM();
+
+    RenderShapeData(ScenePrimitive primitive, RigidBody* rb, glm::mat4 ctm);
+private:
     glm::mat4 ctm; // the cumulative transformation matrix
 };
 
@@ -19,6 +32,11 @@ struct RenderData {
 
     std::vector<SceneLightData> lights;
     std::vector<RenderShapeData> shapes;
+
+    RenderData();
+    std::vector<Collider*>* colliders();
+private:
+    std::vector<Collider*>* m_colliders;
 };
 
 class SceneParser {
