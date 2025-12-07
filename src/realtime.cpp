@@ -41,6 +41,7 @@ Realtime::Realtime(QWidget *parent)
 
     std::random_device rd;
     m_rand.seed(rd());
+    postprocessor = new PostProcessor();
 }
 
 glm::mat4 Realtime::getLightViewMatrix(const glm::vec3& lightPos, const glm::vec3& lightInvDir, bool isSpotLight) {
@@ -111,6 +112,11 @@ void Realtime::initializeGL() {
 
     m_shapeManager.init(this);
     m_shapeManager.updateShapeVertices(this, settings.shapeParameter1, settings.shapeParameter2);
+
+    postprocessor->init(defaultFramebufferObject(),
+                        size().width() * m_devicePixelRatio,
+                        size().height() * m_devicePixelRatio,
+                        this);
 }
 
 /**
@@ -254,7 +260,6 @@ void Realtime::paintGL() {
     GLint fogEnabledLoc = glGetUniformLocation(m_default_shader, "fogEnabled");
     glUniform1i(fogEnabledLoc, settings.extraCredit2);
 
-
     for (int texIndex = 0; texIndex < numShadowMaps; texIndex++) {
         glActiveTexture(GL_TEXTURE0 + texIndex);
         glBindTexture(GL_TEXTURE_2D, m_depthTextures[texIndex]);
@@ -292,7 +297,6 @@ void Realtime::paintGL() {
         GLint depthBiasVPLoc = glGetUniformLocation(m_default_shader, uniformDepthBiasVP.c_str());
         glUniformMatrix4fv(depthBiasVPLoc, 1, GL_FALSE, &depthBiasVP[0][0]);
 
-
         std::string lightsUniform = "lights[" + std::to_string(lightIndex) + "]";
         std::string lightsUniformLightType = lightsUniform + ".lightType";
         std::string lightsUniformPos = lightsUniform + ".pos";
@@ -320,6 +324,8 @@ void Realtime::paintGL() {
 
         lightIndex++;
     }
+
+    if (post_processing_enabled) postprocessor->bindInitFBO();
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
     for (RenderShapeData& shapeData : m_renderData.shapes) {
@@ -351,6 +357,8 @@ void Realtime::paintGL() {
         glBindVertexArray(0);
     }
 
+    if (post_processing_enabled) postprocessor->applyEffects();
+
     glUseProgram(0);
 }
 
@@ -362,6 +370,8 @@ void Realtime::resizeGL(int w, int h) {
     m_camera.init(m_renderData.cameraData, w, h);
 
     makeFBO();
+
+    postprocessor->onResize(w * m_devicePixelRatio, h * m_devicePixelRatio);
 }
 
 void Realtime::parseScene() {
