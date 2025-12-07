@@ -82,6 +82,7 @@ struct Shape {
 
 void insertVec3(std::shared_ptr<std::vector<GLfloat>> data, const glm::vec3& v);
 void insertVec2(std::shared_ptr<std::vector<float>> data, glm::vec2& v);
+void insertTrivialSkeleton(std::shared_ptr<std::vector<GLfloat>> data);
 
 glm::vec3 sphericalToCartesian(float phi, float theta);
 glm::vec3 cylindricalToCartesian(float r, float theta, float y);

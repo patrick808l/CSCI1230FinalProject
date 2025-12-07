@@ -30,32 +30,38 @@ Shape Sphere() {
         insertVec3(vertexData, glm::normalize(topLeft));
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, glm::normalize(bottomRight));
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, glm::normalize(bottomLeft));
         insertVec2(vertexData, uvBL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, glm::normalize(topLeft));
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, glm::normalize(topRight));
         insertVec2(vertexData, uvTR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, glm::normalize(bottomRight));
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
     };
 
     MakeWedgeSignature makeWedge = [=](float curTheta, float nextTheta) {

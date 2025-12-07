@@ -19,6 +19,12 @@ find_package(Qt6 REQUIRED COMPONENTS Gui)
 find_package(Qt6 REQUIRED COMPONENTS OpenGL)
 find_package(Qt6 REQUIRED COMPONENTS OpenGLWidgets)
 find_package(Qt6 REQUIRED COMPONENTS Xml)
+# assimp for rigged model loading
+# set(ASSIMP_DIR "C:/vcpkg/installed/x64-windows/share/assimp/assimpConfig.cmake")
+# list(APPEND CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-windows/share/assimp/assimpConfig.cmake")
+find_package(assimp REQUIRED) #CONFIG
+# message(STATUS "Assimp_INCLUDE_DIRS: ${ASSIMP_INCLUDE_DIRS}")
+# message(STATUS "Assimp_LIBRARIES: ${ASSIMP_LIBRARIES}")
 
 # Allows you to include files from within those directories, without prefixing their filepaths
 include_directories(src)
@@ -51,8 +57,16 @@ add_executable(${PROJECT_NAME}
     src/shapes/shapemanager.h src/shapes/shapemanager.cpp
 
     src/utils/objfilereader.h src/utils/objfilereader.cpp
-    src/shapes/mesh.h src/shapes/mesh.cpp
+    src/shapes/staticmesh.h src/shapes/staticmesh.cpp
     src/vertexcreator.cpp src/vertexcreator.h
+    src/skeletal_animation/model_animation.h
+    src/skeletal_animation/animdata.h
+    src/skeletal_animation/assimp_glm_helpers.h
+    src/skeletal_animation/skeletal_mesh.h
+    src/skeletal_animation/animator.h
+    src/skeletal_animation/animation.h
+    src/skeletal_animation/bone.h
+
 )
 
 # GLM: this creates its library and allows you to `#include "glm/..."`
@@ -70,6 +84,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt::OpenGLWidgets
     Qt::Xml
     StaticGLEW
+    assimp::assimp
 )
 
 # Specifies other files

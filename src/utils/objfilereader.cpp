@@ -28,6 +28,16 @@ void pushVertexData(std::shared_ptr<std::vector<GLfloat>> vertData, const glm::v
     vertData->push_back(0.f);
     vertData->push_back(0.f);
     vertData->push_back(0.f);
+    // boneIds. first is greater than MAX_BONES so default posObjSpace is used. the rest are ignored
+    vertData->push_back(101);
+    vertData->push_back(0);
+    vertData->push_back(0);
+    vertData->push_back(0);
+    // zeros for bone weights
+    vertData->push_back(0);
+    vertData->push_back(0);
+    vertData->push_back(0);
+    vertData->push_back(0);
 }
 
 /**

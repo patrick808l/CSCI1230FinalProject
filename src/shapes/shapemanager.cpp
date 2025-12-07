@@ -1,9 +1,18 @@
 #include "shapemanager.h"
+#include "shapes/staticmesh.h"
 
-ShapeManager::ShapeManager() {}
+/**
+ * @brief Constructor initializes model, animation, and animator
+ */
+ShapeManager::ShapeManager():
+    m_model(""),
+    m_animation("", &m_model),
+    m_animator(&m_animation)
+{}
 
 /**
  * @brief initialize the vbo and vao for each of the shape types.
+ * initialize a skeletal model and animator.
  * @param widget allows access to makeCurrent for openGL context
  */
 void ShapeManager::init(QOpenGLWidget* widget) {
@@ -35,7 +44,7 @@ void ShapeManager::parseMeshes(QOpenGLWidget *widget, const std::vector<RenderSh
         if (shapeData.primitive.type == PrimitiveType::PRIMITIVE_MESH &&
                 !meshMap.contains(shapeData.primitive.meshfile)) {
             // create new mesh and update its vertices. tessellation params ignored.
-            meshMap[shapeData.primitive.meshfile] = Mesh(shapeData.primitive.meshfile);
+            meshMap[shapeData.primitive.meshfile] = StaticMesh(shapeData.primitive.meshfile);
             meshMap[shapeData.primitive.meshfile].updateVertexData(0, 0);
             meshMap[shapeData.primitive.meshfile].initGLObjects(widget);
             meshMap[shapeData.primitive.meshfile].bufferData(widget);
@@ -106,3 +115,33 @@ int ShapeManager::getVertexDataSize(const RenderShapeData& shapeData) {
     return getShape(shapeData).getVertexData()->size();
 }
 
+/**
+ * @brief update skeletal animation
+ * @param deltaTime is the time since the last update
+ */
+void ShapeManager::updateAnimation(float deltaTime) {
+    m_animator.UpdateAnimation(deltaTime);
+}
+
+/**
+ * @brief ShapeManager::drawAnimatedModel
+ * @param widget allows access to makeCurrent for openGL context
+ * @param shader is the default shader program used for rendering the scene
+ */
+void ShapeManager::drawAnimatedModel(QOpenGLWidget* widget, GLuint shader) {
+    widget->makeCurrent();
+    glUseProgram(shader);
+
+    std::vector<glm::mat4> transforms = m_animator.GetFinalBoneMatrices();
+    for (int i = 0; i < transforms.size(); i++) {
+        std::string uniformFinalBones = "finalBonesMatrices[" + std::to_string(i) + "]";
+        GLint finalBonesMatrixLoc = glGetUniformLocation(shader, uniformFinalBones.c_str());
+        glUniformMatrix4fv(finalBonesMatrixLoc, 1, GL_FALSE, &transforms[i][0][0]);
+    }
+
+    glm::mat4 modelMatrix{1.f};
+    GLint modelMatrixLoc = glGetUniformLocation(shader, "modelMatrix");
+    glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
+
+    m_model.Draw(shader);
+}

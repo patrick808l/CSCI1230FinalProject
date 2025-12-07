@@ -1,8 +1,8 @@
 #include <iostream>
-#include "mesh.h"
+#include "staticmesh.h"
 #include "utils/objfilereader.h"
 
-Shape Mesh(std::string meshfile) {
+Shape StaticMesh(std::string meshfile) {
     auto vertexData = std::make_shared<std::vector<GLfloat>>();
     auto parsed = std::make_shared<bool>(false);
 
