@@ -1,7 +1,59 @@
 #include "collider.h"
+#include "shapes/shapemanager.h"
 
-double calc_diml(glm::vec3 dim) {
-    return ((dim.x*dim.x) + (dim.y*dim.y) + (dim.z*dim.z));
+#define STRIDE 11
+
+std::unordered_map<std::string, std::pair<glm::vec4, glm::vec4>> cached_mesh_dims;
+std::pair<glm::vec4, glm::vec4> get_dim(std::string meshfile) {
+    if (cached_mesh_dims.contains(meshfile)) {
+        return cached_mesh_dims[meshfile];
+    } else {
+        auto m = Mesh(meshfile);
+        m.updateVertexData(3, 3);
+        auto triangles = m.getVertexData();
+        double x1 = triangles->at(0);
+        double y1 = triangles->at(1);
+        double z1 = triangles->at(2);
+        double x2 = triangles->at(0);
+        double y2 = triangles->at(1);
+        double z2 = triangles->at(2);
+        for (int i = 0; i < triangles->size(); i += STRIDE) {
+            float x = triangles->at(i);
+            float y = triangles->at(i+1);
+            float z = triangles->at(i+2);
+
+            // update x dims
+            if (x1 > x) {
+                x1 = x;
+            }
+            if (x2 < x) {
+                x2 = x;
+            }
+
+            // update y dims
+            if (y1 > y) {
+                y1 = y;
+            }
+            if (y2 < y) {
+                y2 = y;
+            }
+
+            // update z dims
+            if (z1 > z) {
+                z1 = z;
+            }
+            if (z2 < z) {
+                z2 = z;
+            }
+        }
+
+        std::pair<glm::vec4, glm::vec4> dim = std::make_pair(
+            glm::vec4((x1+x2)/2.0, (y1+y2)/2.0, (z1+z2)/2.0, 1), // center
+            glm::vec4((x2-x1)/2.0, (y2-y1)/2.0, (z2-z1)/2.0, 0)  // dimensions
+        );
+        cached_mesh_dims[meshfile] = dim;
+        return dim;
+    }
 }
 
 int random_id = 0;
@@ -13,18 +65,32 @@ Collider::Collider(const ScenePrimitive& primitive, glm::mat4 matrix) {
     this->is_ground = primitive.is_ground;
     this->energy_loss = primitive.energy_loss;
     this->ctm = matrix;
-    this->pos = ctm * glm::vec4(0, 0, 0, 1);
-    double x = (ctm * glm::vec4(1, 0, 0, 0)).x;
-    double y = (ctm * glm::vec4(0, 1, 0, 0)).y;
-    double z = (ctm * glm::vec4(0, 0, 1, 0)).z;
-    // add a bit of buffer space to give objects buffer to overlap
-    this->dim = glm::vec3((x * 0.5) + 0.01, (y * 0.5) + 0.01, (z * 0.5) + 0.01);
 
-    this->diml = calc_diml(this->dim);
+    double x, y, z;
+
+    switch(primitive.type) {
+    case PrimitiveType::PRIMITIVE_CUBE:
+    case PrimitiveType::PRIMITIVE_CONE:
+    case PrimitiveType::PRIMITIVE_CYLINDER:
+    case PrimitiveType::PRIMITIVE_SPHERE:
+        x = (ctm * glm::vec4(1, 0, 0, 0)).x;
+        y = (ctm * glm::vec4(0, 1, 0, 0)).y;
+        z = (ctm * glm::vec4(0, 0, 1, 0)).z;
+        // add a bit of buffer space to give objects buffer to overlap
+        this->org_pos = glm::vec4(0, 0, 0, 1);
+        this->pos = ctm * org_pos;
+        this->dim = glm::vec3((x * 0.5) + 0.01, (y * 0.5) + 0.01, (z * 0.5) + 0.01);
+        break;
+    case PrimitiveType::PRIMITIVE_MESH:
+        this->org_pos = get_dim(primitive.meshfile).first;
+        this->pos = ctm * org_pos;
+        this->dim = ctm * get_dim(primitive.meshfile).second;
+        break;
+    }
 }
 
 void Collider::update_pos(glm::mat4 move) {
-    this->pos = (this->ctm * move) * glm::vec4(0, 0, 0, 1);
+    this->pos = (this->ctm * move) * this->org_pos;
 }
 
 double sign(double v) {

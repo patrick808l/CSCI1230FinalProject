@@ -18,8 +18,9 @@ class Collider
     glm::mat4 ctm;
     // position of the collider (world space)
     glm::vec3 pos;
+    // original center position (object space)
+    glm::vec4 org_pos;
     glm::vec3 dim; // (width, height, depth)
-    double diml; // longest distance from center to an edge
 
     // calculate collision for cube to cube
     std::optional<Collision> collide_cube_to_cube(Collider* other);
