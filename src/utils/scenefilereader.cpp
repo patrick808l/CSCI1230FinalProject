@@ -881,63 +881,63 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
             return false;
         }
 
-    //     // Parse a list of forces
-    //     QJsonArray forces = prim["forces"].toArray();
-    //     for (int i = 0; i < forces.size(); i++) {
-    //         if (!forces[i].isObject()) {
-    //             std::cout << "primitive forces[" << i << "] must be of type object" << std::endl;
-    //             return false;
-    //         }
+        // Parse a list of forces
+        QJsonArray forces = prim["forces"].toArray();
+        for (int i = 0; i < forces.size(); i++) {
+            if (!forces[i].isObject()) {
+                std::cout << "primitive forces[" << i << "] must be of type object" << std::endl;
+                return false;
+            }
 
-    //         // Parse a force
-    //         QJsonObject force = forces[i].toObject();
-    //         Force f;
-    //         if (!force.contains("type") || !force["type"].isString()) {
-    //             std::cout << "primitive forces[" << i << "] must have field called type as string" << std::endl;
-    //             return false;
-    //         }
-    //         if (!force.contains("translation") || !force["translation"].isArray()) {
-    //             std::cout << "primitive forces[" << i << "] must have field called translation as vec3" << std::endl;
-    //             return false;
-    //         }
-    //         if (!force.contains("torque") || !force["torque"].isArray()) {
-    //             std::cout << "primitive forces[" << i << "] must have field called torque as vec3" << std::endl;
-    //             return false;
-    //         }
-    //         if (force["type"].toString() == "constant") {
-    //             f.m_type = ForceType::constant;
-    //         } else if (force["type"].toString() == "impulse") {
-    //             f.m_type = ForceType::impulse;
-    //             f.t0 = force["t0"].toDouble(0);
-    //             f.t1 = force["t1"].toDouble(1);
-    //         } else if (force["type"].toString() == "periodic") {
-    //             f.m_type = ForceType::periodic;
-    //             f.period = force["period"].toDouble(1);;
-    //         } else {
-    //             std::cout << "primitive forces[" << i << "] must have field called type as constant, impulse, periodic" << std::endl;
-    //             return false;
-    //         }
+            // Parse a force
+            QJsonObject force = forces[i].toObject();
+            Force f;
+            if (!force.contains("type") || !force["type"].isString()) {
+                std::cout << "primitive forces[" << i << "] must have field called type as string" << std::endl;
+                return false;
+            }
+            if (!force.contains("translation") || !force["translation"].isArray()) {
+                std::cout << "primitive forces[" << i << "] must have field called translation as vec3" << std::endl;
+                return false;
+            }
+            if (!force.contains("torque") || !force["torque"].isArray()) {
+                std::cout << "primitive forces[" << i << "] must have field called torque as vec3" << std::endl;
+                return false;
+            }
+            if (force["type"].toString() == "constant") {
+                f.m_type = ForceType::constant;
+            } else if (force["type"].toString() == "impulse") {
+                f.m_type = ForceType::impulse;
+                f.t0 = force["t0"].toDouble(0);
+                f.t1 = force["t1"].toDouble(1);
+            } else if (force["type"].toString() == "periodic") {
+                f.m_type = ForceType::periodic;
+                f.period = force["period"].toDouble(1);;
+            } else {
+                std::cout << "primitive forces[" << i << "] must have field called type as constant, impulse, periodic" << std::endl;
+                return false;
+            }
 
-    //         QJsonArray translation = force["translation"].toArray();
-    //         QJsonArray torque = force["torque"].toArray();
-    //         if (translation.size() != 3 || torque.size() != 3) {
-    //             std::cout << "forces[" << i << "] must have translation/torque as vec3" << std::endl;
-    //             return false;
-    //         }
+            QJsonArray translation = force["translation"].toArray();
+            QJsonArray torque = force["torque"].toArray();
+            if (translation.size() != 3 || torque.size() != 3) {
+                std::cout << "forces[" << i << "] must have translation/torque as vec3" << std::endl;
+                return false;
+            }
 
-    //         for (int i = 0; i < 3; i++) {
-    //             if (!translation[i].isDouble() || !torque[i].isDouble()) {
-    //                 std::cout << "translation/torque must contain floating-point values" << std::endl;
-    //                 return false;
-    //             }
+            for (int i = 0; i < 3; i++) {
+                if (!translation[i].isDouble() || !torque[i].isDouble()) {
+                    std::cout << "translation/torque must contain floating-point values" << std::endl;
+                    return false;
+                }
 
-    //             f.trans[i] = translation[i].toDouble();
-    //             f.torque[i] = torque[i].toDouble();
-    //         }
+                f.trans[i] = translation[i].toDouble();
+                f.torque[i] = torque[i].toDouble();
+            }
 
-    //         primitive->forces.push_back(f);
-    //     }
-    // }
+            primitive->forces.push_back(f);
+        }
+    }
 
     if (prim.contains("ambient")) {
         if (!prim["ambient"].isArray()) {
