@@ -18,6 +18,8 @@
 #include "utils/sceneparser.h"
 #include "camera/camera.h"
 
+#include "postprocessing.h"
+
 class Realtime : public QOpenGLWidget
 {
 public:
@@ -91,4 +93,7 @@ private:
     glm::mat4 m_biasMatrix;
     float dirLightPosOffset = 10.f;
     glm::mat4 getLightViewMatrix(const glm::vec3& lightPos, const glm::vec3& lightInvDir, bool isSpotLight);
+
+    bool post_processing_enabled = true;
+    PostProcessor *postprocessor = nullptr;
 };

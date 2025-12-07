@@ -52,6 +52,7 @@ add_executable(${PROJECT_NAME}
 
     src/utils/objfilereader.h src/utils/objfilereader.cpp
     src/shapes/mesh.h src/shapes/mesh.cpp
+    src/postprocessing.h src/postprocessing.cpp
 )
 
 # GLM: this creates its library and allows you to `#include "glm/..."`
@@ -80,6 +81,13 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
         resources/shaders/default.vert
         resources/shaders/shadowmap.frag
         resources/shaders/shadowmap.vert
+	resources/shaders/texture.frag
+	resources/shaders/texture.vert
+	resources/shaders/tone_mapping.frag
+	resources/shaders/bloom_filter.frag
+	resources/shaders/bloom_composite.frag
+	resources/shaders/gaussian_blur.frag
+	resources/shaders/invert.frag
 )
 
 # GLEW: this provides support for Windows (including 64-bit)
