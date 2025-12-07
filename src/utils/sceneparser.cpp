@@ -65,10 +65,10 @@ void SceneParser::traverseTree(SceneNode* curNode, glm::mat4 ctm, RenderData &re
 
     // add shapes to render data
     for(ScenePrimitive* scenePrimitive : curNode->primitives) {
-        Collider* collider;
+        std::optional<Collider*> collider = std::nullopt;
         if (scenePrimitive->collide) {
-            collider = new Collider(*scenePrimitive, ctm);
-            renderData.colliders()->push_back(collider);
+            collider = std::make_optional(new Collider(*scenePrimitive, ctm));
+            renderData.colliders()->push_back(collider.value());
         }
         RigidBody* rb = new RigidBody(*scenePrimitive, collider, renderData.colliders());
         RenderShapeData shapeData = RenderShapeData(*scenePrimitive, rb, ctm);

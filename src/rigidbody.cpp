@@ -204,6 +204,11 @@ void RigidBody::ddt_State_to_Array(double *ydot)
 }
 
 void RigidBody::step(double deltaT) {
+    // skip calculation if no forces are being applied and there is no collider (object cannot move)
+    if (this->forces.empty() && !this->collider.has_value()) {
+        return;
+    }
+
     // calculate the t values
     double t0 = t;
     double t1 = t + deltaT;

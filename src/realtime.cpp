@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <iostream>
+#include "rigidbody.h"
 #include "settings.h"
 #include "vertexcreator.h"
 #include "utils/shaderloader.h"
@@ -466,6 +467,14 @@ void Realtime::timerEvent(QTimerEvent *event) {
         m_camera.moveDown(deltaTime);
     }
 
+    // step shapes forward
+    for (auto shape : this->m_renderData.shapes) {
+        shape.rb->step(deltaTime);
+    }
+    // collide and update momentums
+    for (auto shape : this->m_renderData.shapes) {
+        shape.rb->collide();
+    }
 
     update(); // asks for a PaintGL() call to occur
 }
