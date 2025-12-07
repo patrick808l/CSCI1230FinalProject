@@ -5,13 +5,14 @@
 #include <iostream>
 
 /**
- * @brief push a vertex and a normal into vertexData in vbo format
- *      (pos x, pos y, pos z, normal x, normal y, normal z)
+ * @brief push a vertex, normal, and texture into vertexData in vbo format
+ *      (pos x, pos y, pos z, normal x, normal y, normal z, texture u, texture v, tangent x, tangent y, tangent z)
  * @param vertData is a Mesh's vertex data to push into
  * @param vertex is a position in object space
  * @param normal is a normal in object space
+ * @param texture is a uv coordinate
  */
-void pushVertexData(std::shared_ptr<std::vector<GLfloat>> vertData, const glm::vec3& vertex, const glm::vec3& normal) {
+void pushVertexData(std::shared_ptr<std::vector<GLfloat>> vertData, const glm::vec3& vertex, const glm::vec3& normal, const glm::vec2& texture) {
     vertData->push_back(vertex.x);
     vertData->push_back(vertex.y);
     vertData->push_back(vertex.z);
@@ -19,6 +20,14 @@ void pushVertexData(std::shared_ptr<std::vector<GLfloat>> vertData, const glm::v
     vertData->push_back(normal.x);
     vertData->push_back(normal.y);
     vertData->push_back(normal.z);
+
+    vertData->push_back(texture[0]);
+    vertData->push_back(texture[1]);
+
+    // push back zeros for tangents
+    vertData->push_back(0.f);
+    vertData->push_back(0.f);
+    vertData->push_back(0.f);
 }
 
 /**
@@ -42,6 +51,25 @@ void parse3Floats(QString line, std::vector<glm::vec3>& dest) {
 }
 
 /**
+ * @brief parse 2 floats from the given line. push them as a vec2 into the dest vector.
+ * @param line is a trimmed line from the obj file
+ * @param dest is the destination vector which holds vec3's of parsed floats
+ */
+void parse2Floats(QString line, std::vector<glm::vec2>& dest) {
+    QStringList stringList = line.split(' ', Qt::SkipEmptyParts);
+    bool ok_u, ok_v;
+    ok_u = ok_v = false;
+    float u, v;
+    u = stringList.at(1).toFloat(&ok_u);
+    v = stringList.at(2).toFloat(&ok_v);
+    if (ok_u && ok_v) {
+        dest.push_back(glm::vec2{u, v});
+    } else {
+        std::cout << "error parsing float from line: " << line.toStdString() << std::endl;
+    }
+}
+
+/**
  * @brief read in a meshfile and parse vertex data into the given vector pointer.
  * @param vertData, pointer to a vector in which to place the vertex data.
  *      vertData consists of interweaved vertices (vec3) and normals (vec3).
@@ -51,9 +79,11 @@ int readAndParseFile(std::string meshfile, std::shared_ptr<std::vector<GLfloat>>
     vertData->clear();
 
     bool meshfileIncludesNormals = true;
+    bool meshfileIncludesTextures = true;
 
     std::vector<glm::vec3> vertices;
     std::vector<glm::vec3> vertexNormals;
+    std::vector<glm::vec2> vertexTextures;
 
     // maps vertex index (in vbo) to object index
     std::vector<int> objIndices;
@@ -80,11 +110,18 @@ int readAndParseFile(std::string meshfile, std::shared_ptr<std::vector<GLfloat>>
             parse3Floats(line, vertices);
         } else if (stringList.at(0) == "vn") {
             parse3Floats(line, vertexNormals);
+        } else if (stringList.at(0) == "vt") {
+            parse2Floats(line, vertexTextures);
         } else if (stringList.at(0) == "f") {
             // if we encounter an 'f' line before seeing any normals, the meshfile does not include vertex normals
             if (vertexNormals.size() == 0) {
                 meshfileIncludesNormals = false;
             }
+            // same for vertex textures
+            if (vertexTextures.size() == 0) {
+                meshfileIncludesTextures = false;
+            }
+
             // number of coordinates in the face line. could be 4, 5, ... . 4 implies f and 3 coordinates.
             int numCoords = stringList.size();
 
@@ -104,46 +141,65 @@ int readAndParseFile(std::string meshfile, std::shared_ptr<std::vector<GLfloat>>
                 v2i = coord2List.at(0).toInt(&ok_v2i);
                 v3i = coord3List.at(0).toInt(&ok_v3i);
 
+                glm::vec2 t1{0};
+                glm::vec2 t2{0};
+                glm::vec2 t3{0};
+                if (meshfileIncludesTextures) {
+                    int t1i, t2i, t3i;
+                    bool ok_t1i, ok_t2i, ok_t3i;
+                    ok_t1i = ok_t2i = ok_t3i = false;
+                    // parse texture indices
+                    t1i = coord1List.at(1).toInt(&ok_t1i);
+                    t2i = coord1List.at(1).toInt(&ok_t2i);
+                    t3i = coord1List.at(1).toInt(&ok_t3i);
+                    if(ok_t1i && ok_t2i && ok_t3i) {
+                        t1 = vertexTextures[t1i - 1];
+                        t2 = vertexTextures[t2i - 1];
+                        t3 = vertexTextures[t3i - 1];
+                    } else {
+                        std::cout << "error parsing int from line: " << line.toStdString() << std::endl;
+                    }
+                }
+
                 if (meshfileIncludesNormals) {
                     // parse vertex normal indices
                     n1i = coord1List.at(2).toInt(&ok_n1i);
                     n2i = coord2List.at(2).toInt(&ok_n2i);
                     n3i = coord3List.at(2).toInt(&ok_n3i);
                     if (ok_v1i && ok_v2i && ok_v3i && ok_n1i && ok_n2i && ok_n3i) {
-                        pushVertexData(vertData, vertices[v1i - 1], vertexNormals[n1i - 1]);
-                        pushVertexData(vertData, vertices[v2i - 1], vertexNormals[n2i - 1]);
-                        pushVertexData(vertData, vertices[v3i - 1], vertexNormals[n3i - 1]);
+                        pushVertexData(vertData, vertices[v1i - 1], vertexNormals[n1i - 1], t1);
+                        pushVertexData(vertData, vertices[v2i - 1], vertexNormals[n2i - 1], t2);
+                        pushVertexData(vertData, vertices[v3i - 1], vertexNormals[n3i - 1], t3);
                     } else {
                         std::cout << "error parsing int from line: " << line.toStdString() << std::endl;
                     }
                 } else {
                     if (ok_v1i && ok_v2i && ok_v3i) {
                         // set normals to zero for now, compute them later
-                        pushVertexData(vertData, vertices[v1i - 1], glm::vec3{0,0,0});
-                        pushVertexData(vertData, vertices[v2i - 1], glm::vec3{0,0,0});
-                        pushVertexData(vertData, vertices[v3i - 1], glm::vec3{0,0,0});
+                        pushVertexData(vertData, vertices[v1i - 1], glm::vec3{0,0,0}, t1);
+                        pushVertexData(vertData, vertices[v2i - 1], glm::vec3{0,0,0}, t2);
+                        pushVertexData(vertData, vertices[v3i - 1], glm::vec3{0,0,0}, t3);
                         objIndices.push_back(v1i);
                         objIndices.push_back(v2i);
                         objIndices.push_back(v3i);
 
-                        if (!meshfileIncludesNormals) {
-                            if (!faceNormalMap.contains(v1i)) {
-                                faceNormalMap[v1i] = std::vector<glm::vec3>();
-                            }
-                            if (!faceNormalMap.contains(v2i)) {
-                                faceNormalMap[v2i] = std::vector<glm::vec3>();
-                            }
-                            if (!faceNormalMap.contains(v3i)) {
-                                faceNormalMap[v3i] = std::vector<glm::vec3>();
-                            }
 
-                            // compute face normal via cross product of vertices at given indices
-                            glm::vec3 cross = glm::cross(vertices[v2i - 1] - vertices[v1i - 1], vertices[v3i - 1] - vertices[v1i - 1]);
-                            // store face normal (unnormalized) in faceNormalMap
-                            faceNormalMap[v1i].push_back(cross);
-                            faceNormalMap[v2i].push_back(cross);
-                            faceNormalMap[v3i].push_back(cross);
+                        if (!faceNormalMap.contains(v1i)) {
+                            faceNormalMap[v1i] = std::vector<glm::vec3>();
                         }
+                        if (!faceNormalMap.contains(v2i)) {
+                            faceNormalMap[v2i] = std::vector<glm::vec3>();
+                        }
+                        if (!faceNormalMap.contains(v3i)) {
+                            faceNormalMap[v3i] = std::vector<glm::vec3>();
+                        }
+
+                        // compute face normal via cross product of vertices at given indices
+                        glm::vec3 cross = glm::cross(vertices[v2i - 1] - vertices[v1i - 1], vertices[v3i - 1] - vertices[v1i - 1]);
+                        // store face normal (unnormalized) in faceNormalMap
+                        faceNormalMap[v1i].push_back(cross);
+                        faceNormalMap[v2i].push_back(cross);
+                        faceNormalMap[v3i].push_back(cross);
                     } else {
                         std::cout << "error parsing int from line: " << line.toStdString() << std::endl;
                     }
@@ -155,7 +211,7 @@ int readAndParseFile(std::string meshfile, std::shared_ptr<std::vector<GLfloat>>
 
     if (!meshfileIncludesNormals) {
         // compute vertex normals for each vertex using the neighboring faces
-        for (int vertIndex = 1; vertIndex <= vertData->size() / 6; vertIndex++) {
+        for (int vertIndex = 1; vertIndex <= vertData->size() / 11; vertIndex++) {
             int objIndex = objIndices[vertIndex - 1];
             glm::vec3 vertexNormal{0};
             for (glm::vec3 faceNormal : faceNormalMap[objIndex]) {

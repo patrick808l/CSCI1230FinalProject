@@ -21,4 +21,6 @@ using MakeWedgeSignature = std::function<void(float currentTheta, float nextThet
 
 Shape Cylinder();
 
+glm::vec2 computeCylinderUV(glm::vec3 ptObjSpace, glm::vec3 n);
+
 #endif // CYLINDER_H

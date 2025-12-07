@@ -96,4 +96,10 @@ private:
 
     bool post_processing_enabled = true;
     PostProcessor *postprocessor = nullptr;
+    // textures
+    std::unordered_map<std::string, GLuint> m_textures; // hash for texture filename and texture id
+    std::unordered_map<std::string, GLuint> m_normalTextures; // hash for normal texture filename and normal texture id
+    std::unordered_map<std::string, GLuint> m_bumpTextures; // hash for bump texture filename and bump texture id
+    void createTextureAndNormal();
+    void activeTexture(const SceneMaterial& shapeMat);
 };
