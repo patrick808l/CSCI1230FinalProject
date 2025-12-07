@@ -4,6 +4,7 @@
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <iostream>
+#include "lsystem.h"
 #include "settings.h"
 #include "vertexcreator.h"
 #include "utils/shaderloader.h"
@@ -38,6 +39,8 @@ Realtime::Realtime(QWidget *parent)
         0.5, 0.5, 0.5, 1.0
     };
 
+    std::random_device rd;
+    m_rand.seed(rd());
     postprocessor = new PostProcessor();
 }
 
@@ -386,6 +389,7 @@ void Realtime::parseScene() {
 
 void Realtime::sceneChanged() {
     parseScene();
+    generateLSystemTreesRand(-1.5f, 1.5f, -1.5f, 1.5f, 3);
     createTextureAndNormal();
 
     update(); // asks for a PaintGL() call to occur
@@ -553,6 +557,43 @@ void Realtime::activeTexture(const SceneMaterial& shapeMat){
         GLint m_bumpIsUsedLocation = glGetUniformLocation(m_default_shader, "myBumps.textureIsUsed");
         glUniform1i(m_bumpIsUsedLocation, false);
     }
+}
+
+/**
+ * @brief Helpers for L-System Generations
+ */
+// Generate a single L-System tree at the input vec3 position.
+void Realtime::generateLSystemTree(glm::vec3 startPos){
+    std::string seed = "F";
+    std::unordered_map<char, std::string> rules = {
+        { 'F', "F[+F][&F]F[-F][^F]F" }
+    };
+
+    float step = 0.5f;
+    float angle = glm::radians(45.f);
+    int loopCount = 2;
+
+    LSystem myLS(seed, rules, step, angle);
+    std::string genStr = myLS.generate(loopCount);
+    std::vector<RenderShapeData> myBranchShapes = myLS.interpret(genStr, startPos, settings.sceneFilePath);
+
+    for(auto& shape: myBranchShapes){
+        m_renderData.shapes.push_back(shape);
+    }
+}
+
+// Generate trees with random starting locations that falls within the range of x and z.
+void Realtime::generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count){
+    for(int i = 0; i < count; i++){
+        float x = randFloat(xStart, xEnd);
+        float z = randFloat(zStart, zEnd);
+        generateLSystemTree(glm::vec3(x, 1.0f, z));
+    }
+}
+
+float Realtime::randFloat(float minVal, float maxVal) {
+    std::uniform_real_distribution<float> dist(minVal, maxVal);
+    return dist(m_rand);
 }
 
 // DO NOT EDIT
