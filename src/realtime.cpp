@@ -484,11 +484,15 @@ void Realtime::timerEvent(QTimerEvent *event) {
 
     // step shapes forward
     for (auto shape : this->m_renderData.shapes) {
-        shape.rb->step(deltaTime);
+        if (shape.rb.has_value()) {
+            shape.rb.value()->step(deltaTime);
+        }
     }
     // collide and update momentums
     for (auto shape : this->m_renderData.shapes) {
-        shape.rb->collide();
+        if (shape.rb.has_value()) {
+            shape.rb.value()->collide();
+        }
     }
 
     update(); // asks for a PaintGL() call to occur

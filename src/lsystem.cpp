@@ -114,11 +114,10 @@ std::vector<RenderShapeData> LSystem::interpret(std::string genStr, glm::vec3 st
 
             glm::mat4 T = glm::translate(glm::mat4(1.f), mid);
 
-            RenderShapeData branchShape;
-            branchShape.ctm = T * R * S;
-            branchShape.primitive.type = PrimitiveType::PRIMITIVE_CYLINDER;
-            branchShape.primitive.material = branchMat;
-
+            ScenePrimitive primitive;
+            primitive.type = PrimitiveType::PRIMITIVE_CYLINDER;
+            primitive.material = branchMat;
+            RenderShapeData branchShape = RenderShapeData(primitive, T * R * S);
             branches.push_back(branchShape);
 
             myTurtle.pos = newPos;
@@ -208,10 +207,10 @@ void LSystem::addLeaf(std::vector<RenderShapeData>& branches,
 
     glm::mat4 Tleaf = glm::translate(glm::mat4(1.f), leafCenter);
 
-    RenderShapeData leafShape;
-    leafShape.ctm = Tleaf * Rleaf * Sleaf;
-    leafShape.primitive.type = PrimitiveType::PRIMITIVE_SPHERE;
-    leafShape.primitive.material = leafMat;
+    ScenePrimitive primitive;
+    primitive.type = PrimitiveType::PRIMITIVE_SPHERE;
+    primitive.material = leafMat;
+    RenderShapeData leafShape = RenderShapeData(primitive, Tleaf * Rleaf * Sleaf);
 
     branches.push_back(leafShape);
 }

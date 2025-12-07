@@ -8,8 +8,18 @@ glm::mat4 RenderShapeData::getCTM() {
 }
 
 glm::mat4 RenderShapeData::getMovedCTM() {
-    glm::mat4 move = rb->movement_matrix();
-    return ctm * move;
+    if (rb.has_value()) {
+        glm::mat4 move = rb.value()->movement_matrix();
+        return ctm * move;
+    } else {
+        return ctm;
+    }
+}
+
+RenderShapeData::RenderShapeData(ScenePrimitive primitive, glm::mat4 ctm) {
+    this->primitive = primitive;
+    this->rb = std::nullopt;
+    this->ctm = ctm;
 }
 
 RenderShapeData::RenderShapeData(ScenePrimitive primitive, RigidBody* rb, glm::mat4 ctm) {
@@ -39,6 +49,7 @@ bool SceneParser::parse(std::string filepath, RenderData &renderData) {
 
     renderData.shapes.clear();
     renderData.lights.clear();
+    renderData.colliders()->clear();
     traverseTree(fileReader.getRootNode(), glm::mat4(1.f), renderData);
 
     return true;
