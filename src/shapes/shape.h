@@ -34,23 +34,34 @@ struct Shape {
         std::vector<GLfloat> vertData = *getVertexData();
         glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * vertData.size(), vertData.data(), GL_STATIC_DRAW);
 
+        int stride = 15 * sizeof(GLfloat) + 4 * sizeof(GLint);
         glBindVertexArray(vao);
+
+
         // position
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GL_FLOAT),
-                              reinterpret_cast<void*>(0));
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(0));
+
         // normal
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GL_FLOAT),
-                              reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(3 * sizeof(GLfloat)));
 
         // uv
         glEnableVertexAttribArray(2);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), reinterpret_cast<void*>(6 * sizeof(GLfloat)));
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(6 * sizeof(GLfloat)));
 
         // tangent
         glEnableVertexAttribArray(3);
-        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), reinterpret_cast<void*>(8 * sizeof(GLfloat)));
+        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(8 * sizeof(GLfloat)));
+
+        // boneIds
+        glEnableVertexAttribArray(4);
+        glVertexAttribPointer(4, 4, GL_INT, GL_FALSE, stride, reinterpret_cast<void*>(11 * sizeof(GLfloat)));
+
+        // weights
+        glEnableVertexAttribArray(5);
+        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(11 * sizeof(GLfloat) + 4 * sizeof(GLint)));
+
 
         // unbind
         glBindBuffer(GL_ARRAY_BUFFER, 0);
