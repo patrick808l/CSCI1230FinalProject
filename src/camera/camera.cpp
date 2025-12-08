@@ -250,10 +250,15 @@ void Camera::jump(double length, double strength) {
 
         // remove any impulse forces that are passed
         for (int i = body->forces.size() - 1; i > 0; i--) {
-            if (body->forces[i].is_dynamic && body->forces[i].t1 < body->t) {
-                // overwrite with last and pop last (to delete)
-                body->forces[i] = body->forces.back();
-                body->forces.pop_back();
+            if (body->forces[i].is_dynamic) {
+                if (body->forces[i].t1 < body->t) {
+                    // overwrite with last and pop last (to delete)
+                    body->forces[i] = body->forces.back();
+                    body->forces.pop_back();
+                } else {
+                    // wait for force to finish before adding another one
+                    return;
+                }
             }
         }
 
