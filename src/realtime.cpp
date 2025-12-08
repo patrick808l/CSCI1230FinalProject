@@ -26,6 +26,7 @@ Realtime::Realtime(QWidget *parent)
     m_keyMap[Qt::Key_A]       = false;
     m_keyMap[Qt::Key_S]       = false;
     m_keyMap[Qt::Key_D]       = false;
+    m_keyMap[Qt::Key_J]       = false;
     m_keyMap[Qt::Key_Control] = false;
     m_keyMap[Qt::Key_Space]   = false;
 
@@ -395,6 +396,13 @@ void Realtime::parseScene() {
     }
 
     m_camera.updateCamData(m_renderData.cameraData);
+    m_camera.detach();
+    for (auto shape : this->m_renderData.shapes) {
+        if (shape.primitive.is_player) {
+            m_camera.attach(shape);
+            break;
+        }
+    }
     m_shapeManager.parseMeshes(this, m_renderData.shapes);
 
     m_sceneLoaded = true;
@@ -472,6 +480,7 @@ void Realtime::mouseMoveEvent(QMouseEvent *event) {
 void Realtime::timerEvent(QTimerEvent *event) {
     int elapsedms   = m_elapsedTimer.elapsed();
     float deltaTime = elapsedms * 0.001f;
+    this->t += deltaTime;
     m_elapsedTimer.restart();
 
     // Use deltaTime and m_keyMap here to move around
@@ -493,7 +502,14 @@ void Realtime::timerEvent(QTimerEvent *event) {
     if (m_keyMap[Qt::Key::Key_Control]) {
         m_camera.moveDown(deltaTime);
     }
-
+    if (m_keyMap[Qt::Key::Key_J]) {
+        // determine if cooldown is in effect
+        bool canJump = (this->lastJumpTime + this->jumpCooldown) < t;
+        if (canJump) {
+            lastJumpTime = t;
+            m_camera.jump(0.1, 20);
+        }
+    }
 
     // tell shape manager to update skeletal animation
     m_shapeManager.updateAnimation(deltaTime);

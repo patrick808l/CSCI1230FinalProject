@@ -31,17 +31,19 @@ public:
     glm::vec3 force; // F(t)
     glm::vec3 torque; // tau(t)
 
+    double t; // current time
     std::vector<Force> forces;
 
     RigidBody(const ScenePrimitive& data, std::optional<Collider*> collider, std::vector<Collider*>* others);
     void step(double deltaT);
     void collide();
+    void move_by(glm::vec3 new_pos);
+    void rot_by(float theta);
     glm::mat4 movement_matrix();
 
     std::optional<Collider*> collider;
     const std::vector<Collider*>* other_colliders;
 private:
-    double t;
     double y0[STATE_SIZE];
     double yfinal[STATE_SIZE];
 
