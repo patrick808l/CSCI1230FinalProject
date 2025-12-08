@@ -22,8 +22,8 @@ const vec4 fog_color = vec4(0.4f, 0.4f, 0.4f, 1.f);
 const float fog_density = 0.2f;
 
 uniform bool shadowsEnabled;
-uniform mat4 depthBiasVPs[8];
-uniform sampler2D depthTextures[8];
+uniform mat4 depthBiasVPs[numShadowMaps];
+uniform sampler2D depthTextures[numShadowMaps];
 
 uniform int numLights;
 
