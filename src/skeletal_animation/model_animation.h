@@ -3,6 +3,7 @@
 
 #include <GL/glew.h>
 
+#include <qcoreapplication.h>
 #include <qdir.h>
 #include <qopenglwidget.h>
 #include <vector>
@@ -43,21 +44,11 @@ public:
     void init(QOpenGLWidget* widget, std::string const &path, bool gamma = false) {
         gammaCorrection = gamma;
 
-        std::cout << "Model constructor" << std::endl;
         m_widget = widget;
 
-        // filesystem::path curPath = filesystem::current_path();
-        // std::cout << "curPath is " << curPath << std::endl;
-
-        // // use QFile to get absolute path
-        // QFile file(path.c_str());
-        // QFileInfo fileInfo(file);
-        // QString absolutePath = fileInfo.absoluteFilePath();
-        // std::cout << "QFile: " << absolutePath.toStdString() << std::endl;
-
-        std::string hardcodedPath = "C:/cs1230/CSCI1230FinalProject/animated_models/vampire/dancing_vampire.dae";
-        std::cout << "hardcodedPath: " << hardcodedPath << std::endl;
-        loadModel(hardcodedPath);
+        std::filesystem::path basepath = std::filesystem::current_path().parent_path().parent_path();
+        std::cout << "model_animation.h: loading model from " << (basepath / std::filesystem::path(path)).string() << std::endl;
+        loadModel((basepath / std::filesystem::path(path)).string());
         std::cout << "done loading model" << std::endl;
     }
 

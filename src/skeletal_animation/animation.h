@@ -25,13 +25,12 @@ public:
     // Animation(const std::string& animationPath, Model* model) {}
 
     void init(const std::string& animationPath, Model* model) {
-        std::cout << "Animation constructor starting" << std::endl;
         Assimp::Importer importer;
 
-        std::string hardcodedPath = "C:/cs1230/CSCI1230FinalProject/animated_models/vampire/dancing_vampire.dae";
-        std::cout << "Animation hardcoded path = " << hardcodedPath << std::endl;
+        std::filesystem::path basepath = std::filesystem::current_path().parent_path().parent_path();
+        std::cout << "animation.h: loading animation from " << (basepath / std::filesystem::path(animationPath)).string() << std::endl;
 
-        const aiScene* scene = importer.ReadFile(hardcodedPath, aiProcess_Triangulate);
+        const aiScene* scene = importer.ReadFile((basepath / std::filesystem::path(animationPath)).string(), aiProcess_Triangulate);
         assert(scene && scene->mRootNode);
         auto animation = scene->mAnimations[0];
         m_Duration = animation->mDuration;
