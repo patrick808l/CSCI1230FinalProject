@@ -1,12 +1,18 @@
 #include "shapemanager.h"
 #include "shapes/staticmesh.h"
 
-/**
- * @brief Constructor initializes model, animation, and animator
- */
-ShapeManager::ShapeManager():
-    m_model(""),
-    m_animation("", &m_model),
+// /**
+//  * @brief Constructor initializes model, animation, and animator
+//  */
+// ShapeManager::ShapeManager():
+//     m_model("animated_models/vampire/dancing_vampire.dae"),
+//     m_animation("animated_models/vampire/dancing_vampire.dae", &m_model),
+//     m_animator(&m_animation)
+// {}
+
+ShapeManager::ShapeManager(QOpenGLWidget* widget):
+    m_model(widget, "animated_models/vampire/dancing_vampire.dae"),
+    m_animation("animated_models/vampire/dancing_vampire.dae", &m_model),
     m_animator(&m_animation)
 {}
 

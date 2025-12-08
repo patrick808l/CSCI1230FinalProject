@@ -16,7 +16,7 @@
 class ShapeManager
 {
 public:
-    ShapeManager();
+    ShapeManager(QOpenGLWidget* widget);
 
     void init(QOpenGLWidget* widget);
     void finish(QOpenGLWidget* widget);

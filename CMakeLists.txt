@@ -66,6 +66,8 @@ add_executable(${PROJECT_NAME}
     src/skeletal_animation/animator.h
     src/skeletal_animation/animation.h
     src/skeletal_animation/bone.h
+    src/utils/stb_image_impl.cpp
+    src/utils/stb_image.h
 
 )
 
@@ -107,11 +109,11 @@ if (WIN32)
   )
 endif()
 
-# Set this flag to silence warnings on Windows
-if (MSVC OR MSYS OR MINGW)
-  set(CMAKE_CXX_FLAGS "-Wno-volatile")
-endif()
-# Set this flag to silence warnings on MacOS
-if (APPLE)
-  set(CMAKE_CXX_FLAGS "-Wno-deprecated-volatile")
-endif()
+# # Set this flag to silence warnings on Windows
+# if (MSVC OR MSYS OR MINGW)
+#   set(CMAKE_CXX_FLAGS "-Wno-volatile")
+# endif()
+# # Set this flag to silence warnings on MacOS
+# if (APPLE)
+#   set(CMAKE_CXX_FLAGS "-Wno-deprecated-volatile")
+# endif()

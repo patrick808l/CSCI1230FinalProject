@@ -58,7 +58,7 @@ private:
 
     RenderData m_renderData;
     SceneParser m_sceneParser;
-    ShapeManager m_shapeManager;
+    ShapeManager m_shapeManager = ShapeManager(this);
     bool m_sceneLoaded = false;
     void parseScene();
     void updateShapeVertices();

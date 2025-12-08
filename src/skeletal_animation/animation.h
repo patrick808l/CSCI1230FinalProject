@@ -24,6 +24,7 @@ public:
 
     Animation(const std::string& animationPath, Model* model)
     {
+        std::cout << "Animation constructor starting" << std::endl;
         Assimp::Importer importer;
         const aiScene* scene = importer.ReadFile(animationPath, aiProcess_Triangulate);
         assert(scene && scene->mRootNode);
@@ -34,11 +35,10 @@ public:
         globalTransformation = globalTransformation.Inverse();
         ReadHierarchyData(m_RootNode, scene->mRootNode);
         ReadMissingBones(animation, *model);
+        std::cout << "Animation constructor done" << std::endl;
     }
 
-    ~Animation()
-    {
-    }
+    ~Animation() {}
 
     Bone* FindBone(const std::string& name)
     {

@@ -1,14 +1,19 @@
 #ifndef MODEL_ANIMATION_H
 #define MODEL_ANIMATION_H
 
+#include <GL/glew.h>
+
+#include <qdir.h>
+#include <qopenglwidget.h>
 #include <vector>
 #include <string>
 #include <map>
 #include <iostream>
+#include <filesystem>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <stb_image.h>
+#include "utils/stb_image.h"
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -17,6 +22,9 @@
 #include "assimp_glm_helpers.h"
 #include "skeletal_mesh.h"
 #include "animdata.h"
+
+#include "debug.h"
+
 
 class Model
 {
@@ -29,9 +37,24 @@ public:
 
 
     // constructor, expects a filepath to a 3D model.
-    Model(std::string const &path, bool gamma = false) : gammaCorrection(gamma)
+    Model(QOpenGLWidget* widget, std::string const &path, bool gamma = false) : gammaCorrection(gamma)
     {
-        loadModel(path);
+        std::cout << "Model constructor" << std::endl;
+        m_widget = widget;
+
+        // filesystem::path curPath = filesystem::current_path();
+        // std::cout << "curPath is " << curPath << std::endl;
+
+        // // use QFile to get absolute path
+        // QFile file(path.c_str());
+        // QFileInfo fileInfo(file);
+        // QString absolutePath = fileInfo.absoluteFilePath();
+        // std::cout << "QFile: " << absolutePath.toStdString() << std::endl;
+
+        std::string hardcodedPath = "C:/cs1230/CSCI1230FinalProject/animated_models/vampire/dancing_vampire.dae";
+        std::cout << "hardcodedPath: " << hardcodedPath << std::endl;
+        loadModel(hardcodedPath);
+        std::cout << "done loading model" << std::endl;
     }
 
     // draws the model, and thus all its meshes
@@ -46,6 +69,7 @@ public:
 
 
 private:
+    QOpenGLWidget* m_widget;
     std::map<std::string, BoneInfo> m_BoneInfoMap;
     int m_BoneCounter = 0;
 
@@ -178,11 +202,17 @@ private:
     }
 
     unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false) {
+        m_widget->makeCurrent();
+
+        Debug::glErrorCheck();
+
         string filename = string(path);
         filename = directory + '/' + filename;
 
         unsigned int textureID;
         glGenTextures(1, &textureID);
+
+        Debug::glErrorCheck();
 
         int width, height, nrComponents;
         unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
@@ -195,9 +225,13 @@ private:
             else if (nrComponents == 4)
                 format = GL_RGBA;
 
+            Debug::glErrorCheck();
+
             glBindTexture(GL_TEXTURE_2D, textureID);
             glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
+
+            Debug::glErrorCheck();
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
