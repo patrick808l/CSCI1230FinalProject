@@ -204,7 +204,7 @@ bool ScenefileReader::parseGlobalData(const QJsonObject &globalData) {
  */
 bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *node) {
     QStringList requiredFields = {"type", "color"};
-    QStringList optionalFields = {"name", "attenuationCoeff", "direction", "penumbra", "angle"};
+    QStringList optionalFields = {"name", "attenuationCoeff", "direction", "penumbra", "angle", "shadows"};
     QStringList allFields = requiredFields + optionalFields;
     for (auto &field : lightData.keys()) {
         if (!allFields.contains(field)) {
@@ -244,6 +244,15 @@ bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *no
     light->color.r = colorArray[0].toDouble();
     light->color.g = colorArray[1].toDouble();
     light->color.b = colorArray[2].toDouble();
+
+    //parse shadow enabling
+    if (lightData.contains("shadows")) {
+        std::cout << "has shadow field" << std::endl;
+        light->shadows = lightData["shadows"].toBool();
+        std::cout << light->shadows << std::endl;
+    } else {
+        light->shadows = false;
+    }
 
     // parse the type
     if (!lightData["type"].isString()) {
@@ -362,6 +371,7 @@ bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *no
             return false;
         }
         light->angle = lightData["angle"].toDouble() * M_PI / 180.f;
+
     }
     else {
         std::cout << "unknown light type \"" << lightType << "\"" << std::endl;

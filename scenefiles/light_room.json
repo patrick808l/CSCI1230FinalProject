@@ -14,16 +14,38 @@
   },
   "groups": [
     {
+      "lights": [
+        {
+          "color": [8, 8, 8],
+          "type": "directional",
+          "direction": [-1.2, -1.0, -0.6],
+          "shadows": true
+        }
+      ]
+    },
+    {
+      "name": "Ground",
+      "translate": [0, -2, 0],
+      "scale": [100, 0.1, 100],
+      "primitives": [
+        {
+          "type": "cube",
+          "ambient": [0.3, 0.3, 0.3],
+          "diffuse": [0.3, 0.3, 0.35]
+        }
+      ]
+    },
+    {
       "name": "Room_Walls",
       "groups": [
         {
           "name": "Floor",
-          "translate": [0, -2, 0],
+          "translate": [0, -1.99, 0],
           "scale": [28, 0.1, 28],
           "primitives": [
             {
               "type": "cube",
-              "ambient": [0.3, 0.3, 0.3],
+              "ambient": [0.5, 0.5, 0.5],
               "diffuse": [0.3, 0.3, 0.35]
             }
           ]
@@ -35,56 +57,591 @@
           "primitives": [
             {
               "type": "cube",
-              "ambient": [0.3, 0.3, 0.3],
+              "ambient": [0.5, 0.5, 0.5],
               "diffuse": [0.3, 0.3, 0.35]
             }
           ]
         },
+
         {
           "name": "BackWall",
-          "translate": [0, 0, -14],
-          "scale": [28, 4, 0.1],
-          "primitives": [
+          "groups": [
             {
-              "type": "cube",
-              "ambient": [0.3, 0.3, 0.3],
-              "diffuse": [0.25, 0.25, 0.3]
+              "name": "BackWall_Top",
+              "translate": [0, 1.5, -14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Bottom",
+              "translate": [0, -1.5, -14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Left",
+              "translate": [-11.5, 0, -14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Center",
+              "translate": [0, 0, -14],
+              "scale": [10, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Right",
+              "translate": [11.5, 0, -14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.3, 0.3, 0.3],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "BackWindow_-7_VertBar",
+                  "translate": [-7, 0, -14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "BackWindow_-7_HorizBar",
+                  "translate": [-7, 0, -14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "BackWindow_7_VertBar",
+                  "translate": [7, 0, -14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "BackWindow_7_HorizBar",
+                  "translate": [7, 0, -14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_-7_SunPoint",
+              "translate": [-7, 0, -13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_7_SunPoint",
+              "translate": [7, 0, -13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
             }
           ]
         },
+
         {
           "name": "FrontWall",
-          "translate": [0, 0, 14],
-          "scale": [28, 4, 0.1],
-          "primitives": [
+          "groups": [
             {
-              "type": "cube",
-              "ambient": [0.3, 0.3, 0.3],
-              "diffuse": [0.25, 0.25, 0.3]
+              "name": "FrontWall_Top",
+              "translate": [0, 1.5, 14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Bottom",
+              "translate": [0, -1.5, 14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Left",
+              "translate": [-11.5, 0, 14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Center",
+              "translate": [0, 0, 14],
+              "scale": [10, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Right",
+              "translate": [11.5, 0, 14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "FrontWindow_-7_VertBar",
+                  "translate": [-7, 0, 14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "FrontWindow_-7_HorizBar",
+                  "translate": [-7, 0, 14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "FrontWindow_7_VertBar",
+                  "translate": [7, 0, 14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "FrontWindow_7_HorizBar",
+                  "translate": [7, 0, 14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_-7_SunPoint",
+              "translate": [-7, 0, 13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_7_SunPoint",
+              "translate": [7, 0, 13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
             }
           ]
         },
         {
           "name": "LeftWall",
-          "translate": [-14, 0, 0],
-          "scale": [0.1, 4, 28],
-          "primitives": [
+          "groups": [
             {
-              "type": "cube",
-              "ambient": [0.3, 0.3, 0.3],
-              "diffuse": [0.25, 0.25, 0.3]
+              "name": "LeftWall_Top",
+              "translate": [-14, 1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Bottom",
+              "translate": [-14, -1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Left",
+              "translate": [-14, 0, -11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Center",
+              "translate": [-14, 0, 0],
+              "scale": [0.1, 2, 10],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Right",
+              "translate": [-14, 0, 11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "LeftWindow_-7_VertBar",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "LeftWindow_-7_HorizBar",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "LeftWindow_7_VertBar",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "LeftWindow_7_HorizBar",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_-7_SunPoint",
+              "translate": [-13.5, 0, -7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_7_SunPoint",
+              "translate": [-13.5, 0, 7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
             }
           ]
         },
+
         {
           "name": "RightWall",
-          "translate": [14, 0, 0],
-          "scale": [0.1, 4, 28],
-          "primitives": [
+          "groups": [
             {
-              "type": "cube",
-              "ambient": [0.3, 0.3, 0.3],
-              "diffuse": [0.25, 0.25, 0.3]
+              "name": "RightWall_Top",
+              "translate": [14, 1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Bottom",
+              "translate": [14, -1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Left",
+              "translate": [14, 0, -11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Center",
+              "translate": [14, 0, 0],
+              "scale": [0.1, 2, 10],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Right",
+              "translate": [14, 0, 11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "RightWindow_-7_VertBar",
+                  "translate": [14, 0, -7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "RightWindow_-7_HorizBar",
+                  "translate": [14, 0, -7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "RightWindow_7_VertBar",
+                  "translate": [14, 0, 7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "RightWindow_7_HorizBar",
+                  "translate": [14, 0, 7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_-7_SunPoint",
+              "translate": [13.5, 0, -7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_7_SunPoint",
+              "translate": [13.5, 0, 7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
             }
           ]
         }
@@ -93,7 +650,7 @@
 
     {
       "name": "FloatingSphere",
-      "translate": [0, 0.0, 0],
+      "translate": [0, -0.5, 0],
       "scale": [0.5, 0.5, 0.5],
       "primitives": [
         {
@@ -105,7 +662,6 @@
         }
       ]
     },
-
     {
       "name": "Ceiling_Fixtures",
       "groups": [
@@ -151,668 +707,6 @@
                   "direction": [0, 1, 0],
                   "angle": 10,
                   "penumbra": 0
-                }
-              ]
-            }
-          ]
-        },
-
-        {
-          "name": "Fixture_Right_5_0",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [5, 1.4, 0],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [5, 1.4, 0],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [5, 2.4, 0],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-
-        {
-          "name": "Fixture_Left_-5_0",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [-5, 1.4, 0],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [-5, 1.4, 0],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [-5, 2.4, 0],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-
-        {
-          "name": "Fixture_Front_0_5",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [0, 1.4, 5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [0, 1.4, 5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [0, 2.4, 5],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-
-        {
-          "name": "Fixture_Back_0_-5",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [0, 1.4, -5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [0, 1.4, -5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [0, 2.4, -5],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_-5_-5",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [-5, 1.4, -5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [-5, 1.4, -5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [-5, 2.4, -5],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_5_-5",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [5, 1.4, -5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [5, 1.4, -5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [5, 2.4, -5],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_-5_5",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [-5, 1.4, 5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [-5, 1.4, 5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [-5, 2.4, 5],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_5_5",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [5, 1.4, 5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [5, 1.4, 5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [5, 2.4, 5],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_0_-10",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [0, 1.4, -10],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [0, 1.4, -10],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [0, 2.4, -10],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_5_-10",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [5, 1.4, -10],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [5, 1.4, -10],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [5, 2.4, -10],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_0_10",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [0, 1.4, 10],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [0, 1.4, 10],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [0, 2.4, 10],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_5_10",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [5, 1.4, 10],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [5, 1.4, 10],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [5, 2.4, 10],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_-10_0", 
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [-10, 1.4, 0],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [-10, 1.4, 0],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [-10, 2.4, 0],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fixture_Back_-10_-5",
-          "groups": [
-            {
-              "name": "CeilingSpotLight",
-              "translate": [-10, 1.4, -5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, -1, 0],
-                  "angle": 90,
-                  "penumbra": 90
-                }
-              ]
-            },
-            {
-              "name": "CeilingSpotLight2",
-              "translate": [-10, 1.4, -5],
-              "lights": [
-                {
-                  "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
-                  "attenuationCoeff": [1.0, 0.2, 0.05],
-                  "direction": [0, 1, 0],
-                  "angle": 10,
-                  "penumbra": 0
-                }
-              ]
-            },
-            {
-              "name": "CeilingCylinder",
-              "translate": [-10, 2.4, -5],
-              "scale": [0.3, 1.0, 0.3],
-              "primitives": [
-                {
-                  "type": "cylinder",
-                  "ambient": [0.2, 0.2, 0.2],
-                  "diffuse": [0.7, 0.7, 0.75],
-                  "specular": [1.0, 1.0, 1.0],
-                  "shininess": 40
                 }
               ]
             }

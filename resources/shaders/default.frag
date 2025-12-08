@@ -37,7 +37,7 @@ uniform ShapeTexture myBumps;
 uniform float blend;
 
 const float bias = 0.01;
-const float shadowVisibility = 0.5;
+const float shadowVisibility = 0.0;
 
 float computeShadowVisibility(int i, vec4 worldPos) {
     vec4 sc = depthBiasVPs[i] * worldPos;

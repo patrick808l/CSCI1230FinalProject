@@ -62,6 +62,7 @@ void SceneParser::traverseTree(SceneNode* curNode, glm::mat4 ctm, RenderData &re
         lightData.type = lightType;
         lightData.color = light->color;
         lightData.function = light->function;
+        lightData.shadows = light->shadows;
 
         // for point lights and spot lights, transform the origin in camera space to the camera's position in world space using the CTM
         if (lightType == LightType::LIGHT_POINT || lightType == LightType::LIGHT_SPOT) {

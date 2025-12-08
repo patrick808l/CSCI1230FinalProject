@@ -238,10 +238,6 @@ void PostProcessor::paintTexture(GLuint texture, GLuint shader, bool prebound) {
     glBindVertexArray(m_fullscreen_vao);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 
-    std::cout << "vao=" << m_fullscreen_vao
-              << " tex=" << texture
-              << " shader=" << shader << std::endl;
-
     glBindTexture(GL_TEXTURE_2D, 0);
     glBindVertexArray(0);
     glUseProgram(0);
