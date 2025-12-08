@@ -1,6 +1,7 @@
 #ifndef SHAPEMANAGER_H
 #define SHAPEMANAGER_H
 
+#include "postprocessing.h"
 #include "skeletal_animation/animation.h"
 #include "skeletal_animation/animator.h"
 #include "skeletal_animation/model_animation.h"
@@ -31,7 +32,7 @@ public:
 
     void updateAnimation(float deltaTime);
     // void updateAnimation();
-    void drawAnimatedModel(QOpenGLWidget* widget, GLuint shader);
+    void drawAnimatedModel(QOpenGLWidget* widget, PostProcessor *postprocessor, GLuint shader);
 private:
     bool m_initialized = false;
 

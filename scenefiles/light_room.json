@@ -1,0 +1,718 @@
+{
+  "name": "WideInteriorBoxWithCeilingLight",
+  "globalData": {
+    "ambientCoeff": 1.0,
+    "diffuseCoeff": 0.6,
+    "specularCoeff": 0.4,
+    "transparentCoeff": 0
+  },
+  "cameraData": {
+    "position": [10, 4, 10],
+    "up": [0, 1, 0],
+    "look": [-1, -0.2, -1],
+    "heightAngle": 30
+  },
+  "groups": [
+    {
+      "lights": [
+        {
+          "color": [8, 8, 8],
+          "type": "directional",
+          "direction": [-1.2, -1.0, -0.6],
+          "shadows": true
+        }
+      ]
+    },
+    {
+      "name": "Ground",
+      "translate": [0, -2, 0],
+      "scale": [100, 0.1, 100],
+      "primitives": [
+        {
+          "type": "cube",
+          "ambient": [0.3, 0.3, 0.3],
+          "diffuse": [0.3, 0.3, 0.35]
+        }
+      ]
+    },
+    {
+      "name": "Room_Walls",
+      "groups": [
+        {
+          "name": "Floor",
+          "translate": [0, -1.99, 0],
+          "scale": [28, 0.1, 28],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [0.5, 0.5, 0.5],
+              "diffuse": [0.3, 0.3, 0.35]
+            }
+          ]
+        },
+        {
+          "name": "Ceiling",
+          "translate": [0, 2, 0],
+          "scale": [28, 0.1, 28],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [0.5, 0.5, 0.5],
+              "diffuse": [0.3, 0.3, 0.35]
+            }
+          ]
+        },
+
+        {
+          "name": "BackWall",
+          "groups": [
+            {
+              "name": "BackWall_Top",
+              "translate": [0, 1.5, -14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Bottom",
+              "translate": [0, -1.5, -14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Left",
+              "translate": [-11.5, 0, -14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Center",
+              "translate": [0, 0, -14],
+              "scale": [10, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Right",
+              "translate": [11.5, 0, -14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.3, 0.3, 0.3],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "BackWindow_-7_VertBar",
+                  "translate": [-7, 0, -14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "BackWindow_-7_HorizBar",
+                  "translate": [-7, 0, -14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "BackWindow_7_VertBar",
+                  "translate": [7, 0, -14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "BackWindow_7_HorizBar",
+                  "translate": [7, 0, -14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_-7_SunPoint",
+              "translate": [-7, 0, -13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_7_SunPoint",
+              "translate": [7, 0, -13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "FrontWall",
+          "groups": [
+            {
+              "name": "FrontWall_Top",
+              "translate": [0, 1.5, 14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Bottom",
+              "translate": [0, -1.5, 14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Left",
+              "translate": [-11.5, 0, 14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Center",
+              "translate": [0, 0, 14],
+              "scale": [10, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Right",
+              "translate": [11.5, 0, 14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "FrontWindow_-7_VertBar",
+                  "translate": [-7, 0, 14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "FrontWindow_-7_HorizBar",
+                  "translate": [-7, 0, 14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "FrontWindow_7_VertBar",
+                  "translate": [7, 0, 14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "FrontWindow_7_HorizBar",
+                  "translate": [7, 0, 14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_-7_SunPoint",
+              "translate": [-7, 0, 13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_7_SunPoint",
+              "translate": [7, 0, 13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LeftWall",
+          "groups": [
+            {
+              "name": "LeftWall_Top",
+              "translate": [-14, 1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Bottom",
+              "translate": [-14, -1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Left",
+              "translate": [-14, 0, -11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Center",
+              "translate": [-14, 0, 0],
+              "scale": [0.1, 2, 10],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Right",
+              "translate": [-14, 0, 11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "LeftWindow_-7_VertBar",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "LeftWindow_-7_HorizBar",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "LeftWindow_7_VertBar",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "LeftWindow_7_HorizBar",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_-7_SunPoint",
+              "translate": [-13.5, 0, -7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_7_SunPoint",
+              "translate": [-13.5, 0, 7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "RightWall",
+          "groups": [
+            {
+              "name": "RightWall_Top",
+              "translate": [14, 1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Bottom",
+              "translate": [14, -1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Left",
+              "translate": [14, 0, -11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Center",
+              "translate": [14, 0, 0],
+              "scale": [0.1, 2, 10],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Right",
+              "translate": [14, 0, 11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.5, 0.5, 0.5],
+                  "diffuse": [0.4, 0.4, 0.45]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "RightWindow_-7_VertBar",
+                  "translate": [14, 0, -7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "RightWindow_-7_HorizBar",
+                  "translate": [14, 0, -7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "RightWindow_7_VertBar",
+                  "translate": [14, 0, 7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                },
+                {
+                  "name": "RightWindow_7_HorizBar",
+                  "translate": [14, 0, 7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_-7_SunPoint",
+              "translate": [13.5, 0, -7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_7_SunPoint",
+              "translate": [13.5, 0, 7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "FloatingSphere",
+      "translate": [0, -0.5, 0],
+      "scale": [0.5, 0.5, 0.5],
+      "primitives": [
+        {
+          "type": "sphere",
+          "ambient": [0.2, 0.2, 0.2],
+          "diffuse": [0.7, 0.7, 0.75],
+          "specular": [1.0, 1.0, 1.0],
+          "shininess": 40
+        }
+      ]
+    },
+    {
+      "name": "Ceiling_Fixtures",
+      "groups": [
+        {
+          "name": "Fixture_Center_0_0",
+          "groups": [
+            {
+              "name": "CeilingCylinder",
+              "translate": [0, 2.4, 0],
+              "scale": [0.3, 1.0, 0.3],
+              "primitives": [
+                {
+                  "type": "cylinder",
+                  "ambient": [0.2, 0.2, 0.2],
+                  "diffuse": [0.7, 0.7, 0.75],
+                  "specular": [1.0, 1.0, 1.0],
+                  "shininess": 40
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight",
+              "translate": [0, 1.4, 0],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, -1, 0],
+                  "angle": 90,
+                  "penumbra": 90
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight2",
+              "translate": [0, 1.4, 0],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, 1, 0],
+                  "angle": 10,
+                  "penumbra": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

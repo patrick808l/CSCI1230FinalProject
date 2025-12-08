@@ -94,7 +94,7 @@ private:
     float dirLightPosOffset = 10.f;
     glm::mat4 getLightViewMatrix(const glm::vec3& lightPos, const glm::vec3& lightInvDir, bool isSpotLight);
 
-    bool post_processing_enabled = false;///
+    bool post_processing_enabled = true;
     PostProcessor *postprocessor = nullptr;
     // textures
     std::unordered_map<std::string, GLuint> m_textures; // hash for texture filename and texture id

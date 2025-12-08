@@ -1,11 +1,13 @@
 #ifndef MESH_H
 #define MESH_H
 
+#include "postprocessing.h"
 #include <GL/glew.h>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <qopenglwidget.h>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -56,8 +58,9 @@ public:
     }
 
     // render the mesh
-    void Draw(GLuint shader)
+    void Draw(PostProcessor* postprocessor, GLuint shader)
     {
+        postprocessor->bindInitFBO();
         // bind appropriate textures
         unsigned int diffuseNr  = 1;
         unsigned int specularNr = 1;

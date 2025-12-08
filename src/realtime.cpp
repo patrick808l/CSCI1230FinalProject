@@ -32,8 +32,8 @@ Realtime::Realtime(QWidget *parent)
 
     // If you must use this function, do not edit anything above this
 
-    m_lightOrthoMatrix = glm::ortho(-10.f, 10.f, -10.f, 10.f, 1.f, 20.f);
-    m_lightPerspectiveMatrix = glm::perspective(glm::radians(45.f), (float)shadowWidth / shadowHeight, 1.f, 20.f);
+    m_lightOrthoMatrix = glm::ortho(-25.f, 25.f, -25.f, 25.f, 1.f, 50.f);
+    m_lightPerspectiveMatrix = glm::perspective(glm::radians(45.f), (float)shadowWidth / shadowHeight, 1.f, 50.f);
     m_biasMatrix = glm::mat4{
         0.5, 0.0, 0.0, 0.0,
         0.0, 0.5, 0.0, 0.0,
@@ -235,12 +235,15 @@ void Realtime::paintGL() {
     // Shadow map: render from the pov of each light
     int lightIndex = 0;
     for (const SceneLightData& lightData : m_renderData.lights) {
-        shadowMap(lightData, lightIndex);
-        lightIndex++;
+        if (lightData.shadows) {
+            shadowMap(lightData, lightIndex);
+            lightIndex++;
+        }
     }
 
     // Students: anything requiring OpenGL calls every frame should be done here
     glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebufferObject());
+    glClearColor(.5, 1.0, 5.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glUseProgram(m_default_shader);
 
@@ -265,44 +268,45 @@ void Realtime::paintGL() {
     GLint fogEnabledLoc = glGetUniformLocation(m_default_shader, "fogEnabled");
     glUniform1i(fogEnabledLoc, settings.extraCredit2);
 
+    int shadowBaseUnit = 8;
     for (int texIndex = 0; texIndex < numShadowMaps; texIndex++) {
-        glActiveTexture(GL_TEXTURE0 + texIndex);
+        glActiveTexture(GL_TEXTURE0 + shadowBaseUnit + texIndex);
         glBindTexture(GL_TEXTURE_2D, m_depthTextures[texIndex]);
         std::string texUniform = "depthTextures[" + std::to_string(texIndex) + "]";
         GLint textureLoc = glGetUniformLocation(m_default_shader, texUniform.c_str());
-        glUniform1i(textureLoc, texIndex);
+        glUniform1i(textureLoc, shadowBaseUnit + texIndex);
     }
 
 
-    lightIndex = 0;
-    // uniforms for each light
-    for (SceneLightData& lightData : m_renderData.lights) {
-        glm::vec3 lightPos;
-        glm::mat4 depthProjMatrix;
-        glm::mat4 depthViewMatrix;
+    int shadowIdx = 0;
+    int lightIdx = 0;
 
-        switch (lightData.type) {
-        case LightType::LIGHT_DIRECTIONAL:
-            lightPos = -lightData.dir * dirLightPosOffset;
-            depthProjMatrix = m_lightOrthoMatrix;
-            depthViewMatrix = getLightViewMatrix(lightPos, -lightData.dir, false);
-            break;
-        case LightType::LIGHT_SPOT:
-            lightPos = lightData.pos;
-            depthProjMatrix = m_lightPerspectiveMatrix;
-            depthViewMatrix = getLightViewMatrix(lightPos, -lightData.dir, true);
-            break;
-        default:
-            // shadow maps not implemented for point lights
-            break;
+    for (const SceneLightData& lightData : m_renderData.lights) {
+
+        // upload depthBiasVP only for shadow-casting lights
+        if (lightData.shadows) {
+            glm::mat4 depthProjMatrix, depthViewMatrix, depthBiasVP;
+
+            if (lightData.type == LightType::LIGHT_DIRECTIONAL) {
+                glm::vec3 lightPos = -lightData.dir * dirLightPosOffset;
+                depthProjMatrix = m_lightOrthoMatrix;
+                depthViewMatrix = getLightViewMatrix(lightPos, -lightData.dir, false);
+            }
+            else if (lightData.type == LightType::LIGHT_SPOT) {
+                depthProjMatrix = m_lightPerspectiveMatrix;
+                depthViewMatrix = getLightViewMatrix(lightData.pos, -lightData.dir, true);
+            }
+
+            depthBiasVP = m_biasMatrix * depthProjMatrix * depthViewMatrix;
+
+            std::string uniform = "depthBiasVPs[" + std::to_string(shadowIdx) + "]";
+            glUniformMatrix4fv(glGetUniformLocation(m_default_shader, uniform.c_str()),
+                               1, GL_FALSE, &depthBiasVP[0][0]);
+
+            shadowIdx++;
         }
 
-        glm::mat4 depthBiasVP = m_biasMatrix * depthProjMatrix * depthViewMatrix;
-        std::string uniformDepthBiasVP = "depthBiasVPs[" + std::to_string(lightIndex) + "]";
-        GLint depthBiasVPLoc = glGetUniformLocation(m_default_shader, uniformDepthBiasVP.c_str());
-        glUniformMatrix4fv(depthBiasVPLoc, 1, GL_FALSE, &depthBiasVP[0][0]);
-
-        std::string lightsUniform = "lights[" + std::to_string(lightIndex) + "]";
+        std::string lightsUniform = "lights[" + std::to_string(lightIdx) + "]";
         std::string lightsUniformLightType = lightsUniform + ".lightType";
         std::string lightsUniformPos = lightsUniform + ".pos";
         std::string lightsUniformDir = lightsUniform + ".dir";
@@ -327,7 +331,7 @@ void Realtime::paintGL() {
         glUniform1f(angleLoc, lightData.angle);
         glUniform1f(penumbraLoc, lightData.penumbra);
 
-        lightIndex++;
+        lightIdx++;
     }
 
 
@@ -336,14 +340,16 @@ void Realtime::paintGL() {
     glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.getViewMatrix()[0][0]);
     glUniformMatrix4fv(projectionMatrixLoc, 1, GL_FALSE, &m_camera.getProjMatrix()[0][0]);
 
-    // rigged model
-    GLint isSkeletalMeshLoc = glGetUniformLocation(m_default_shader, "isSkeletalMesh");
-    glUniform1i(isSkeletalMeshLoc, true);
-    m_shapeManager.drawAnimatedModel(this, m_default_shader);
-    glUniform1i(isSkeletalMeshLoc, false);
 
     if (post_processing_enabled) postprocessor->bindInitFBO();
 
+    // rigged model
+    GLint isSkeletalMeshLoc = glGetUniformLocation(m_default_shader, "isSkeletalMesh");
+    glUniform1i(isSkeletalMeshLoc, true);
+    m_shapeManager.drawAnimatedModel(this, postprocessor, m_default_shader);
+    glUniform1i(isSkeletalMeshLoc, false);
+
+    // if (post_processing_enabled) postprocessor->bindInitFBO();
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
     for (RenderShapeData& shapeData : m_renderData.shapes) {
