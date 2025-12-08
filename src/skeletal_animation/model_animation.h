@@ -36,9 +36,13 @@ public:
     bool gammaCorrection;
 
 
-    // constructor, expects a filepath to a 3D model.
-    Model(QOpenGLWidget* widget, std::string const &path, bool gamma = false) : gammaCorrection(gamma)
-    {
+    // default constructor
+    Model() {}
+
+    // init, expects a filepath to a 3D model.
+    void init(QOpenGLWidget* widget, std::string const &path, bool gamma = false) {
+        gammaCorrection = gamma;
+
         std::cout << "Model constructor" << std::endl;
         m_widget = widget;
 
@@ -56,6 +60,7 @@ public:
         loadModel(hardcodedPath);
         std::cout << "done loading model" << std::endl;
     }
+
 
     // draws the model, and thus all its meshes
     void Draw(GLuint shader) {

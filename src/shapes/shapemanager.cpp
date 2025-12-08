@@ -10,11 +10,14 @@
 //     m_animator(&m_animation)
 // {}
 
-ShapeManager::ShapeManager(QOpenGLWidget* widget):
-    m_model(widget, "animated_models/vampire/dancing_vampire.dae"),
-    m_animation("animated_models/vampire/dancing_vampire.dae", &m_model),
-    m_animator(&m_animation)
-{}
+// ShapeManager::ShapeManager(QOpenGLWidget* widget):
+//     m_model(widget, "animated_models/vampire/dancing_vampire.dae"),
+//     m_animation("animated_models/vampire/dancing_vampire.dae", &m_model),
+//     m_animator(&m_animation)
+// {}
+
+// default constructor
+ShapeManager::ShapeManager() {}
 
 /**
  * @brief initialize the vbo and vao for each of the shape types.
@@ -26,6 +29,10 @@ void ShapeManager::init(QOpenGLWidget* widget) {
     m_cube.initGLObjects(widget);
     m_sphere.initGLObjects(widget);
     m_cylinder.initGLObjects(widget);
+
+    m_model.init(widget, "animated_models/vampire/dancing_vampire.dae");
+    m_animation.init(widget, "animated_models/vampire/dancing_vampire.dae", &m_model);
+    m_animator.init(widget, &m_animation);
 
     m_initialized = true;
 }
