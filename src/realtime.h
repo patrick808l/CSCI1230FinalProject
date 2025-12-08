@@ -80,7 +80,7 @@ private:
     bool m_haveMadeFBO = false;
     void makeFBO();
 
-    const static int numShadowMaps = 8;
+    const static int numShadowMaps = 1;
     GLuint m_depthTextures[numShadowMaps];
     GLuint m_shadowFBO;
     // int shadowWidth = 1024;
@@ -94,7 +94,7 @@ private:
     float dirLightPosOffset = 10.f;
     glm::mat4 getLightViewMatrix(const glm::vec3& lightPos, const glm::vec3& lightInvDir, bool isSpotLight);
 
-    bool post_processing_enabled = true;
+    bool post_processing_enabled = false;///
     PostProcessor *postprocessor = nullptr;
     // textures
     std::unordered_map<std::string, GLuint> m_textures; // hash for texture filename and texture id

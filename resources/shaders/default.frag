@@ -1,8 +1,10 @@
 #version 330 core
 
+const int numShadowMaps = 1;
+
 in vec4 posWorldSpace;
 in vec3 normalWorldSpace;
-in vec4 shadowCoords[8];
+in vec4 shadowCoords[numShadowMaps];
 in float eyeDepth;
 
 in vec2 uv;
@@ -21,7 +23,7 @@ const vec4 fog_color = vec4(0.4f, 0.4f, 0.4f, 1.f);
 const float fog_density = 0.2f;
 
 uniform bool shadowsEnabled;
-uniform sampler2D depthTextures[8];
+uniform sampler2D depthTextures[numShadowMaps];
 
 uniform int numLights;
 
@@ -65,7 +67,17 @@ const float shadowVisibility = 0.5;
 vec4 blendDiffuseWithText();
 vec3 getNormalValue();
 
+// skeletal mesh
+uniform bool isSkeletalMesh;
+uniform sampler2D texture_diffuse1;
+
 void main() {
+    if (isSkeletalMesh) {
+        fragColor = texture(texture_diffuse1, uv);
+        // fragColor = vec4(uv[0], uv[1], 0, 1);
+        return;
+    }
+
     vec4 dirToCam = normalize(cameraPos - posWorldSpace);
     vec4 illumination = ka * cAmbient;
     vec3 normal = getNormalValue();

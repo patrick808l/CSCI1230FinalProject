@@ -169,6 +169,9 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
     if (!settings.extraCredit1) {
         return;
     }
+    if (texIndex >= numShadowMaps) {
+        return;
+    }
 
     glm::vec3 lightPos;
     glm::mat4 depthProjMatrix;
@@ -213,7 +216,7 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
         GLint modelMatrixLoc = glGetUniformLocation(m_shadowmap_shader, "modelMatrix");
         glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.getMovedCTM()[0][0]);
 
-        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 11);
+        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 22);
 
         glBindVertexArray(0);
     }
@@ -326,18 +329,27 @@ void Realtime::paintGL() {
         lightIndex++;
     }
 
+
+    GLint viewMatrixLoc = glGetUniformLocation(m_default_shader, "viewMatrix");
+    GLint projectionMatrixLoc = glGetUniformLocation(m_default_shader, "projectionMatrix");
+    glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.getViewMatrix()[0][0]);
+    glUniformMatrix4fv(projectionMatrixLoc, 1, GL_FALSE, &m_camera.getProjMatrix()[0][0]);
+
+    // rigged model
+    GLint isSkeletalMeshLoc = glGetUniformLocation(m_default_shader, "isSkeletalMesh");
+    glUniform1i(isSkeletalMeshLoc, true);
+    m_shapeManager.drawAnimatedModel(this, m_default_shader);
+    glUniform1i(isSkeletalMeshLoc, false);
+
     if (post_processing_enabled) postprocessor->bindInitFBO();
+
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
     for (RenderShapeData& shapeData : m_renderData.shapes) {
         glBindVertexArray(m_shapeManager.getVao(shapeData));
 
         GLint modelMatrixLoc = glGetUniformLocation(m_default_shader, "modelMatrix");
-        GLint viewMatrixLoc = glGetUniformLocation(m_default_shader, "viewMatrix");
-        GLint projectionMatrixLoc = glGetUniformLocation(m_default_shader, "projectionMatrix");
         glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.getMovedCTM()[0][0]);
-        glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.getViewMatrix()[0][0]);
-        glUniformMatrix4fv(projectionMatrixLoc, 1, GL_FALSE, &m_camera.getProjMatrix()[0][0]);
 
         // material constants
         GLint shininessLoc = glGetUniformLocation(m_default_shader, "shininess");
@@ -353,7 +365,7 @@ void Realtime::paintGL() {
         glUniform1f(m_blendLocation, shapeData.primitive.material.blend);
         activeTexture(shapeData.primitive.material);
 
-        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 11);
+        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 22);
 
         glBindVertexArray(0);
     }
@@ -481,6 +493,10 @@ void Realtime::timerEvent(QTimerEvent *event) {
     if (m_keyMap[Qt::Key::Key_Control]) {
         m_camera.moveDown(deltaTime);
     }
+
+
+    // tell shape manager to update skeletal animation
+    m_shapeManager.updateAnimation(deltaTime);
 
     // step shapes forward
     for (auto shape : this->m_renderData.shapes) {

@@ -1,14 +1,14 @@
 #include "collider.h"
-#include "shapes/shapemanager.h"
+#include "shapes/staticmesh.h"
 
-#define STRIDE 11
+#define STRIDE 22
 
 std::unordered_map<std::string, std::pair<glm::vec4, glm::vec4>> cached_mesh_dims;
 std::pair<glm::vec4, glm::vec4> get_dim(std::string meshfile) {
     if (cached_mesh_dims.contains(meshfile)) {
         return cached_mesh_dims[meshfile];
     } else {
-        auto m = Mesh(meshfile);
+        auto m = StaticMesh(meshfile);
         m.updateVertexData(3, 3);
         auto triangles = m.getVertexData();
         double x1 = triangles->at(0);

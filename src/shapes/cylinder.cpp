@@ -32,16 +32,19 @@ Shape Cylinder() {
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvBL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         glm::vec3 normal2 = -glm::normalize(glm::cross(topLeft - topRight, bottomRight - topRight));
 
@@ -49,16 +52,19 @@ Shape Cylinder() {
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvTR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
     };
 
     MakeCylCapSliceSignature makeCapSlice = [=](float currentTheta, float nextTheta, bool isTopCap) {
@@ -108,31 +114,37 @@ Shape Cylinder() {
         insertVec3(vertexData, leftNorm);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, rightNorm);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, leftNorm);
         insertVec2(vertexData, uvBL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, leftNorm);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, rightNorm);
         insertVec2(vertexData, uvTR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, rightNorm);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
     };
 
     MakeWallSliceSignature makeWallSlice = [=](float currentTheta, float nextTheta) {
