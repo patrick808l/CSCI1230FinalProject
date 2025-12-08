@@ -12,8 +12,6 @@ const int numShadowMaps = 1;
 
 out vec4 posWorldSpace;
 out vec3 normalWorldSpace;
-// positions in perspective light spaces
-out vec4 shadowCoords[numShadowMaps];
 // distance from camera in camera space
 out float eyeDepth;
 
@@ -51,10 +49,6 @@ void main() {
 
     mat3 modelInvTranspose = inverse(transpose(mat3(modelMatrix)));
     normalWorldSpace = modelInvTranspose * normalObjSpace;
-
-    for (int i = 0; i < numShadowMaps; i++) {
-        shadowCoords[i] = depthBiasVPs[i] * posWorldSpace;
-    }
 
     vec4 viewPos = viewMatrix * posWorldSpace;
     eyeDepth = -viewPos.z;
