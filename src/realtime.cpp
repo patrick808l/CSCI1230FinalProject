@@ -335,14 +335,16 @@ void Realtime::paintGL() {
     glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.getViewMatrix()[0][0]);
     glUniformMatrix4fv(projectionMatrixLoc, 1, GL_FALSE, &m_camera.getProjMatrix()[0][0]);
 
-    // rigged model
-    GLint isSkeletalMeshLoc = glGetUniformLocation(m_default_shader, "isSkeletalMesh");
-    glUniform1i(isSkeletalMeshLoc, true);
-    m_shapeManager.drawAnimatedModel(this, m_default_shader);
-    glUniform1i(isSkeletalMeshLoc, false);
 
     if (post_processing_enabled) postprocessor->bindInitFBO();
 
+    // rigged model
+    GLint isSkeletalMeshLoc = glGetUniformLocation(m_default_shader, "isSkeletalMesh");
+    glUniform1i(isSkeletalMeshLoc, true);
+    m_shapeManager.drawAnimatedModel(this, postprocessor, m_default_shader);
+    glUniform1i(isSkeletalMeshLoc, false);
+
+    // if (post_processing_enabled) postprocessor->bindInitFBO();
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
     for (RenderShapeData& shapeData : m_renderData.shapes) {

@@ -14,6 +14,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "postprocessing.h"
 #include "utils/stb_image.h"
 
 #include <assimp/Importer.hpp>
@@ -54,9 +55,9 @@ public:
 
 
     // draws the model, and thus all its meshes
-    void Draw(GLuint shader) {
+    void Draw(PostProcessor* postprocessor, GLuint shader) {
         for (unsigned int i = 0; i < meshes.size(); i++) {
-            meshes[i].Draw(shader);
+            meshes[i].Draw(postprocessor, shader);
         }
     }
 
