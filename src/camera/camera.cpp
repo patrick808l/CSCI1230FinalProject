@@ -174,7 +174,11 @@ float Camera::getHeight() const {
 void Camera::moveForward(float deltaTime) {
     if (attached) {
         // update the x and z positions
-        this->body->move_by(m_speed * glm::normalize(glm::vec3(1, 0, 1) * this->m_look) * deltaTime);
+        glm::vec3 dir = m_speed * glm::normalize(glm::vec3(1, 0, 1) * this->m_look) * deltaTime;
+        if (body->collider.has_value()) {
+            dir = body->collider.value()->filter_bans(dir);
+        }
+        this->body->move_by(dir);
     } else {
         m_pos += m_speed * glm::normalize(m_look) * deltaTime;
         computeViewMatrix();
@@ -184,7 +188,11 @@ void Camera::moveForward(float deltaTime) {
 void Camera::moveBackward(float deltaTime) {
     if (attached) {
         // update the x and z positions
-        this->body->move_by(-m_speed * glm::normalize(glm::vec3(1, 0, 1) * this->m_look) * deltaTime);
+        glm::vec3 dir = -m_speed * glm::normalize(glm::vec3(1, 0, 1) * this->m_look) * deltaTime;
+        if (body->collider.has_value()) {
+            dir = body->collider.value()->filter_bans(dir);
+        }
+        this->body->move_by(dir);
     } else {
         m_pos -= m_speed * glm::normalize(m_look) * deltaTime;
         computeViewMatrix();
@@ -194,7 +202,11 @@ void Camera::moveBackward(float deltaTime) {
 void Camera::moveLeft(float deltaTime) {
     if (attached) {
         // update the x and z positions
-        this->body->move_by(-m_speed * glm::normalize(glm::vec3(1, 0, 1) * glm::cross(this->m_look, this->m_up)) * deltaTime);
+        glm::vec3 dir = -m_speed * glm::normalize(glm::vec3(1, 0, 1) * glm::cross(this->m_look, this->m_up)) * deltaTime;
+        if (body->collider.has_value()) {
+            dir = body->collider.value()->filter_bans(dir);
+        }
+        this->body->move_by(dir);
     } else {
         m_pos -= m_speed * glm::normalize(glm::cross(m_look, m_up)) * deltaTime;
         computeViewMatrix();
@@ -204,7 +216,11 @@ void Camera::moveLeft(float deltaTime) {
 void Camera::moveRight(float deltaTime) {
     if (attached) {
         // update the x and z positions
-        this->body->move_by(m_speed * glm::normalize(glm::vec3(1, 0, 1) * glm::cross(this->m_look, this->m_up)) * deltaTime);
+        glm::vec3 dir = m_speed * glm::normalize(glm::vec3(1, 0, 1) * glm::cross(this->m_look, this->m_up)) * deltaTime;
+        if (body->collider.has_value()) {
+            dir = body->collider.value()->filter_bans(dir);
+        }
+        this->body->move_by(dir);
     } else {
         m_pos += m_speed * glm::normalize(glm::cross(m_look, m_up)) * deltaTime;
         computeViewMatrix();
@@ -261,6 +277,9 @@ void Camera::jump(double length, double strength) {
                 }
             }
         }
+
+        // teleport a bit upward to avoid collision
+        this->body->move_by(glm::vec3(0, 0.05, 0));
 
         // add an impulse force to cause the player to jump
         Force f;

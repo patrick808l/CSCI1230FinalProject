@@ -41,6 +41,7 @@ public:
     /// directions that are "banned" because of collisions
     std::unordered_map<int, glm::vec3> banned_dirs;
 
+    glm::vec3 filter_bans(glm::vec3 dir);
     void update_pos(glm::mat4 new_ctm);
     std::optional<Collision> collides(Collider* other);
     Collider(const ScenePrimitive& data, glm::mat4 ctm);

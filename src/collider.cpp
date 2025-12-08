@@ -151,6 +151,31 @@ std::optional<Collision> Collider::collide_cube_to_cube(Collider* other) {
     };
 }
 
+glm::vec3 Collider::filter_bans(glm::vec3 dir) {
+    for (auto pair : this->banned_dirs) {
+        if (dir.x > 0 && pair.second.x > 0.1){
+            dir.x = 0;
+        }
+        if (dir.y > 0 && pair.second.y > 0.1){
+            dir.y = 0;
+        }
+        if (dir.z > 0 && pair.second.z > 0.1){
+            dir.z = 0;
+        }
+
+        if (dir.x < 0 && pair.second.x < -0.1){
+            dir.x = 0;
+        }
+        if (dir.y < 0 && pair.second.y < -0.1){
+            dir.y = 0;
+        }
+        if (dir.z < 0 && pair.second.z < -0.1){
+            dir.z = 0;
+        }
+    }
+    return dir;
+}
+
 std::optional<Collision> Collider::collides(Collider* other) {
     return this->collide_cube_to_cube(other);
 }

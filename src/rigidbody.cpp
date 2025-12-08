@@ -324,8 +324,8 @@ void RigidBody::collide() {
 
                     // update momentums if the objects are not separating
                     if (!(v1i > 0 && v2i < 0)) {
-                        glm::vec3 myPrevMomentum = mybody->P - (mybody->P * c.normal_ws);
-                        glm::vec3 oPrevMomentum = obody->P - (obody->P * c.normal_ws);
+                        glm::vec3 myPrevMomentum = mybody->P - (mybody->P * glm::abs(c.normal_ws));
+                        glm::vec3 oPrevMomentum = obody->P - (obody->P * glm::abs(c.normal_ws));
                         mybody->P = ((float) (v1f * m1) * c.normal_ws) + myPrevMomentum;
                         obody->P = ((float) (v2f * m2) * c.normal_ws) + oPrevMomentum;
                     }

@@ -103,11 +103,6 @@ private:
     void createTextureAndNormal();
     void activeTexture(const SceneMaterial& shapeMat);
 
-    // jump state
-    double t = 0;
-    double lastJumpTime = 0;
-    double jumpCooldown = 0.2;
-
     // l-systems
     void generateLSystemTree(glm::vec3 startPos);
     void generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count);

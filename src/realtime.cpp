@@ -480,7 +480,6 @@ void Realtime::mouseMoveEvent(QMouseEvent *event) {
 void Realtime::timerEvent(QTimerEvent *event) {
     int elapsedms   = m_elapsedTimer.elapsed();
     float deltaTime = elapsedms * 0.001f;
-    this->t += deltaTime;
     m_elapsedTimer.restart();
 
     // Use deltaTime and m_keyMap here to move around
@@ -504,15 +503,11 @@ void Realtime::timerEvent(QTimerEvent *event) {
     }
     if (m_keyMap[Qt::Key::Key_J]) {
         // determine if cooldown is in effect
-        bool canJump = (this->lastJumpTime + this->jumpCooldown) < t;
-        if (canJump) {
-            lastJumpTime = t;
-            m_camera.jump(0.1, 20);
-        }
+        m_camera.jump(0.1, 40);
     }
 
     // tell shape manager to update skeletal animation
-    m_shapeManager.updateAnimation(deltaTime);
+    // m_shapeManager.updateAnimation(deltaTime);
 
     // step shapes forward
     for (auto shape : this->m_renderData.shapes) {
