@@ -8,6 +8,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 #define MAX_BONE_INFLUENCE 4
@@ -21,9 +22,9 @@ struct Vertex {
     glm::vec2 TexCoords;
     // tangent
     glm::vec3 Tangent;
-    // // bitangent
-    // glm::vec3 Bitangent;
-    //bone indexes which will influence this vertex
+    // bitangent
+    glm::vec3 Bitangent;
+    //bone indices which will influence this vertex
     int m_BoneIDs[MAX_BONE_INFLUENCE];
     //weights from each bone
     float m_Weights[MAX_BONE_INFLUENCE];
@@ -64,7 +65,8 @@ public:
         unsigned int heightNr   = 1;
         for(unsigned int i = 0; i < textures.size(); i++)
         {
-            glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
+            // use textures 12,13,14,15
+            glActiveTexture(GL_TEXTURE12 + i); // active proper texture unit before binding
             // retrieve texture number (the N in diffuse_textureN)
             string number;
             string name = textures[i].type;
@@ -78,7 +80,7 @@ public:
                 number = std::to_string(heightNr++); // transfer unsigned int to string
 
             // now set the sampler to the correct texture unit
-            glUniform1i(glGetUniformLocation(shader, (name + number).c_str()), i);
+            glUniform1i(glGetUniformLocation(shader, (name + number).c_str()), i + 12);
             // and finally bind the texture
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
@@ -157,13 +159,18 @@ private:
         glEnableVertexAttribArray(3);
         glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(8 * sizeof(GLfloat)));
 
-        // boneIds
+        // bitangent
         glEnableVertexAttribArray(4);
-        glVertexAttribPointer(4, 4, GL_INT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(11 * sizeof(GLfloat)));
+        glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(11 * sizeof(GLfloat)));
+
+        // boneIds
+        glEnableVertexAttribArray(5);
+        // glVertexAttribPointer(5, 4, GL_INT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(14 * sizeof(GLfloat)));
+        glVertexAttribIPointer(5, 4, GL_INT, sizeof(Vertex), reinterpret_cast<void*>(14 * sizeof(GLfloat)));
 
         // weights
-        glEnableVertexAttribArray(5);
-        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(11 * sizeof(GLfloat) + 4 * sizeof(GLint)));
+        glEnableVertexAttribArray(6);
+        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(14 * sizeof(GLfloat) + 4 * sizeof(GLint)));
     }
 };
 #endif

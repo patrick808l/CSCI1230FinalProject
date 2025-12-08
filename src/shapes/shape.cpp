@@ -17,9 +17,14 @@ void insertVec2(std::shared_ptr<std::vector<float>> data, glm::vec2& v) {
 }
 
 /**
- * @brief insert trivial boneIds and bone weights for a static shape into the given vector.
+ * @brief insert trivial bitangent, boneIds, and bone weights for a static shape into the given vector.
+ * (mostly ignored but included for compatibility with skeletal mesh)
  */
 void insertTrivialSkeleton(std::shared_ptr<std::vector<GLfloat>> data) {
+    // bitangent (ignored)
+    data->push_back(0);
+    data->push_back(0);
+    data->push_back(0);
     // boneIds. first is greater than MAX_BONES so default posObjSpace is used. the rest are ignored
     data->push_back(101);
     data->push_back(0);

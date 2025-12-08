@@ -65,7 +65,17 @@ const float shadowVisibility = 0.5;
 vec4 blendDiffuseWithText();
 vec3 getNormalValue();
 
+// skeletal mesh
+uniform bool isSkeletalMesh;
+uniform sampler2D texture_diffuse1;
+
 void main() {
+    if (isSkeletalMesh) {
+        fragColor = texture(texture_diffuse1, uv);
+        // fragColor = vec4(uv[0], uv[1], 0, 1);
+        return;
+    }
+
     vec4 dirToCam = normalize(cameraPos - posWorldSpace);
     vec4 illumination = ka * cAmbient;
     vec3 normal = getNormalValue();

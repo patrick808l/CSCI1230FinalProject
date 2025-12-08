@@ -24,7 +24,10 @@ void pushVertexData(std::shared_ptr<std::vector<GLfloat>> vertData, const glm::v
     vertData->push_back(texture[0]);
     vertData->push_back(texture[1]);
 
-    // push back zeros for tangents
+    // push back zeros for tangents and bitangents
+    vertData->push_back(0.f);
+    vertData->push_back(0.f);
+    vertData->push_back(0.f);
     vertData->push_back(0.f);
     vertData->push_back(0.f);
     vertData->push_back(0.f);

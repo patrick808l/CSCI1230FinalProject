@@ -4,8 +4,9 @@ layout(location = 0) in vec3 posObjSpace;
 layout(location = 1) in vec3 normalObjSpace;
 layout(location = 2) in vec2 uvIn;
 layout(location = 3) in vec3 tangent;
-layout(location = 4) in ivec4 boneIds;
-layout(location = 5) in vec4 weights;
+layout(location = 4) in vec3 bitangent;
+layout(location = 5) in ivec4 boneIds;
+layout(location = 6) in vec4 weights;
 
 out vec4 posWorldSpace;
 out vec3 normalWorldSpace;

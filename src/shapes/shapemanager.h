@@ -30,6 +30,7 @@ public:
     int getVertexDataSize(const RenderShapeData& shapeData);
 
     void updateAnimation(float deltaTime);
+    // void updateAnimation();
     void drawAnimatedModel(QOpenGLWidget* widget, GLuint shader);
 private:
     bool m_initialized = false;

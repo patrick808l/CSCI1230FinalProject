@@ -136,6 +136,9 @@ void ShapeManager::updateAnimation(float deltaTime) {
     m_animator.UpdateAnimation(deltaTime);
 }
 
+// void ShapeManager::updateAnimation() {
+// }
+
 /**
  * @brief ShapeManager::drawAnimatedModel
  * @param widget allows access to makeCurrent for openGL context
@@ -153,6 +156,8 @@ void ShapeManager::drawAnimatedModel(QOpenGLWidget* widget, GLuint shader) {
     }
 
     glm::mat4 modelMatrix{1.f};
+    modelMatrix = glm::translate(modelMatrix, glm::vec3{0.f, 2.f, -1.f});
+    // modelMatrix = glm::scale(modelMatrix, glm::vec3{1.f, 1.f, 1.f});
     GLint modelMatrixLoc = glGetUniformLocation(shader, "modelMatrix");
     glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
 

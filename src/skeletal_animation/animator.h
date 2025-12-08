@@ -27,9 +27,11 @@ public:
     }
 
     void UpdateAnimation(float dt) {
+        // std::cout << "animator.UpdateAnimation dt=" << dt << std::endl;
         m_DeltaTime = dt;
         if (m_CurrentAnimation) {
             m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * dt;
+            // std::cout << "ticks per second = " << m_CurrentAnimation->GetTicksPerSecond() << ", dt = " << dt << ", duration = " << m_CurrentAnimation->GetDuration() << std::endl;
             m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
             CalculateBoneTransform(&m_CurrentAnimation->GetRootNode(), glm::mat4(1.0f));
         }
