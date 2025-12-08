@@ -23,6 +23,9 @@ public:
     glm::vec3 trans;
     glm::vec3 torque;
 
+    // if it is dynamically created and destroyed
+    bool is_dynamic = false;
+
     Force();
 };
 

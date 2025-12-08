@@ -178,9 +178,9 @@ void RigidBody::ddt_State_to_Array(double *ydot)
     *ydot++ = v[1];
     *ydot++ = v[2];
 
-    /* Compute ˙R(t) = ω(t)∗ R(t) */
+    /* Compute Rdot(t) = ω(t) * R(t) */
     glm::mat3 Rdot = Star(omega) * R;
-    /* copy ˙R(t) into array */
+    /* copy Rdot(t) into array */
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
             *ydot++ = Rdot[i][j];
@@ -256,6 +256,22 @@ std::pair<double, double> solve_momentum_equation(double m1, double m2, double v
     } else {
         return std::make_pair(v1fb, v2fb);
     }
+}
+
+void RigidBody::move_by(glm::vec3 pos) {
+    this->x += pos;
+    this->State_to_Array(this->yfinal);
+
+    if (!this->collider.has_value()) {
+        return;
+    }
+    this->collider.value()->update_pos(glm::translate(x));
+}
+
+void RigidBody::rot_by(float theta) {
+    // rotate about y axis
+    this->R = glm::rotate(theta, glm::vec3(0, -1, 0));
+    this->State_to_Array(this->yfinal);
 }
 
 void RigidBody::collide() {
@@ -337,7 +353,6 @@ void RigidBody::collide() {
             ocollider->banned_dirs.erase(mycollider->id);
         }
     }
-
     this->collider.value()->update_pos(glm::translate(x));
 }
 

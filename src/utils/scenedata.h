@@ -162,6 +162,9 @@ struct ScenePrimitive {
     bool is_ground;
     /// the list of forces to apply to the object
     std::vector<Force> forces;
+    /// if the scene primitive is controlled by the user. 
+    /// - The first primitive found to have this flag set to true will become the "player" character
+    bool is_player;
 };
 
 // Struct which contains data for a transformation.
