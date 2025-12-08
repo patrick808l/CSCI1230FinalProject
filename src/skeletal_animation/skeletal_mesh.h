@@ -65,8 +65,9 @@ public:
         unsigned int heightNr   = 1;
         for(unsigned int i = 0; i < textures.size(); i++)
         {
-            // use textures 12,13,14,15
-            glActiveTexture(GL_TEXTURE12 + i); // active proper texture unit before binding
+            // use texture slots 12,13,...
+            int texOffset = 12;
+            glActiveTexture(GL_TEXTURE0 + texOffset + i); // active proper texture unit before binding
             // retrieve texture number (the N in diffuse_textureN)
             string number;
             string name = textures[i].type;
@@ -80,7 +81,7 @@ public:
                 number = std::to_string(heightNr++); // transfer unsigned int to string
 
             // now set the sampler to the correct texture unit
-            glUniform1i(glGetUniformLocation(shader, (name + number).c_str()), i + 12);
+            glUniform1i(glGetUniformLocation(shader, (name + number).c_str()), i + texOffset);
             // and finally bind the texture
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
@@ -165,7 +166,6 @@ private:
 
         // boneIds
         glEnableVertexAttribArray(5);
-        // glVertexAttribPointer(5, 4, GL_INT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(14 * sizeof(GLfloat)));
         glVertexAttribIPointer(5, 4, GL_INT, sizeof(Vertex), reinterpret_cast<void*>(14 * sizeof(GLfloat)));
 
         // weights

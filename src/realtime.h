@@ -14,9 +14,12 @@
 #include <QOpenGLWidget>
 #include <QTime>
 #include <QTimer>
+#include <random>
 
 #include "utils/sceneparser.h"
 #include "camera/camera.h"
+
+#include "postprocessing.h"
 
 class Realtime : public QOpenGLWidget
 {
@@ -55,7 +58,6 @@ private:
     // Device Correction Variables
     double m_devicePixelRatio;
 
-
     RenderData m_renderData;
     SceneParser m_sceneParser;
     ShapeManager m_shapeManager;
@@ -78,7 +80,7 @@ private:
     bool m_haveMadeFBO = false;
     void makeFBO();
 
-    const static int numShadowMaps = 8;
+    const static int numShadowMaps = 1;
     GLuint m_depthTextures[numShadowMaps];
     GLuint m_shadowFBO;
     // int shadowWidth = 1024;
@@ -92,10 +94,18 @@ private:
     float dirLightPosOffset = 10.f;
     glm::mat4 getLightViewMatrix(const glm::vec3& lightPos, const glm::vec3& lightInvDir, bool isSpotLight);
 
+    bool post_processing_enabled = false;///
+    PostProcessor *postprocessor = nullptr;
     // textures
     std::unordered_map<std::string, GLuint> m_textures; // hash for texture filename and texture id
     std::unordered_map<std::string, GLuint> m_normalTextures; // hash for normal texture filename and normal texture id
     std::unordered_map<std::string, GLuint> m_bumpTextures; // hash for bump texture filename and bump texture id
     void createTextureAndNormal();
     void activeTexture(const SceneMaterial& shapeMat);
+
+    // l-systems
+    void generateLSystemTree(glm::vec3 startPos);
+    void generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count);
+    std::mt19937 m_rand;  // for random number
+    float randFloat(float minVal, float maxVal);
 };

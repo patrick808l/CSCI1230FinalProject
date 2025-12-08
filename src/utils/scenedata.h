@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 
+#include "force.h"
 #include <glm/glm.hpp>
 
 // Enum of the types of virtual lights that might be in the scene
@@ -148,6 +149,19 @@ struct ScenePrimitive {
     PrimitiveType type;
     SceneMaterial material;
     std::string meshfile; // Used for triangle meshes
+
+    // information about the state of the primitive
+    double t_offset; // offset for forces
+    /// if the primitive should be wrapped in a collider (allowing it to collide with other primitives)
+    bool collide;
+    /// how much kinetic energy the primitive loses on collisions
+    double energy_loss;
+    /// the mass of the primitive
+    double mass;
+    /// if the primitive is part of the env. (treats as if it has infinite mass)
+    bool is_ground;
+    /// the list of forces to apply to the object
+    std::vector<Force> forces;
 };
 
 // Struct which contains data for a transformation.

@@ -16,6 +16,7 @@ public:
     Animator() {}
 
     void init(Animation* animation) {
+        std::cout << "Animator constructor starting" << std::endl;
         m_CurrentTime = 0.0;
         m_CurrentAnimation = animation;
 
@@ -24,6 +25,7 @@ public:
         for (int i = 0; i < 100; i++) {
             m_FinalBoneMatrices.push_back(glm::mat4(1.0f));
         }
+        std::cout << "Animator constructor done" << std::endl;
     }
 
     void UpdateAnimation(float dt) {

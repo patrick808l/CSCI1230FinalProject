@@ -1,14 +1,40 @@
 #include "sceneparser.h"
+#include "rigidbody.h"
 #include "scenefilereader.h"
 #include <glm/gtx/transform.hpp>
 
-#include "shapes/sphere.h"
-#include "shapes/cube.h"
-#include "shapes/cone.h"
-#include "shapes/cylinder.h"
+glm::mat4 RenderShapeData::getCTM() {
+    return ctm;
+}
 
-#include <chrono>
-#include <iostream>
+glm::mat4 RenderShapeData::getMovedCTM() {
+    if (rb.has_value()) {
+        glm::mat4 move = rb.value()->movement_matrix();
+        return ctm * move;
+    } else {
+        return ctm;
+    }
+}
+
+RenderShapeData::RenderShapeData(ScenePrimitive primitive, glm::mat4 ctm) {
+    this->primitive = primitive;
+    this->rb = std::nullopt;
+    this->ctm = ctm;
+}
+
+RenderShapeData::RenderShapeData(ScenePrimitive primitive, RigidBody* rb, glm::mat4 ctm) {
+    this->primitive = primitive;
+    this->rb = rb;
+    this->ctm = ctm;
+}
+
+RenderData::RenderData() {
+    this->m_colliders = new std::vector<Collider*>();
+}
+
+std::vector<Collider*>* RenderData::colliders() {
+    return m_colliders;
+}
 
 bool SceneParser::parse(std::string filepath, RenderData &renderData) {
     ScenefileReader fileReader = ScenefileReader(filepath);
@@ -23,6 +49,7 @@ bool SceneParser::parse(std::string filepath, RenderData &renderData) {
 
     renderData.shapes.clear();
     renderData.lights.clear();
+    renderData.colliders()->clear();
     traverseTree(fileReader.getRootNode(), glm::mat4(1.f), renderData);
 
     return true;
@@ -49,7 +76,13 @@ void SceneParser::traverseTree(SceneNode* curNode, glm::mat4 ctm, RenderData &re
 
     // add shapes to render data
     for(ScenePrimitive* scenePrimitive : curNode->primitives) {
-        RenderShapeData shapeData{*scenePrimitive, ctm};
+        std::optional<Collider*> collider = std::nullopt;
+        if (scenePrimitive->collide) {
+            collider = std::make_optional(new Collider(*scenePrimitive, ctm));
+            renderData.colliders()->push_back(collider.value());
+        }
+        RigidBody* rb = new RigidBody(*scenePrimitive, collider, renderData.colliders());
+        RenderShapeData shapeData = RenderShapeData(*scenePrimitive, rb, ctm);
         renderData.shapes.push_back(shapeData);
     }
 

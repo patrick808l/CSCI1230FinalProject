@@ -8,10 +8,12 @@ layout(location = 4) in vec3 bitangent;
 layout(location = 5) in ivec4 boneIds;
 layout(location = 6) in vec4 weights;
 
+const int numShadowMaps = 1;
+
 out vec4 posWorldSpace;
 out vec3 normalWorldSpace;
 // positions in perspective light spaces
-out vec4 shadowCoords[8];
+out vec4 shadowCoords[numShadowMaps];
 // distance from camera in camera space
 out float eyeDepth;
 
@@ -22,7 +24,7 @@ out mat3 TBN;
 uniform mat4 modelMatrix, viewMatrix, projectionMatrix;
 
 // bias * projection * view matrices for up to 8 shadow maps
-uniform mat4 depthBiasVPs[8];
+uniform mat4 depthBiasVPs[numShadowMaps];
 
 // skeletal animation
 const int MAX_BONES = 100;
@@ -50,7 +52,7 @@ void main() {
     mat3 modelInvTranspose = inverse(transpose(mat3(modelMatrix)));
     normalWorldSpace = modelInvTranspose * normalObjSpace;
 
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < numShadowMaps; i++) {
         shadowCoords[i] = depthBiasVPs[i] * posWorldSpace;
     }
 

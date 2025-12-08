@@ -1,0 +1,162 @@
+{
+    "name": "default",
+    "globalData": { "ambientCoeff": 1, "diffuseCoeff": 1, "specularCoeff": 1, "transparentCoeff": 0 },
+    "cameraData": { "position": [ 0, 0, 5 ], "up": [ 0, 1, 0 ], "heightAngle": 45, "look": [ 0, 0, -1 ]},
+    "groups": [
+        {
+            "name": "room",
+            "primitives": [],
+            "translate": [ 0, 0, 0 ],
+            "rotate": [ 0, 1, 0, 0 ],
+            "scale": [ 1, 1, 1 ],
+            "groups": [
+                {
+                    "name": "turtle",
+                    "primitives": [
+                        {
+                            "ambient": [ 0.61, 0.73, 0.17 ],
+                            "diffuse": [ 0.5, 0.8, 0.5 ],
+                            "type": "mesh",
+                            "forces": [
+                                {
+                                    "type": "impulse",
+                                    "t0": 0,
+                                    "t1": 0.1,
+                                    "translation": [ 0, 300, 0 ],
+                                    "torque": [ 0, 1, 0 ]
+                                }
+                            ],
+                            "collide": true,
+                            "is_ground": false,
+                            "energy_loss": 0,
+                            "meshFile": "../meshes/turtle.obj"
+                        }
+                    ],
+                    "translate": [ 0, 0, -2.1 ],
+                    "rotate": [ 0, 1, 0, 0 ],
+                    "scale": [ 0.03, 0.03, 0.03 ]
+                },
+                {
+                    "name": "ceiling",
+                    "primitives": [
+                        {
+                            "ambient": [ 0.5, 0.5, 0.5 ],
+                            "diffuse": [ 1, 1, 1 ],
+                            "specular": [ 1, 1, 1 ],
+                            "shininess": 1,
+                            "collide": true,
+                            "is_ground": true,
+                            "energy_loss": 0,
+                            "type": "cube"
+                        }
+                    ],
+                    "translate": [ 0, 1.75, -2.5 ],
+                    "rotate": [ 0, 1, 0, 0 ],
+                    "scale": [ 5, 0.1, 5 ]
+                },
+                {
+                    "name": "floor",
+                    "primitives": [
+                        {
+                            "ambient": [ 0.25, 0.25, 0.25 ],
+                            "diffuse": [ 0.5, 0.5, 0.5 ],
+                            "specular": [ 1, 1, 1 ],
+                            "shininess": 1,
+                            "collide": true,
+                            "is_ground": true,
+                            "energy_loss": 0,
+                            "type": "cube"
+                        }
+                    ],
+                    "translate": [ 0, -1.75, -2.5 ],
+                    "rotate": [ 0, 1, 0, 0 ],
+                    "scale": [ 5, 0.1, 5 ]
+                },
+                {
+                    "name": "right wall",
+                    "primitives": [
+                        {
+                            "ambient": [ 0, 0.27, 0.98 ],
+                            "diffuse": [ 0.46, 0.14, 0.49 ],
+                            "specular": [ 1, 1, 1 ],
+                            "shininess": 1,
+                            "collide": true,
+                            "is_ground": true,
+                            "energy_loss": 0,
+                            "type": "cube"
+                        }
+                    ],
+                    "translate": [ 2.5, 0, -2.5 ],
+                    "rotate": [ 0, 1, 0, 0 ],
+                    "scale": [ 0.1, 3.5, 5 ]
+                },
+                {
+                    "name": "left wall",
+                    "primitives": [
+                        {
+                            "ambient": [ 0, 0.27, 0.98 ],
+                            "diffuse": [ 0.46, 0.14, 0.49 ],
+                            "specular": [ 1, 1, 1 ],
+                            "shininess": 1,
+                            "collide": true,
+                            "is_ground": true,
+                            "energy_loss": 0,
+                            "type": "cube"
+                        }
+                    ],
+                    "translate": [ -2.5, 0, -2.5 ],
+                    "rotate": [ 0, 1, 0, 0 ],
+                    "scale": [ 0.1, 3.5, 5 ]
+                },
+                {
+                    "name": "back wall",
+                    "primitives": [
+                        {
+                            "ambient": [ 0, 0.27, 0.98 ],
+                            "diffuse": [ 0.46, 0.14, 0.49 ],
+                            "specular": [ 1, 1, 1 ],
+                            "shininess": 1,
+                            "collide": true,
+                            "is_ground": true,
+                            "energy_loss": 0,
+                            "type": "cube"
+                        }
+                    ],
+                    "translate": [ 0, 0, -5 ],
+                    "rotate": [ 0, 1, 0, 0 ],
+                    "scale": [ 5, 3.5, 0.1 ]
+                }
+            ]
+        },
+        {
+            "name": "spotlight",
+            "lights": [
+                {
+                    "type": "spot",
+                    "color": [ 0.4, 0.4, 0.4 ],
+                    "direction": [ 0, 0, -1 ],
+                    "angle": 30,
+                    "penumbra": 20,
+                    "attenuationCoeff": [ 0.8, 0.05, 0 ]
+                }
+            ],
+            "translate": [ -1.5, 0, 0 ],
+            "rotate": [ 0, 1, 0, 0 ]
+        },
+        {
+            "name": "dirlight",
+            "lights": [
+                {
+                    "type": "directional",
+                    "color": [ 0.4, 0.4, 0.4 ],
+                    "direction": [ 0, 0, 1 ],
+                    "penumbra": 0,
+                    "angle": 0,
+                    "attenuationCoeff": [ 0, 0, 0 ]
+                }
+            ],
+            "translate": [ 0, 0, 0 ],
+            "rotate": [ 0, 1, 0, 180 ]
+        }
+    ]
+}
