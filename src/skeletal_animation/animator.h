@@ -15,7 +15,7 @@ class Animator
 public:
     Animator() {}
 
-    void init(QOpenGLWidget* widget, Animation* animation) {
+    void init(Animation* animation) {
         m_CurrentTime = 0.0;
         m_CurrentAnimation = animation;
 

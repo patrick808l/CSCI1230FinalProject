@@ -24,10 +24,14 @@ public:
 
     // Animation(const std::string& animationPath, Model* model) {}
 
-    void init(QOpenGLWidget* widget, const std::string& animationPath, Model* model) {
+    void init(const std::string& animationPath, Model* model) {
         std::cout << "Animation constructor starting" << std::endl;
         Assimp::Importer importer;
-        const aiScene* scene = importer.ReadFile(animationPath, aiProcess_Triangulate);
+
+        std::string hardcodedPath = "C:/cs1230/CSCI1230FinalProject/animated_models/vampire/dancing_vampire.dae";
+        std::cout << "Animation hardcoded path = " << hardcodedPath << std::endl;
+
+        const aiScene* scene = importer.ReadFile(hardcodedPath, aiProcess_Triangulate);
         assert(scene && scene->mRootNode);
         auto animation = scene->mAnimations[0];
         m_Duration = animation->mDuration;

@@ -31,8 +31,8 @@ void ShapeManager::init(QOpenGLWidget* widget) {
     m_cylinder.initGLObjects(widget);
 
     m_model.init(widget, "animated_models/vampire/dancing_vampire.dae");
-    m_animation.init(widget, "animated_models/vampire/dancing_vampire.dae", &m_model);
-    m_animator.init(widget, &m_animation);
+    m_animation.init("animated_models/vampire/dancing_vampire.dae", &m_model);
+    m_animator.init(&m_animation);
 
     m_initialized = true;
 }
