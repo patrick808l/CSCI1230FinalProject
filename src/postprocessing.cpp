@@ -21,13 +21,13 @@ void PostProcessor::init(GLuint defaultFBO, int w, int h, QOpenGLWidget *myParen
     config.gaussian_blur = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert",":/resources/shaders/gaussian_blur.frag");
     config.bloom_composite = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/bloom_composite.frag");
 
-    config.shaders.push_back(
-        {
-            ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/invert.frag"),
-            false,
-            [](GLuint program, float time) {}
-        }
-        );
+    // config.shaders.push_back(
+    //     {
+    //         ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/invert.frag"),
+    //         false,
+    //         [](GLuint program, float time) {}
+    //     }
+    //     );
 
     // config.shaders.push_back(
     //     {

@@ -257,12 +257,13 @@ void Realtime::paintGL() {
     GLint fogEnabledLoc = glGetUniformLocation(m_default_shader, "fogEnabled");
     glUniform1i(fogEnabledLoc, settings.extraCredit2);
 
+    int shadowBaseUnit = 8;
     for (int texIndex = 0; texIndex < numShadowMaps; texIndex++) {
-        glActiveTexture(GL_TEXTURE0 + texIndex);
+        glActiveTexture(GL_TEXTURE0 + shadowBaseUnit + texIndex);
         glBindTexture(GL_TEXTURE_2D, m_depthTextures[texIndex]);
         std::string texUniform = "depthTextures[" + std::to_string(texIndex) + "]";
         GLint textureLoc = glGetUniformLocation(m_default_shader, texUniform.c_str());
-        glUniform1i(textureLoc, texIndex);
+        glUniform1i(textureLoc, shadowBaseUnit + texIndex);
     }
 
 

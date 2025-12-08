@@ -2,7 +2,6 @@
 
 in vec4 posWorldSpace;
 in vec3 normalWorldSpace;
-in vec4 shadowCoords[8];
 in float eyeDepth;
 
 in vec2 uv;
@@ -21,6 +20,7 @@ const vec4 fog_color = vec4(0.4f, 0.4f, 0.4f, 1.f);
 const float fog_density = 0.2f;
 
 uniform bool shadowsEnabled;
+uniform mat4 depthBiasVPs[8];
 uniform sampler2D depthTextures[8];
 
 uniform int numLights;
@@ -35,6 +35,25 @@ uniform ShapeTexture myTextures;
 uniform ShapeTexture myNormals;
 uniform ShapeTexture myBumps;
 uniform float blend;
+
+const float bias = 0.01;
+const float shadowVisibility = 0.5;
+
+float computeShadowVisibility(int i, vec4 worldPos) {
+    vec4 sc = depthBiasVPs[i] * worldPos;
+
+    // Perspective divide into [0,1] shadow UV/depth space
+    vec3 proj = sc.xyz / sc.w;
+
+    if (proj.x < 0.0 || proj.x > 1.0 || proj.y < 0.0 || proj.y > 1.0 || proj.z < 0.0 || proj.z > 1.0) {
+        return 1.0;
+    }
+
+    float closest = texture(depthTextures[i], proj.xy).r;
+    float current = proj.z;
+
+    return (closest < current - bias) ? shadowVisibility : 1.0;
+}
 
 /*
  * lightType: 0 = point light
@@ -55,11 +74,7 @@ struct Light{
     float angle;
     float penumbra;
 };
-uniform Light lights[8];
-
-
-const float bias = 0.01;
-const float shadowVisibility = 0.5;
+uniform Light lights[64];
 
 // texture helper functions
 vec4 blendDiffuseWithText();
@@ -88,9 +103,7 @@ void main() {
             dirToLight = -normalize(lights[i].dir);
 
             if (shadowsEnabled) {
-                if (texture( depthTextures[i], shadowCoords[i].xy ).r < shadowCoords[i].z - bias) {
-                    visibility = shadowVisibility;
-                }
+                visibility = computeShadowVisibility(i, posWorldSpace);
             }
             break;
         case 2: // spot light
@@ -116,14 +129,17 @@ void main() {
             }
 
             if (shadowsEnabled) {
-                if (texture( depthTextures[i], (shadowCoords[i].xy / shadowCoords[i].w) ).r < (shadowCoords[i].z - bias) / shadowCoords[i].w) {
-                    visibility = shadowVisibility;
-                }
+                visibility = computeShadowVisibility(i, posWorldSpace);
             }
             break;
         default:
             break;
         }
+
+        // vec3 sc = shadowCoords[i].xyz / shadowCoords[i].w;
+        // if (sc.x < 0 || sc.x > 1 || sc.y < 0 || sc.y > 1 || sc.z < 0 || sc.z > 1) {
+        //     visibility = 1.0; // outside shadow map
+        // }
 
 
         //float NdotL = dot(normalize(normalWorldSpace), vec3(dirToLight));
@@ -155,6 +171,7 @@ void main() {
     }
 
     fragColor = mix(fog_color, illumination, fog_factor);
+
 }
 
 vec4 blendDiffuseWithText(){

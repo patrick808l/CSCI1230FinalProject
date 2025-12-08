@@ -20,7 +20,7 @@ struct PostProcessingConfig {
     float hdr_exposure = 1.0;
 
     bool bloom_enabled = true;
-    float bloom_threshold = .5;
+    float bloom_threshold = 2.5;
 
     std::vector<PostProcessingShader> shaders{};
 
