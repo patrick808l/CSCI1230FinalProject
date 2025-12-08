@@ -27,16 +27,19 @@ Shape Cube() {
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvBL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         glm::vec3 normal2 = glm::normalize(glm::cross(topLeft - topRight, bottomRight - topRight));
 
@@ -44,16 +47,19 @@ Shape Cube() {
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvTR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
     };
 
     MakeFaceSignature makeFace = [=](const glm::vec3& topLeft,
@@ -113,6 +119,14 @@ Shape Cube() {
 
         .getVertexData = [=]() {
             return vertexData;
+        },
+
+        .Ibody = [=](double mass){
+            return glm::mat3(
+                mass / 6.0f, 0, 0,
+                0, mass / 6.0f, 0,
+                0, 0, mass / 6.0f
+            );
         }
     };
 }

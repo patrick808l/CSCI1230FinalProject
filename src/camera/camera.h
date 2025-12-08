@@ -1,7 +1,9 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <numbers>
 #include "utils/scenedata.h"
+#include "utils/sceneparser.h"
 
 // A class representing a virtual camera.
 
@@ -19,8 +21,8 @@ public:
 
     // Returns the view matrix for the current camera settings.
     // You might also want to define another function that return the inverse of the view matrix.
-    glm::mat4 getViewMatrix() const;
-    glm::mat4 getInverseViewMatrix() const;
+    glm::mat4 getViewMatrix();
+    glm::mat4 getInverseViewMatrix();
 
     glm::mat4 getProjMatrix() const;
     glm::mat4 getInverseProjMatrix() const;
@@ -54,6 +56,10 @@ public:
     void moveRight(float deltaTime);
     void moveUp(float deltaTime);
     void moveDown(float deltaTime);
+    void jump(double length, double strength);
+
+    void detach();
+    void attach(RenderShapeData& data);
 
     void rotateCamera(float deltaX, float deltaY);
 private:
@@ -87,4 +93,14 @@ private:
     // positions of the clipping planes
     float m_nearPlane;
     float m_farPlane;
+
+    bool attached = false;
+    RigidBody* body;
+    glm::vec3 scale;
+    glm::vec3 offset;
+
+    // how close to be to the player (only applicable if camera is attached to a player)
+    float zoom = 5.0f;
+    double theta = 0.5;
+    double phi = (9 * std::numbers::pi) / 16;
 };

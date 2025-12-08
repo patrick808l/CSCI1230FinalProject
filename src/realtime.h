@@ -14,6 +14,7 @@
 #include <QOpenGLWidget>
 #include <QTime>
 #include <QTimer>
+#include <random>
 
 #include "utils/sceneparser.h"
 #include "camera/camera.h"
@@ -57,7 +58,6 @@ private:
     // Device Correction Variables
     double m_devicePixelRatio;
 
-
     RenderData m_renderData;
     SceneParser m_sceneParser;
     ShapeManager m_shapeManager;
@@ -80,7 +80,7 @@ private:
     bool m_haveMadeFBO = false;
     void makeFBO();
 
-    const static int numShadowMaps = 8;
+    const static int numShadowMaps = 1;
     GLuint m_depthTextures[numShadowMaps];
     GLuint m_shadowFBO;
     // int shadowWidth = 1024;
@@ -102,4 +102,15 @@ private:
     std::unordered_map<std::string, GLuint> m_bumpTextures; // hash for bump texture filename and bump texture id
     void createTextureAndNormal();
     void activeTexture(const SceneMaterial& shapeMat);
+
+    // jump state
+    double t = 0;
+    double lastJumpTime = 0;
+    double jumpCooldown = 0.2;
+
+    // l-systems
+    void generateLSystemTree(glm::vec3 startPos);
+    void generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count);
+    std::mt19937 m_rand;  // for random number
+    float randFloat(float minVal, float maxVal);
 };

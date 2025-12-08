@@ -1,12 +1,18 @@
 #ifndef SHAPEMANAGER_H
 #define SHAPEMANAGER_H
 
+#include "postprocessing.h"
+#include "skeletal_animation/animation.h"
+#include "skeletal_animation/animator.h"
+#include "skeletal_animation/model_animation.h"
+
 #include "cone.h"
 #include "cube.h"
 #include "sphere.h"
 #include "cylinder.h"
-#include "mesh.h"
 #include "utils/sceneparser.h"
+
+
 
 class ShapeManager
 {
@@ -23,6 +29,10 @@ public:
     GLuint getVao(const RenderShapeData& shapeData);
 
     int getVertexDataSize(const RenderShapeData& shapeData);
+
+    void updateAnimation(float deltaTime);
+    // void updateAnimation();
+    void drawAnimatedModel(QOpenGLWidget* widget, PostProcessor *postprocessor, GLuint shader);
 private:
     bool m_initialized = false;
 
@@ -35,6 +45,12 @@ private:
 
     // unordered map from meshfile to (Mesh) Shape objects
     std::unordered_map<std::string, Shape> meshMap;
+
+
+    // skeletal animation
+    Model m_model;
+    Animation m_animation;
+    Animator m_animator;
 };
 
 #endif // SHAPEMANAGER_H

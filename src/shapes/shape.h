@@ -11,11 +11,13 @@ using GetTypeSignature = auto()->PrimitiveType;
 // compute vertices using tessellation parameters
 using UpdateVertexDataSignature = auto(int param1, int param2)->void;
 using GetVertexDataSignature = auto()->std::shared_ptr<std::vector<GLfloat>>;
+using GetIBodySignature = auto(double mass)->glm::mat3;
 
 struct Shape {
     std::function<GetTypeSignature> getType;
     std::function<UpdateVertexDataSignature> updateVertexData;
     std::function<GetVertexDataSignature> getVertexData;
+    std::function<GetIBodySignature> Ibody;
 
     GLuint vbo;
     GLuint vao;
@@ -34,23 +36,38 @@ struct Shape {
         std::vector<GLfloat> vertData = *getVertexData();
         glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * vertData.size(), vertData.data(), GL_STATIC_DRAW);
 
+        int stride = 18 * sizeof(GLfloat) + 4 * sizeof(GLint);
         glBindVertexArray(vao);
+
+
         // position
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GL_FLOAT),
-                              reinterpret_cast<void*>(0));
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(0));
+
         // normal
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GL_FLOAT),
-                              reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(3 * sizeof(GLfloat)));
 
         // uv
         glEnableVertexAttribArray(2);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), reinterpret_cast<void*>(6 * sizeof(GLfloat)));
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(6 * sizeof(GLfloat)));
 
         // tangent
         glEnableVertexAttribArray(3);
-        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), reinterpret_cast<void*>(8 * sizeof(GLfloat)));
+        glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(8 * sizeof(GLfloat)));
+
+        // bitangent
+        glEnableVertexAttribArray(4);
+        glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(11 * sizeof(GLfloat)));
+
+        // boneIds
+        glEnableVertexAttribArray(5);
+        glVertexAttribIPointer(5, 4, GL_INT, stride, reinterpret_cast<void*>(14 * sizeof(GLfloat)));
+
+        // weights
+        glEnableVertexAttribArray(6);
+        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, stride, reinterpret_cast<void*>(14 * sizeof(GLfloat) + 4 * sizeof(GLint)));
+
 
         // unbind
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -71,6 +88,7 @@ struct Shape {
 
 void insertVec3(std::shared_ptr<std::vector<GLfloat>> data, const glm::vec3& v);
 void insertVec2(std::shared_ptr<std::vector<float>> data, glm::vec2& v);
+void insertTrivialSkeleton(std::shared_ptr<std::vector<GLfloat>> data);
 
 glm::vec3 sphericalToCartesian(float phi, float theta);
 glm::vec3 cylindricalToCartesian(float r, float theta, float y);

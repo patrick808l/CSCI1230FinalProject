@@ -4,6 +4,8 @@
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <iostream>
+#include "lsystem.h"
+#include "rigidbody.h"
 #include "settings.h"
 #include "vertexcreator.h"
 #include "utils/shaderloader.h"
@@ -24,6 +26,7 @@ Realtime::Realtime(QWidget *parent)
     m_keyMap[Qt::Key_A]       = false;
     m_keyMap[Qt::Key_S]       = false;
     m_keyMap[Qt::Key_D]       = false;
+    m_keyMap[Qt::Key_J]       = false;
     m_keyMap[Qt::Key_Control] = false;
     m_keyMap[Qt::Key_Space]   = false;
 
@@ -38,6 +41,8 @@ Realtime::Realtime(QWidget *parent)
         0.5, 0.5, 0.5, 1.0
     };
 
+    std::random_device rd;
+    m_rand.seed(rd());
     postprocessor = new PostProcessor();
 }
 
@@ -165,6 +170,9 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
     if (!settings.extraCredit1) {
         return;
     }
+    if (texIndex >= numShadowMaps) {
+        return;
+    }
 
     glm::vec3 lightPos;
     glm::mat4 depthProjMatrix;
@@ -207,9 +215,9 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
         glBindVertexArray(m_shapeManager.getVao(shapeData));
 
         GLint modelMatrixLoc = glGetUniformLocation(m_shadowmap_shader, "modelMatrix");
-        glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.ctm[0][0]);
+        glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.getMovedCTM()[0][0]);
 
-        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 11);
+        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 22);
 
         glBindVertexArray(0);
     }
@@ -326,18 +334,29 @@ void Realtime::paintGL() {
         lightIdx++;
     }
 
+
+    GLint viewMatrixLoc = glGetUniformLocation(m_default_shader, "viewMatrix");
+    GLint projectionMatrixLoc = glGetUniformLocation(m_default_shader, "projectionMatrix");
+    glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.getViewMatrix()[0][0]);
+    glUniformMatrix4fv(projectionMatrixLoc, 1, GL_FALSE, &m_camera.getProjMatrix()[0][0]);
+
+
     if (post_processing_enabled) postprocessor->bindInitFBO();
+
+    // rigged model
+    GLint isSkeletalMeshLoc = glGetUniformLocation(m_default_shader, "isSkeletalMesh");
+    glUniform1i(isSkeletalMeshLoc, true);
+    m_shapeManager.drawAnimatedModel(this, postprocessor, m_default_shader);
+    glUniform1i(isSkeletalMeshLoc, false);
+
+    // if (post_processing_enabled) postprocessor->bindInitFBO();
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
     for (RenderShapeData& shapeData : m_renderData.shapes) {
         glBindVertexArray(m_shapeManager.getVao(shapeData));
 
         GLint modelMatrixLoc = glGetUniformLocation(m_default_shader, "modelMatrix");
-        GLint viewMatrixLoc = glGetUniformLocation(m_default_shader, "viewMatrix");
-        GLint projectionMatrixLoc = glGetUniformLocation(m_default_shader, "projectionMatrix");
-        glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.ctm[0][0]);
-        glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.getViewMatrix()[0][0]);
-        glUniformMatrix4fv(projectionMatrixLoc, 1, GL_FALSE, &m_camera.getProjMatrix()[0][0]);
+        glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.getMovedCTM()[0][0]);
 
         // material constants
         GLint shininessLoc = glGetUniformLocation(m_default_shader, "shininess");
@@ -353,7 +372,7 @@ void Realtime::paintGL() {
         glUniform1f(m_blendLocation, shapeData.primitive.material.blend);
         activeTexture(shapeData.primitive.material);
 
-        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 11);
+        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 22);
 
         glBindVertexArray(0);
     }
@@ -383,6 +402,13 @@ void Realtime::parseScene() {
     }
 
     m_camera.updateCamData(m_renderData.cameraData);
+    m_camera.detach();
+    for (auto shape : this->m_renderData.shapes) {
+        if (shape.primitive.is_player) {
+            m_camera.attach(shape);
+            break;
+        }
+    }
     m_shapeManager.parseMeshes(this, m_renderData.shapes);
 
     m_sceneLoaded = true;
@@ -390,6 +416,7 @@ void Realtime::parseScene() {
 
 void Realtime::sceneChanged() {
     parseScene();
+    generateLSystemTreesRand(-1.5f, 1.5f, -1.5f, 1.5f, 3);
     createTextureAndNormal();
 
     update(); // asks for a PaintGL() call to occur
@@ -459,6 +486,7 @@ void Realtime::mouseMoveEvent(QMouseEvent *event) {
 void Realtime::timerEvent(QTimerEvent *event) {
     int elapsedms   = m_elapsedTimer.elapsed();
     float deltaTime = elapsedms * 0.001f;
+    this->t += deltaTime;
     m_elapsedTimer.restart();
 
     // Use deltaTime and m_keyMap here to move around
@@ -480,7 +508,30 @@ void Realtime::timerEvent(QTimerEvent *event) {
     if (m_keyMap[Qt::Key::Key_Control]) {
         m_camera.moveDown(deltaTime);
     }
+    if (m_keyMap[Qt::Key::Key_J]) {
+        // determine if cooldown is in effect
+        bool canJump = (this->lastJumpTime + this->jumpCooldown) < t;
+        if (canJump) {
+            lastJumpTime = t;
+            m_camera.jump(0.1, 20);
+        }
+    }
 
+    // tell shape manager to update skeletal animation
+    m_shapeManager.updateAnimation(deltaTime);
+
+    // step shapes forward
+    for (auto shape : this->m_renderData.shapes) {
+        if (shape.rb.has_value()) {
+            shape.rb.value()->step(deltaTime);
+        }
+    }
+    // collide and update momentums
+    for (auto shape : this->m_renderData.shapes) {
+        if (shape.rb.has_value()) {
+            shape.rb.value()->collide();
+        }
+    }
 
     update(); // asks for a PaintGL() call to occur
 }
@@ -557,6 +608,43 @@ void Realtime::activeTexture(const SceneMaterial& shapeMat){
         GLint m_bumpIsUsedLocation = glGetUniformLocation(m_default_shader, "myBumps.textureIsUsed");
         glUniform1i(m_bumpIsUsedLocation, false);
     }
+}
+
+/**
+ * @brief Helpers for L-System Generations
+ */
+// Generate a single L-System tree at the input vec3 position.
+void Realtime::generateLSystemTree(glm::vec3 startPos){
+    std::string seed = "F";
+    std::unordered_map<char, std::string> rules = {
+        { 'F', "F[+F][&F]F[-F][^F]F" }
+    };
+
+    float step = 0.5f;
+    float angle = glm::radians(45.f);
+    int loopCount = 2;
+
+    LSystem myLS(seed, rules, step, angle);
+    std::string genStr = myLS.generate(loopCount);
+    std::vector<RenderShapeData> myBranchShapes = myLS.interpret(genStr, startPos, settings.sceneFilePath);
+
+    for(auto& shape: myBranchShapes){
+        m_renderData.shapes.push_back(shape);
+    }
+}
+
+// Generate trees with random starting locations that falls within the range of x and z.
+void Realtime::generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count){
+    for(int i = 0; i < count; i++){
+        float x = randFloat(xStart, xEnd);
+        float z = randFloat(zStart, zEnd);
+        generateLSystemTree(glm::vec3(x, 1.0f, z));
+    }
+}
+
+float Realtime::randFloat(float minVal, float maxVal) {
+    std::uniform_real_distribution<float> dist(minVal, maxVal);
+    return dist(m_rand);
 }
 
 // DO NOT EDIT

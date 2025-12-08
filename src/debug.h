@@ -4,7 +4,6 @@
 
 namespace Debug
 {
-// Task 2: Add file name and line number parameters
 inline void glErrorCheck(const char* fileName, int lineNumber) {
     GLenum errorNumber = glGetError();
     while (errorNumber != GL_NO_ERROR) {

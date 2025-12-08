@@ -819,7 +819,7 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
     QStringList optionalFields = {
         "meshFile", "ambient", "diffuse", "specular", "reflective", "transparent", "shininess", "ior",
         "blend", "textureFile", "textureU", "textureV", "bumpMapFile", "bumpMapU", "bumpMapV",
-        "normalMapFile", "normalMapU", "normalMapV"};
+        "normalMapFile", "normalMapU", "normalMapV", "collide", "is_player", "energy_loss", "mass", "is_ground", "forces", "t_offset" };
 
     QStringList allFields = requiredFields + optionalFields;
     for (auto field : prim.keys()) {
@@ -878,6 +878,76 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
     else {
         std::cout << "unknown primitive type \"" << primType << "\"" << std::endl;
         return false;
+    }
+
+    primitive->t_offset = prim["t_offset"].toDouble(0);
+    primitive->collide = prim["collide"].toBool(false);
+    primitive->is_player = prim["is_player"].toBool(false);
+    primitive->energy_loss = prim["energy_loss"].toDouble(0);
+    primitive->mass = prim["mass"].toDouble(1);
+    primitive->is_ground = prim["is_ground"].toBool(true);
+    if (prim.contains("forces")) {
+        if (!prim["forces"].isArray()) {
+            std::cout << "primitive forces must be of type array" << std::endl;
+            return false;
+        }
+
+        // Parse a list of forces
+        QJsonArray forces = prim["forces"].toArray();
+        for (int i = 0; i < forces.size(); i++) {
+            if (!forces[i].isObject()) {
+                std::cout << "primitive forces[" << i << "] must be of type object" << std::endl;
+                return false;
+            }
+
+            // Parse a force
+            QJsonObject force = forces[i].toObject();
+            Force f;
+            if (!force.contains("type") || !force["type"].isString()) {
+                std::cout << "primitive forces[" << i << "] must have field called type as string" << std::endl;
+                return false;
+            }
+            if (!force.contains("translation") || !force["translation"].isArray()) {
+                std::cout << "primitive forces[" << i << "] must have field called translation as vec3" << std::endl;
+                return false;
+            }
+            if (!force.contains("torque") || !force["torque"].isArray()) {
+                std::cout << "primitive forces[" << i << "] must have field called torque as vec3" << std::endl;
+                return false;
+            }
+            if (force["type"].toString() == "constant") {
+                f.m_type = ForceType::constant;
+            } else if (force["type"].toString() == "impulse") {
+                f.m_type = ForceType::impulse;
+                f.t0 = force["t0"].toDouble(0);
+                f.t1 = force["t1"].toDouble(1);
+            } else if (force["type"].toString() == "periodic") {
+                f.m_type = ForceType::periodic;
+                f.period = force["period"].toDouble(1);;
+            } else {
+                std::cout << "primitive forces[" << i << "] must have field called type as constant, impulse, periodic" << std::endl;
+                return false;
+            }
+
+            QJsonArray translation = force["translation"].toArray();
+            QJsonArray torque = force["torque"].toArray();
+            if (translation.size() != 3 || torque.size() != 3) {
+                std::cout << "forces[" << i << "] must have translation/torque as vec3" << std::endl;
+                return false;
+            }
+
+            for (int i = 0; i < 3; i++) {
+                if (!translation[i].isDouble() || !torque[i].isDouble()) {
+                    std::cout << "translation/torque must contain floating-point values" << std::endl;
+                    return false;
+                }
+
+                f.trans[i] = translation[i].toDouble();
+                f.torque[i] = torque[i].toDouble();
+            }
+
+            primitive->forces.push_back(f);
+        }
     }
 
     if (prim.contains("ambient")) {

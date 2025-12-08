@@ -29,16 +29,19 @@ Shape Cone() {
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, normal1);
         insertVec2(vertexData, uvBL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         glm::vec3 normal2 = -glm::normalize(glm::cross(topLeft - topRight, bottomRight - topRight));
 
@@ -46,16 +49,19 @@ Shape Cone() {
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvTR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, normal2);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
     };
 
     MakeCapSliceSignature makeCapSlice = [=](float currentTheta, float nextTheta) {
@@ -114,32 +120,38 @@ Shape Cone() {
         insertVec3(vertexData, topLeftNorm);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, bottomRightNorm);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomLeft);
         insertVec3(vertexData, bottomLeftNorm);
         insertVec2(vertexData, uvBL);
         insertVec3(vertexData, tan1);
+        insertTrivialSkeleton(vertexData);
 
 
         insertVec3(vertexData, topLeft);
         insertVec3(vertexData, topLeftNorm);
         insertVec2(vertexData, uvTL);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, topRight);
         insertVec3(vertexData, topRightNorm);
         insertVec2(vertexData, uvTR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
 
         insertVec3(vertexData, bottomRight);
         insertVec3(vertexData, bottomRightNorm);
         insertVec2(vertexData, uvBR);
         insertVec3(vertexData, tan2);
+        insertTrivialSkeleton(vertexData);
     };
 
     GetRadiusSignature getRadius = [=](float y) {
@@ -191,6 +203,19 @@ Shape Cone() {
 
         .getVertexData = [=]() {
             return vertexData;
+        },
+
+        .Ibody = [=](double mass) {
+            double h2 = 1.0;
+            double r2 = 0.25;
+            double Ixx = (mass * h2) / 10.0f + (3.0f * mass * r2) / 20.0f;
+            double Iyy = Ixx;
+            double Izz = 0.3f * mass * r2;
+            return glm::mat3(
+                Ixx, 0, 0,
+                0, Iyy, 0,
+                0, 0, Izz
+            );
         }
     };
 }
