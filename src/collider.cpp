@@ -69,6 +69,7 @@ Collider::Collider(const ScenePrimitive& primitive, glm::mat4 matrix) {
     double x, y, z;
 
     switch(primitive.type) {
+    case PrimitiveType::PRIMITIVE_ANIMATED_MODEL:
     case PrimitiveType::PRIMITIVE_CUBE:
     case PrimitiveType::PRIMITIVE_CONE:
     case PrimitiveType::PRIMITIVE_CYLINDER:

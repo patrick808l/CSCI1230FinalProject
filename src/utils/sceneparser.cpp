@@ -3,11 +3,11 @@
 #include "scenefilereader.h"
 #include <glm/gtx/transform.hpp>
 
-glm::mat4 RenderShapeData::getCTM() {
+glm::mat4 RenderShapeData::getCTM()/* const */{
     return ctm;
 }
 
-glm::mat4 RenderShapeData::getMovedCTM() {
+glm::mat4 RenderShapeData::getMovedCTM()/* const */{
     if (rb.has_value()) {
         glm::mat4 move = rb.value()->movement_matrix();
         return ctm * move;

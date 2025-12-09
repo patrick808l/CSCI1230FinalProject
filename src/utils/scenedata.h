@@ -19,7 +19,8 @@ enum class PrimitiveType {
     PRIMITIVE_CONE,
     PRIMITIVE_CYLINDER,
     PRIMITIVE_SPHERE,
-    PRIMITIVE_MESH
+    PRIMITIVE_MESH,
+    PRIMITIVE_ANIMATED_MODEL
 };
 
 // Enum of the types of transformations that can be applied

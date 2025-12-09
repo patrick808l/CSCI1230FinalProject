@@ -16,12 +16,15 @@ struct RenderShapeData {
     std::optional<RigidBody*> rb; // a rigid body to describe how to shape moves
 
     /// Get the raw cumulative transform matrix, w/o rigid body transformations
-    glm::mat4 getCTM();
+    glm::mat4 getCTM()/* const*/;
     /// Get the cumulative transform matrix with the rigid body transformation applied to it
-    glm::mat4 getMovedCTM();
+    glm::mat4 getMovedCTM()/* const*/;
 
     RenderShapeData(ScenePrimitive primitive, glm::mat4 ctm);
     RenderShapeData(ScenePrimitive primitive, RigidBody* rb, glm::mat4 ctm);
+
+    // default constructor
+    RenderShapeData() {}
 private:
     glm::mat4 ctm; // the cumulative transformation matrix
 };

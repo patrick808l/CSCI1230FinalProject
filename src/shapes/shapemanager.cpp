@@ -38,7 +38,7 @@ void ShapeManager::finish(QOpenGLWidget* widget) {
  * @brief create and initialize unique mesh objects in the scene. buffer data into respectiev vbos.
  * @param shapes is a vector of RenderShapeData
  */
-void ShapeManager::parseMeshes(QOpenGLWidget *widget, const std::vector<RenderShapeData>& shapes) {
+void ShapeManager::parseMeshes(QOpenGLWidget *widget, std::vector<RenderShapeData>& shapes) {
     for (const RenderShapeData& shapeData : shapes) {
         if (shapeData.primitive.type == PrimitiveType::PRIMITIVE_MESH &&
                 !meshMap.contains(shapeData.primitive.meshfile)) {
@@ -47,6 +47,12 @@ void ShapeManager::parseMeshes(QOpenGLWidget *widget, const std::vector<RenderSh
             meshMap[shapeData.primitive.meshfile].updateVertexData(0, 0);
             meshMap[shapeData.primitive.meshfile].initGLObjects(widget);
             meshMap[shapeData.primitive.meshfile].bufferData(widget);
+        }
+
+        if (shapeData.primitive.type == PrimitiveType::PRIMITIVE_ANIMATED_MODEL) {
+            // store shapeData or primitive or rigid body in a field where transform matrix can be accessed
+            m_modelShapeData = shapeData;
+            m_playerIsModel = true;
         }
     }
 }
@@ -93,6 +99,8 @@ const Shape& ShapeManager::getShape(const RenderShapeData& shapeData) {
         } else {
             throw std::runtime_error("getShape: tried to get mesh that doesn't exist");
         }
+    case PrimitiveType::PRIMITIVE_ANIMATED_MODEL:
+        throw std::runtime_error("getShape: called on animated model which does not have a Shape");
     }
 }
 
@@ -138,9 +146,16 @@ void ShapeManager::drawAnimatedModel(QOpenGLWidget* widget, PostProcessor* postp
         glUniformMatrix4fv(finalBonesMatrixLoc, 1, GL_FALSE, &transforms[i][0][0]);
     }
 
-    glm::mat4 modelMatrix{1.f};
-    modelMatrix = glm::translate(modelMatrix, glm::vec3{0.f, 2.f, -5.f});
-    // modelMatrix = glm::scale(modelMatrix, glm::vec3{1.f, 1.f, 1.f});
+    glm::mat4 modelMatrix;
+    if (m_playerIsModel) {
+        modelMatrix = m_modelShapeData.getMovedCTM();
+        // rotate so model faces away from the camera
+        modelMatrix = glm::rotate(modelMatrix, 90.f, glm::vec3{0, 1, 0});
+    } else {
+        modelMatrix = glm::mat4{1.f};
+        modelMatrix = glm::translate(modelMatrix, glm::vec3{0.f, 2.f, -5.f});
+        modelMatrix = glm::scale(modelMatrix, glm::vec3{1.f, 1.f, 1.f});
+    }
     GLint modelMatrixLoc = glGetUniformLocation(shader, "modelMatrix");
     glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
 

@@ -11,7 +11,9 @@
 RigidBody::RigidBody(const ScenePrimitive& shape, std::optional<Collider*> collider, std::vector<Collider*>* others) {
     glm::mat3 Ibody;
     switch (shape.type) {
+    // use cube for animated model
     case PrimitiveType::PRIMITIVE_CUBE:
+    case PrimitiveType::PRIMITIVE_ANIMATED_MODEL:
         Ibody = Cube().Ibody(shape.mass);
         break;
     case PrimitiveType::PRIMITIVE_CONE:

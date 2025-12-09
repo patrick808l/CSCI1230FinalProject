@@ -874,8 +874,9 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
 
         std::filesystem::path relativePath(prim["meshFile"].toString().toStdString());
         primitive->meshfile = (basepath / relativePath).string();
-    }
-    else {
+    } else if (primType == "animatedModel") {
+        primitive->type = PrimitiveType::PRIMITIVE_ANIMATED_MODEL;
+    } else {
         std::cout << "unknown primitive type \"" << primType << "\"" << std::endl;
         return false;
     }

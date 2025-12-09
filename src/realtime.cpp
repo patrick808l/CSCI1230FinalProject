@@ -212,6 +212,11 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
     for (RenderShapeData& shapeData : m_renderData.shapes) {
+        // don't render model in main loop
+        if (shapeData.primitive.type == PrimitiveType::PRIMITIVE_ANIMATED_MODEL) {
+            continue;
+        }
+
         glBindVertexArray(m_shapeManager.getVao(shapeData));
 
         GLint modelMatrixLoc = glGetUniformLocation(m_shadowmap_shader, "modelMatrix");
@@ -353,6 +358,11 @@ void Realtime::paintGL() {
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
     for (RenderShapeData& shapeData : m_renderData.shapes) {
+        // don't render model in main loop
+        if (shapeData.primitive.type == PrimitiveType::PRIMITIVE_ANIMATED_MODEL) {
+            continue;
+        }
+
         glBindVertexArray(m_shapeManager.getVao(shapeData));
 
         GLint modelMatrixLoc = glGetUniformLocation(m_default_shader, "modelMatrix");
@@ -513,7 +523,7 @@ void Realtime::timerEvent(QTimerEvent *event) {
     }
 
     // tell shape manager to update skeletal animation
-    // m_shapeManager.updateAnimation(deltaTime);
+    m_shapeManager.updateAnimation(deltaTime);
 
     // step shapes forward
     for (auto shape : this->m_renderData.shapes) {
@@ -521,6 +531,7 @@ void Realtime::timerEvent(QTimerEvent *event) {
             shape.rb.value()->step(deltaTime);
         }
     }
+
     // collide and update momentums
     for (auto shape : this->m_renderData.shapes) {
         if (shape.rb.has_value()) {

@@ -24,7 +24,7 @@ public:
 
     void updateShapeVertices(QOpenGLWidget* widget, int param1, int param2);
 
-    void parseMeshes(QOpenGLWidget *widget, const std::vector<RenderShapeData>& shapes);
+    void parseMeshes(QOpenGLWidget *widget, std::vector<RenderShapeData> &shapes);
 
     GLuint getVao(const RenderShapeData& shapeData);
 
@@ -51,6 +51,8 @@ private:
     Model m_model;
     Animation m_animation;
     Animator m_animator;
+    RenderShapeData m_modelShapeData;
+    bool m_playerIsModel = false;
 };
 
 #endif // SHAPEMANAGER_H
