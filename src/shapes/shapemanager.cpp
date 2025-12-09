@@ -130,12 +130,8 @@ void ShapeManager::updateAnimation(float deltaTime) {
     m_animator.UpdateAnimation(deltaTime);
 }
 
-/**
- * @brief ShapeManager::drawAnimatedModel
- * @param widget allows access to makeCurrent for openGL context
- * @param shader is the default shader program used for rendering the scene
- */
-void ShapeManager::drawAnimatedModel(QOpenGLWidget* widget, PostProcessor* postprocessor, GLuint shader) {
+
+void ShapeManager::prepareModelUniforms(QOpenGLWidget* widget, GLuint shader) {
     widget->makeCurrent();
     glUseProgram(shader);
 
@@ -158,6 +154,19 @@ void ShapeManager::drawAnimatedModel(QOpenGLWidget* widget, PostProcessor* postp
     }
     GLint modelMatrixLoc = glGetUniformLocation(shader, "modelMatrix");
     glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
+}
 
-    m_model.Draw(postprocessor, shader);
+/**
+ * @brief ShapeManager::drawAnimatedModelDefault
+ * @param widget allows access to makeCurrent for openGL context
+ * @param shader is the default shader program used for rendering the scene
+ */
+void ShapeManager::drawAnimatedModelDefault(QOpenGLWidget* widget, PostProcessor* postprocessor, bool post_processing_enabled, GLuint shader) {
+    prepareModelUniforms(widget, shader);
+    m_model.Draw(postprocessor, post_processing_enabled, shader);
+}
+
+void ShapeManager::drawAnimatedModelShadow(QOpenGLWidget* widget, GLuint shadowFBO, GLuint shader) {
+    prepareModelUniforms(widget, shader);
+    m_model.DrawShadow(shadowFBO, shader);
 }

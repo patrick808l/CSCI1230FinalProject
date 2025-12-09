@@ -588,6 +588,7 @@
             0,
             -1
           ],
+          "shadows": true,
           "angle": 30.0,
           "penumbra": 20.0,
           "attenuationCoeff": [0.8, 0.05, 0.0]
@@ -619,6 +620,7 @@
             0,
             1
           ],
+          "shadows": true,
           
           "penumbra": 0,
           "angle": 0,

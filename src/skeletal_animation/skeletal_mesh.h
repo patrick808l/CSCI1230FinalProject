@@ -58,9 +58,10 @@ public:
     }
 
     // render the mesh
-    void Draw(PostProcessor* postprocessor, GLuint shader)
+    void Draw(PostProcessor* postprocessor, bool post_processing_enabled, GLuint shader)
     {
-        postprocessor->bindInitFBO();
+        if (post_processing_enabled) postprocessor->bindInitFBO();
+
         // bind appropriate textures
         unsigned int diffuseNr  = 1;
         unsigned int specularNr = 1;
@@ -96,6 +97,17 @@ public:
 
         // always good practice to set everything back to defaults once configured.
         glActiveTexture(GL_TEXTURE0);
+    }
+
+
+    void DrawShadow(GLuint shadowFBO, GLuint shader) {
+        glBindFramebuffer(GL_FRAMEBUFFER, shadowFBO);
+        glViewport(0, 0, 2048, 2048);
+
+        // draw mesh
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
     }
 
 private:

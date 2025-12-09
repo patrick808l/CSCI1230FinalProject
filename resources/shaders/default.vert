@@ -8,7 +8,7 @@ layout(location = 4) in vec3 bitangent;
 layout(location = 5) in ivec4 boneIds;
 layout(location = 6) in vec4 weights;
 
-const int numShadowMaps = 1;
+const int numShadowMaps = 2;
 
 out vec4 posWorldSpace;
 out vec3 normalWorldSpace;

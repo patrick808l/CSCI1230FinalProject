@@ -1,6 +1,6 @@
 #version 330 core
 
-const int numShadowMaps = 1;
+const int numShadowMaps = 2;
 
 in vec4 posWorldSpace;
 in vec3 normalWorldSpace;
@@ -38,8 +38,9 @@ uniform ShapeTexture myNormals;
 uniform ShapeTexture myBumps;
 uniform float blend;
 
-const float bias = 0.01;
-const float shadowVisibility = 0.0;
+// const float bias = 0.0015;
+const float bias = 0.003;
+const float shadowVisibility = 0.2;
 
 float computeShadowVisibility(int i, vec4 worldPos) {
     vec4 sc = depthBiasVPs[i] * worldPos;
@@ -89,7 +90,6 @@ uniform sampler2D texture_diffuse1;
 void main() {
     if (isSkeletalMesh) {
         fragColor = texture(texture_diffuse1, uv);
-        // fragColor = vec4(uv[0], uv[1], 0, 1);
         return;
     }
 

@@ -587,6 +587,7 @@
             1,
             1
           ],
+          "shadows": true,
           
           "penumbra": 0,
           "angle": 0,

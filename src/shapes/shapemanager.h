@@ -31,8 +31,9 @@ public:
     int getVertexDataSize(const RenderShapeData& shapeData);
 
     void updateAnimation(float deltaTime);
-    // void updateAnimation();
-    void drawAnimatedModel(QOpenGLWidget* widget, PostProcessor *postprocessor, GLuint shader);
+    void prepareModelUniforms(QOpenGLWidget* widget, GLuint shader);
+    void drawAnimatedModelDefault(QOpenGLWidget* widget, PostProcessor *postprocessor, bool post_processing_enabled, GLuint shader);
+    void drawAnimatedModelShadow(QOpenGLWidget* widget, GLuint shadowFBO, GLuint shader);
 private:
     bool m_initialized = false;
 

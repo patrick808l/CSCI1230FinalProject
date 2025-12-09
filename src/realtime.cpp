@@ -210,6 +210,12 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
     glViewport(0, 0, shadowWidth, shadowHeight);
     glClear(GL_DEPTH_BUFFER_BIT);
 
+    // skeletal mesh
+    GLint isSkeletalMeshLoc = glGetUniformLocation(m_shadowmap_shader, "isSkeletalMesh");
+    glUniform1i(isSkeletalMeshLoc, true);
+    m_shapeManager.drawAnimatedModelShadow(this, m_shadowFBO, m_shadowmap_shader);
+    glUniform1i(isSkeletalMeshLoc, false);
+
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
     for (RenderShapeData& shapeData : m_renderData.shapes) {
         // don't render model in main loop
@@ -351,7 +357,7 @@ void Realtime::paintGL() {
     // rigged model
     GLint isSkeletalMeshLoc = glGetUniformLocation(m_default_shader, "isSkeletalMesh");
     glUniform1i(isSkeletalMeshLoc, true);
-    m_shapeManager.drawAnimatedModel(this, postprocessor, m_default_shader);
+    m_shapeManager.drawAnimatedModelDefault(this, postprocessor, post_processing_enabled, m_default_shader);
     glUniform1i(isSkeletalMeshLoc, false);
 
     // if (post_processing_enabled) postprocessor->bindInitFBO();

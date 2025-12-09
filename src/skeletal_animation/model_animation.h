@@ -55,9 +55,15 @@ public:
 
 
     // draws the model, and thus all its meshes
-    void Draw(PostProcessor* postprocessor, GLuint shader) {
+    void Draw(PostProcessor* postprocessor, bool post_processing_enabled, GLuint shader) {
         for (unsigned int i = 0; i < meshes.size(); i++) {
-            meshes[i].Draw(postprocessor, shader);
+            meshes[i].Draw(postprocessor, post_processing_enabled, shader);
+        }
+    }
+
+    void DrawShadow(GLuint shadowFBO, GLuint shader) {
+        for (unsigned int i = 0; i < meshes.size(); i++) {
+            meshes[i].DrawShadow(shadowFBO, shader);
         }
     }
 
