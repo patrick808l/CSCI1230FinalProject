@@ -228,7 +228,7 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
         GLint modelMatrixLoc = glGetUniformLocation(m_shadowmap_shader, "modelMatrix");
         glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &shapeData.getMovedCTM()[0][0]);
 
-        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 22);
+        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / VAO_SIZE);
 
         glBindVertexArray(0);
     }
@@ -388,7 +388,7 @@ void Realtime::paintGL() {
         glUniform1f(m_blendLocation, shapeData.primitive.material.blend);
         activeTexture(shapeData.primitive.material);
 
-        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / 22);
+        glDrawArrays(GL_TRIANGLES, 0, m_shapeManager.getVertexDataSize(shapeData) / VAO_SIZE);
 
         glBindVertexArray(0);
     }
@@ -627,6 +627,8 @@ void Realtime::activeTexture(const SceneMaterial& shapeMat){
  */
 // Generate a single L-System tree at the input vec3 position.
 void Realtime::generateLSystemTree(glm::vec3 startPos){
+    if (!l_systems_enabled) return;
+
     std::string seed = "F";
     std::unordered_map<char, std::string> rules = {
         { 'F', "F[+F][&F]F[-F][^F]F" }
@@ -647,6 +649,8 @@ void Realtime::generateLSystemTree(glm::vec3 startPos){
 
 // Generate trees with random starting locations that falls within the range of x and z.
 void Realtime::generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count){
+    if (!l_systems_enabled) return;
+
     for(int i = 0; i < count; i++){
         float x = randFloat(xStart, xEnd);
         float z = randFloat(zStart, zEnd);

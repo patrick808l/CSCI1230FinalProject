@@ -69,8 +69,8 @@ public:
         unsigned int heightNr   = 1;
         for(unsigned int i = 0; i < textures.size(); i++)
         {
-            // use texture slots 12,13,...
-            int texOffset = 12;
+            // use texture slots 6,7,...
+            int texOffset = 6;
             glActiveTexture(GL_TEXTURE0 + texOffset + i); // active proper texture unit before binding
             // retrieve texture number (the N in diffuse_textureN)
             string number;

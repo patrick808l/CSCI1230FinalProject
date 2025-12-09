@@ -58,6 +58,7 @@
             -1,
             0.5
           ],
+          "shadows": true,
           
           "penumbra": 0,
           "angle": 0,

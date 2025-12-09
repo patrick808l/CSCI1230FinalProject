@@ -1,0 +1,124 @@
+{
+  
+  "name": "default",
+  "globalData": {
+    "ambientCoeff": 1,
+    "diffuseCoeff": 1,
+    "specularCoeff": 1,
+    "transparentCoeff": 0
+  },
+  "cameraData": {
+    "position": [
+      0,
+      0,
+      5
+    ],
+    "up": [
+      0,
+      1,
+      0
+    ],
+    "heightAngle": 45,
+    "look": [
+      0,
+      0,
+      -1
+    ]
+  },
+  "groups": [
+    {
+      
+      "name": "cyl",
+      "translate": [
+        0,
+        1,
+        -2.5
+      ],
+      "rotate": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        2,
+        0.5
+      ],
+      "primitives": [
+        {
+          "type": "cylinder",
+          "diffuse": [
+            0.8,
+            0.2,
+            0.8
+          ],
+          "specular": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "ambient": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "shininess": 1}
+      ]
+    },
+    {
+      "name": "Lights",
+      "lights": [
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [-0.75,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [-0.65,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [-0.55,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [-0.45,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [-0.35,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [-0.25,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [-0.15,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [-0.05,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [0.05,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [0.15,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [0.25,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [0.35,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [0.45,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [0.55,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [0.65,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]},
+        {"type": "directional", "color": [0.25,0.25,0.25], "direction": [0.75,-0.5,1], "shadows": true, "penumbra": 0, "angle": 0, "attenuationCoeff": [0,0,0]}
+      ],
+      "translate": [
+        0,
+        0,
+        0
+      ]},
+    {
+      "name": "A lonely cube",
+      "primitives": [
+        {
+          "diffuse": [
+            1,
+            0,
+            0
+          ],
+          "specular": [
+            1,
+            1,
+            1
+          ],
+          "shininess": 10,
+          "type": "cube"}
+      ],
+      "translate": [
+        0,
+        0,
+        0
+      ],
+      
+      "scale": [
+        6,
+        0.25,
+        6
+      ]
+    }
+  ]
+}

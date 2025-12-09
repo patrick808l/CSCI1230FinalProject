@@ -149,7 +149,7 @@ void ShapeManager::prepareModelUniforms(QOpenGLWidget* widget, GLuint shader) {
         modelMatrix = glm::rotate(modelMatrix, 90.f, glm::vec3{0, 1, 0});
     } else {
         modelMatrix = glm::mat4{1.f};
-        modelMatrix = glm::translate(modelMatrix, glm::vec3{0.f, 2.f, -5.f});
+        modelMatrix = glm::translate(modelMatrix, glm::vec3{0.f, -5.f, -5.f});
         modelMatrix = glm::scale(modelMatrix, glm::vec3{1.f, 1.f, 1.f});
     }
     GLint modelMatrixLoc = glGetUniformLocation(shader, "modelMatrix");

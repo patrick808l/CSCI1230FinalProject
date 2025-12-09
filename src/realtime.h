@@ -75,18 +75,19 @@ private:
 
     GLuint m_default_shader;
     GLuint m_shadowmap_shader;
+    const int VAO_SIZE = 22;
 
     void shadowMap(const SceneLightData& lightData, int lightIndex);
     bool m_haveMadeFBO = false;
     void makeFBO();
 
-    const static int numShadowMaps = 2;
+    const static int numShadowMaps = 16;
     GLuint m_depthTextures[numShadowMaps];
     GLuint m_shadowFBO;
     // int shadowWidth = 1024;
     // int shadowHeight = 1024;
-    int shadowWidth = 2048;
-    int shadowHeight = 2048;
+    const int shadowWidth = 2048;
+    const int shadowHeight = 2048;
 
     glm::mat4 m_lightOrthoMatrix;
     glm::mat4 m_lightPerspectiveMatrix;
@@ -104,6 +105,7 @@ private:
     void activeTexture(const SceneMaterial& shapeMat);
 
     // l-systems
+    bool l_systems_enabled = false;
     void generateLSystemTree(glm::vec3 startPos);
     void generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count);
     std::mt19937 m_rand;  // for random number

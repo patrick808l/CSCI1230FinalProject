@@ -1,6 +1,6 @@
 #version 330 core
 
-const int numShadowMaps = 2;
+const int numShadowMaps = 16;
 
 in vec4 posWorldSpace;
 in vec3 normalWorldSpace;
