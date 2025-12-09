@@ -156,7 +156,7 @@ void MainWindow::initialize() {
     ec2->setChecked(false);
 
     ec3 = new QCheckBox();
-    ec3->setText(QStringLiteral("Extra Credit 3"));
+    ec3->setText(QStringLiteral("L-System Trees"));
     ec3->setChecked(false);
 
     ec4 = new QCheckBox();

@@ -194,8 +194,8 @@ void LSystem::addLeaf(std::vector<RenderShapeData>& branches,
 
     glm::vec3 leafCenter = newPos;
     float leafLength = 0.35f;
-    float leafWidth = 0.55f;
-    float leafThickness = 0.37f;
+    float leafWidth = 0.75f;
+    float leafThickness = 0.57f;
 
     glm::mat4 Sleaf = glm::scale(glm::mat4(1.f),
                                  glm::vec3(leafWidth, leafLength, leafThickness));
