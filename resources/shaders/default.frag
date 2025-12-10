@@ -158,9 +158,8 @@ void main() {
         float NdotL = dot(normal, vec3(dirToLight));
         if (NdotL < 0) continue;
 
-        //vec4 diffuseTerm = kd * cDiffuse * NdotL;
         vec4 diffuse = blendTex();
-        vec4 diffuseTerm = diffuse * NdotL;
+        vec4 diffuseTerm = kd * diffuse * NdotL;
 
         vec3 reflectedLightDir = reflect(vec3(-dirToLight), normalize(normalWorldSpace));
         float RdotV = dot(reflectedLightDir, vec3(dirToCam));

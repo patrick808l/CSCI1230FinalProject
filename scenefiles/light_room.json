@@ -105,11 +105,11 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
+                  "color": [2.0, 2.0, 2.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
-                  "penumbra": 90,
+                  "penumbra": 30,
                   "shadows": true
                 },
                 {
@@ -129,11 +129,11 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
+                  "color": [2.0, 2.0, 2.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
-                  "penumbra": 90
+                  "penumbra": 30
                 },
                 {
                   "type": "spot",
@@ -151,11 +151,11 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
+                  "color": [2.0, 2.0, 2.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
-                  "penumbra": 90
+                  "penumbra": 30
                 },
                 {
                   "type": "spot",
@@ -173,11 +173,11 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
+                  "color": [2.0, 2.0, 2.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
-                  "penumbra": 90,
+                  "penumbra": 30,
                   "shadows": true
                 },
                 {
@@ -197,11 +197,11 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [10.0, 10.0, 10.0],
+                  "color": [2.0, 2.0, 2.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
-                  "penumbra": 90,
+                  "penumbra": 30,
                   "shadows": true
                 },
                 {
@@ -241,7 +241,7 @@
     },
     {
       "name": "Proto_Shelf",
-      "translate": [-7, -1.02, 0],
+      "translate": [-3, -1.02, -2],
       "groups": [
         {
           "name": "Shelf_Body",
@@ -1342,20 +1342,6 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "FloatingSphere",
-      "translate": [0, -0.5, 0],
-      "scale": [0.5, 0.5, 0.5],
-      "primitives": [
-        {
-          "type": "sphere",
-          "ambient": [0.2, 0.2, 0.2],
-          "diffuse": [0.7, 0.7, 0.75],
-          "specular": [1.0, 1.0, 1.0],
-          "shininess": 40
         }
       ]
     }

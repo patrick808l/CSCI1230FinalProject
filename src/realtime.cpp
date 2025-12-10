@@ -185,13 +185,9 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
         depthViewMatrix = getLightViewMatrix(lightPos, -lightData.dir, false);
         break;
     case LightType::LIGHT_SPOT:
-        lightPos = lightData.pos;
-        depthProjMatrix = m_lightPerspectiveMatrix;
-        depthViewMatrix = getLightViewMatrix(lightPos, -lightData.dir, true);
+        depthProjMatrix = glm::perspective(lightData.angle, (float)shadowWidth / shadowHeight, 1.f, 50.f);
+        depthViewMatrix = getLightViewMatrix(lightData.pos, -lightData.dir, true);
         break;
-    default:
-        // shadow maps not implemented for point lights
-        return;
     }
 
     glUseProgram(m_shadowmap_shader);
@@ -304,7 +300,7 @@ void Realtime::paintGL() {
                 depthViewMatrix = getLightViewMatrix(lightPos, -lightData.dir, false);
             }
             else if (lightData.type == LightType::LIGHT_SPOT) {
-                depthProjMatrix = m_lightPerspectiveMatrix;
+                depthProjMatrix = glm::perspective(lightData.angle, (float)shadowWidth / shadowHeight, 1.f, 50.f);
                 depthViewMatrix = getLightViewMatrix(lightData.pos, -lightData.dir, true);
             }
 
