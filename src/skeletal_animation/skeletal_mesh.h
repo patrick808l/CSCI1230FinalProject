@@ -73,7 +73,7 @@ public:
         unsigned int specularNr = 1;
         unsigned int normalNr   = 1;
         unsigned int heightNr   = 1;
-        std::cout << "skeletal_mesh Draw textures.size()=" << textures.size() << std::endl;
+        // std::cout << "skeletal_mesh Draw textures.size()=" << textures.size() << std::endl;
         for(unsigned int i = 0; i < textures.size(); i++)
         {
             // use texture slots 3,4,...
@@ -82,7 +82,7 @@ public:
             // retrieve texture number (the N in diffuse_textureN)
             string number;
             string name = textures[i].type;
-            std::cout << "binding texture " << name << " to slot " << (i+3) << std::endl;
+            // std::cout << "binding texture " << name << " to slot " << (i+3) << std::endl;
             if(name == "texture_diffuse")
                 number = std::to_string(diffuseNr++);
             else if(name == "texture_specular")

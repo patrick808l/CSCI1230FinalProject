@@ -46,7 +46,8 @@ public:
             m_CurrentTime = fmod(m_CurrentTime, CurrentAnimation->GetDuration() * m_durationModifier);
 
             // switch to new animation if one is queued and this animation recently finished
-            if (m_newAnimationQueued && prevTime >= m_CurrentTime) {
+            if (m_newAnimationQueued && prevTime > m_CurrentTime) {
+                // std::cout << "switch to queued animation prevTime=" << prevTime << ", curTime=" << m_CurrentTime << std::endl;
                 CurrentAnimation = m_QueuedAnimation;
                 m_CurrentTime = 0.0;
                 m_newAnimationQueued = false;
@@ -62,7 +63,7 @@ public:
      * @param pAnimation is only queued if it is different from the current and queued animations
      */
     void QueueAnimation(Animation* pAnimation) {
-        if (pAnimation != m_QueuedAnimation && pAnimation != CurrentAnimation) {
+        if (!m_newAnimationQueued && pAnimation != m_QueuedAnimation && pAnimation != CurrentAnimation) {
             m_QueuedAnimation = pAnimation;
             m_newAnimationQueued = true;
         }
@@ -70,7 +71,8 @@ public:
 
     /**
      * @brief force a new animation to take effect immediately,
-     * unless it is already the current animation
+     * unless it is already the current animation.
+     * get rid of any queued animation.
      * @param pAnimation
      */
     void ForceAnimation(Animation* pAnimation) {
@@ -78,6 +80,8 @@ public:
             CurrentAnimation = pAnimation;
             m_CurrentTime = 0.0f;
         }
+        m_QueuedAnimation = nullptr;
+        m_newAnimationQueued = false;
     }
 
     void CalculateBoneTransform(const AssimpNodeData* node, glm::mat4 parentTransform) {
