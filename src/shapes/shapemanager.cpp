@@ -232,6 +232,7 @@ void ShapeManager::setAnimation(std::string animationName) {
             queueNewAnimation(11);
         } else if (animationName == "eat") {
             forceNewAnimation(3);
+            queueNewAnimation(11);
         } else if (animationName == "idle 2") {
             forceNewAnimation(9);
             queueNewAnimation(11);
