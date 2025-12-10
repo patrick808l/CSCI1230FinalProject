@@ -247,20 +247,29 @@ void Camera::moveDown(float deltaTime) {
     }
 }
 
-void Camera::jump(double length, double strength) {
+bool Camera::isOnGround() {
+    if (!attached) {
+        return false;
+    }
+
+    // scan the directional bans to know if we are on the ground
+    for (auto dir : body->collider.value()->banned_dirs) {
+        if (dir.second.y < -0.99) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * @return true if jump was executed, false if not
+ */
+bool Camera::jump(double length, double strength) {
     if (attached) {
         if (body->collider.has_value()) {
-            // scan the directional bans to know if we are on the ground
-            bool is_on_ground = false;
-            for (auto dir : body->collider.value()->banned_dirs) {
-                if (dir.second.y < -0.99) {
-                    is_on_ground = true;
-                    break;
-                }
-            }
             // allow the jump if on the ground
-            if (!is_on_ground) {
-                return;
+            if (!isOnGround()) {
+                return false;
             }
         }
 
@@ -273,7 +282,7 @@ void Camera::jump(double length, double strength) {
                     body->forces.pop_back();
                 } else {
                     // wait for force to finish before adding another one
-                    return;
+                    return false;
                 }
             }
         }
@@ -290,7 +299,10 @@ void Camera::jump(double length, double strength) {
         f.torque = glm::vec3(0, 0, 0);
         f.is_dynamic = true;
         this->body->forces.push_back(f);
+
+        return true;
     }
+    return true;
 }
 
 /**

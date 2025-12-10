@@ -93,6 +93,11 @@ void Realtime::initializeGL() {
     }
     std::cout << "Initialized GL: Version " << glewGetString(GLEW_VERSION) << std::endl;
 
+    GLint numTextureUnits;
+    glGetIntegerv(GL_MAX_TEXTURE_UNITS, &numTextureUnits);
+    std::cout << "texture slots available per shader stage: " << numTextureUnits << std::endl;
+
+
     // Allows OpenGL to draw objects appropriately on top of one another
     glEnable(GL_DEPTH_TEST);
     // Tells OpenGL to only draw the front face
@@ -110,7 +115,7 @@ void Realtime::initializeGL() {
         ":/resources/shaders/shadowmap.frag"
     );
 
-    makeFBO();
+    makeShadowFBO();
 
     m_shapeManager.init(this);
     m_shapeManager.updateShapeVertices(this, settings.shapeParameter1, settings.shapeParameter2);
@@ -124,7 +129,7 @@ void Realtime::initializeGL() {
 /**
  * @brief make framebuffer and depth textures for shadow mapping
  */
-void Realtime::makeFBO() {
+void Realtime::makeShadowFBO() {
     this->makeCurrent();
 
     if (m_haveMadeFBO) {
@@ -209,7 +214,7 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
     // skeletal mesh
     GLint isSkeletalMeshLoc = glGetUniformLocation(m_shadowmap_shader, "isSkeletalMesh");
     glUniform1i(isSkeletalMeshLoc, true);
-    m_shapeManager.drawAnimatedModelShadow(this, m_shadowFBO, m_shadowmap_shader);
+    m_shapeManager.drawAnimatedModelShadow(this, m_shadowFBO, shadowWidth, shadowHeight, m_shadowmap_shader);
     glUniform1i(isSkeletalMeshLoc, false);
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
@@ -401,7 +406,7 @@ void Realtime::resizeGL(int w, int h) {
     // Students: anything requiring OpenGL calls when the program starts should be done here
     m_camera.init(m_renderData.cameraData, w, h);
 
-    makeFBO();
+    makeShadowFBO();
 
     postprocessor->onResize(w * m_devicePixelRatio, h * m_devicePixelRatio);
 }
@@ -503,12 +508,21 @@ void Realtime::timerEvent(QTimerEvent *event) {
     float deltaTime = elapsedms * 0.001f;
     m_elapsedTimer.restart();
 
+    bool moving = false;
     // Use deltaTime and m_keyMap here to move around
     if (m_keyMap[Qt::Key::Key_W]) {
         m_camera.moveForward(deltaTime);
+        if (m_camera.isOnGround()) {
+            m_shapeManager.setAnimation("trot");
+            moving = true;
+        }
     }
     if (m_keyMap[Qt::Key::Key_S]) {
         m_camera.moveBackward(deltaTime);
+        if (m_camera.isOnGround()) {
+            m_shapeManager.setAnimation("walk backward");
+            moving = true;
+        }
     }
     if (m_keyMap[Qt::Key::Key_A]) {
         m_camera.moveLeft(deltaTime);
@@ -524,21 +538,39 @@ void Realtime::timerEvent(QTimerEvent *event) {
     }
     if (m_keyMap[Qt::Key::Key_J]) {
         // determine if cooldown is in effect
-        m_camera.jump(0.1, 40);
+        if (m_camera.jump(0.1, 40)) {
+            m_shapeManager.setAnimation("jump");
+        }
     }
 
+    if (m_camera.isOnGround() && m_shapeManager.getCurrentAnimationName() != "jump" && !moving) {
+        m_shapeManager.setAnimation("idle");
+    }
+
+
     // tell shape manager to update skeletal animation
-    m_shapeManager.updateAnimation(deltaTime);
+    m_shapeManager.advanceCurAnimation(deltaTime);
+
+    // change animation (TESTING)
+    if (m_keyMap[Qt::Key::Key_T]) {
+        m_shapeManager.setAnimation("trot");
+    }
+    if (m_keyMap[Qt::Key::Key_G]) {
+        m_shapeManager.setAnimation("gallop");
+    }
+    if (m_keyMap[Qt::Key::Key_I]) {
+        m_shapeManager.setAnimation("idle");
+    }
 
     // step shapes forward
-    for (auto shape : this->m_renderData.shapes) {
+    for (RenderShapeData& shape : this->m_renderData.shapes) {
         if (shape.rb.has_value()) {
             shape.rb.value()->step(deltaTime);
         }
     }
 
     // collide and update momentums
-    for (auto shape : this->m_renderData.shapes) {
+    for (RenderShapeData& shape : this->m_renderData.shapes) {
         if (shape.rb.has_value()) {
             shape.rb.value()->collide();
         }

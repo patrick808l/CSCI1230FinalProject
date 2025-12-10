@@ -56,7 +56,8 @@ public:
     void moveRight(float deltaTime);
     void moveUp(float deltaTime);
     void moveDown(float deltaTime);
-    void jump(double length, double strength);
+    bool jump(double length, double strength);
+    bool isOnGround();
 
     void detach();
     void attach(RenderShapeData& data);

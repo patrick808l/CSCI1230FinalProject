@@ -3,7 +3,9 @@
 
 
 // default constructor
-ShapeManager::ShapeManager() {}
+ShapeManager::ShapeManager() {
+    m_activeModel = "zebra";
+}
 
 /**
  * @brief initialize the vbo and vao for each of the shape types.
@@ -16,9 +18,55 @@ void ShapeManager::init(QOpenGLWidget* widget) {
     m_sphere.initGLObjects(widget);
     m_cylinder.initGLObjects(widget);
 
-    m_model.init(widget, "animated_models/vampire/dancing_vampire.dae");
-    m_animation.init("animated_models/vampire/dancing_vampire.dae", &m_model);
-    m_animator.init(&m_animation);
+    m_modelFinalTransform = glm::mat4{1.f};
+
+    if (m_activeModel == "vampire") {
+        m_model.init(widget, "animated_models/vampire/dancing_vampire.dae");
+        m_animation.init("animated_models/vampire/dancing_vampire.dae", &m_model);
+        m_animator.init(&m_animation);
+
+        m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(90.f), glm::vec3{0, 1, 0});
+    }
+    else if (m_activeModel == "fish") {
+        m_model.init(widget, "animated_models/fish/source/fish_2_anim.fbx");
+        m_animation.init("animated_models/fish/source/fish_2_anim.fbx", &m_model);
+        m_animator.init(&m_animation);
+
+        m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(180.f), glm::vec3{0, 1, 0});
+        m_modelFinalTransform = glm::scale(m_modelFinalTransform, glm::vec3{0.02f});
+    }
+    else if (m_activeModel == "eagle") {
+        /// Eagle broken
+        m_model.init(widget, "animated_models/eagle/eagle.dae");
+        m_animation.init("animated_models/eagle/eagle.dae", &m_model);
+        m_animator.init(&m_animation, 0.1f);
+
+        m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(90.f), glm::vec3{0, 1, 0});
+        m_modelFinalTransform = glm::scale(m_modelFinalTransform, glm::vec3{2.f});
+        m_modelFinalTransform = glm::translate(m_modelFinalTransform, glm::vec3{0.f, 0.5f, 0.f});
+    }
+    else if (m_activeModel == "woodpecker") {
+        m_model.init(widget, "animated_models/woodpecker/woodpecker.dae");
+        m_animation.init("animated_models/woodpecker/woodpecker.dae", &m_model);
+        m_animator.init(&m_animation, 0.2f);
+
+        m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(90.f), glm::vec3{0, 1, 0});
+        m_modelFinalTransform = glm::scale(m_modelFinalTransform, glm::vec3{2.f});
+        m_modelFinalTransform = glm::translate(m_modelFinalTransform, glm::vec3{0.f, 0.25f, 0.f});
+    }
+    else if (m_activeModel == "zebra") {
+        m_model.init(widget, "animated_models/zebra-fbx/source/Zebra.fbx");
+        for (int i = 0; i < 17; i++) {
+            std::shared_ptr<Animation> newAnimation = std::make_shared<Animation>();
+            newAnimation->init("animated_models/zebra-fbx/source/Zebra.fbx", &m_model, i);
+            m_animations.push_back(newAnimation);
+        }
+        // idle initially
+        m_animator.init(m_animations[11].get());
+
+        m_modelFinalTransform = glm::scale(m_modelFinalTransform, glm::vec3{0.01f});
+        m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(90.f), glm::vec3{0, 1, 0});
+    }
 
     m_initialized = true;
 }
@@ -32,6 +80,8 @@ void ShapeManager::finish(QOpenGLWidget* widget) {
     m_cube.deleteGLObjects(widget);
     m_sphere.deleteGLObjects(widget);
     m_cylinder.deleteGLObjects(widget);
+
+    m_model.deleteGLObjects();
 }
 
 /**
@@ -123,11 +173,83 @@ int ShapeManager::getVertexDataSize(const RenderShapeData& shapeData) {
 }
 
 /**
- * @brief update skeletal animation
+ * @brief update skeletal mesh by progressing the current animation
  * @param deltaTime is the time since the last update
  */
-void ShapeManager::updateAnimation(float deltaTime) {
+void ShapeManager::advanceCurAnimation(float deltaTime) {
     m_animator.UpdateAnimation(deltaTime);
+}
+
+/**
+ * @brief change the mesh to a new animation
+ * @param animationIndex into m_animations
+ */
+void ShapeManager::queueNewAnimation(int animationIndex) {
+    if (animationIndex < m_animations.size()) {
+        m_animator.QueueAnimation(m_animations[animationIndex].get());
+    } else {
+        std::cerr << "queueNewAnimation called with invalid index " << animationIndex << std::endl;
+    }
+}
+
+void ShapeManager::forceNewAnimation(int animationIndex) {
+    if (animationIndex < m_animations.size()) {
+        m_animator.ForceAnimation(m_animations[animationIndex].get());
+    } else {
+        std::cerr << "forceNewAnimation called with invalid index " << animationIndex << std::endl;
+    }
+}
+
+void ShapeManager::setAnimation(std::string animationName) {
+    if (m_activeModel == "zebra") {
+        if (animationName == "idle") {
+            forceNewAnimation(11);
+        } else if (animationName == "trot") {
+            forceNewAnimation(15);
+        } else if (animationName == "trot slow") {
+            forceNewAnimation(14);
+        } else if (animationName == "gallop") {
+            forceNewAnimation(4);
+        } else if (animationName == "jump") {
+            forceNewAnimation(13);
+            // queue idle after jump
+            queueNewAnimation(11);
+        } else if (animationName == "walk backward") {
+            forceNewAnimation(16);
+        } else {
+            std::cerr << "setAnimation receieved unrecognized animationName: " << animationName << std::endl;
+        }
+    }
+}
+
+std::string ShapeManager::getCurrentAnimationName() {
+    if (m_activeModel == "zebra") {
+        /// this should be optimized, maybe with an unordered map
+        int animationIndex = -1;
+        for (int i = 0; i < 17; i++) {
+            if (m_animator.CurrentAnimation == m_animations[i].get()) {
+                animationIndex = i;
+                break;
+            }
+        }
+
+        switch (animationIndex) {
+        case 4:
+            return "gallop";
+        case 11:
+            return "idle";
+        case 13:
+            return "jump";
+        case 14:
+            return "trot slow";
+        case 15:
+            return "trot";
+        case 16:
+            return "walk backward";
+        }
+        return "unused zebra action";
+    }
+    return "none";
 }
 
 
@@ -146,11 +268,9 @@ void ShapeManager::prepareModelUniforms(QOpenGLWidget* widget, GLuint shader) {
     if (m_playerIsModel) {
         modelMatrix = m_modelShapeData.getMovedCTM();
         // rotate so model faces away from the camera
-        modelMatrix = glm::rotate(modelMatrix, 90.f, glm::vec3{0, 1, 0});
+        modelMatrix = modelMatrix * m_modelFinalTransform;
     } else {
-        modelMatrix = glm::mat4{1.f};
-        modelMatrix = glm::translate(modelMatrix, glm::vec3{0.f, -5.f, -5.f});
-        modelMatrix = glm::scale(modelMatrix, glm::vec3{1.f, 1.f, 1.f});
+        modelMatrix = m_modelFinalTransform;
     }
     GLint modelMatrixLoc = glGetUniformLocation(shader, "modelMatrix");
     glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
@@ -159,6 +279,8 @@ void ShapeManager::prepareModelUniforms(QOpenGLWidget* widget, GLuint shader) {
 /**
  * @brief ShapeManager::drawAnimatedModelDefault
  * @param widget allows access to makeCurrent for openGL context
+ * @param postprocessor used to bind framebuffer if postprocessing enabled
+ * @param post_processing_enabled whether to use postprocessor. if false postprocessor may be nullptr
  * @param shader is the default shader program used for rendering the scene
  */
 void ShapeManager::drawAnimatedModelDefault(QOpenGLWidget* widget, PostProcessor* postprocessor, bool post_processing_enabled, GLuint shader) {
@@ -166,7 +288,15 @@ void ShapeManager::drawAnimatedModelDefault(QOpenGLWidget* widget, PostProcessor
     m_model.Draw(postprocessor, post_processing_enabled, shader);
 }
 
-void ShapeManager::drawAnimatedModelShadow(QOpenGLWidget* widget, GLuint shadowFBO, GLuint shader) {
+/**
+ * @brief ShapeManager::drawAnimatedModelShadow
+ * @param widget allows access to makeCurrent for openGL context
+ * @param shadowFBO is the framebuffer for shadow mapping into depth textures
+ * @param shadowWidth of the shadowFBO
+ * @param shadowHeight of the shadowFBO
+ * @param shader is the shadowmap shader program used for rendering the scene from lights' POVs into depth buffers
+ */
+void ShapeManager::drawAnimatedModelShadow(QOpenGLWidget* widget, GLuint shadowFBO, int shadowWidth, int shadowHeight, GLuint shader) {
     prepareModelUniforms(widget, shader);
-    m_model.DrawShadow(shadowFBO, shader);
+    m_model.DrawShadow(shadowFBO, shadowWidth, shadowHeight, shader);
 }

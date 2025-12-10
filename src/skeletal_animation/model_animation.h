@@ -61,14 +61,26 @@ public:
         }
     }
 
-    void DrawShadow(GLuint shadowFBO, GLuint shader) {
+    void DrawShadow(GLuint shadowFBO, int shadowWidth, int shadowHeight, GLuint shader) {
         for (unsigned int i = 0; i < meshes.size(); i++) {
-            meshes[i].DrawShadow(shadowFBO, shader);
+            meshes[i].DrawShadow(shadowFBO, shadowWidth, shadowHeight, shader);
         }
     }
 
     auto& GetBoneInfoMap() { return m_BoneInfoMap; }
     int& GetBoneCount() { return m_BoneCounter; }
+
+
+    void deleteGLObjects() {
+        m_widget->makeCurrent();
+        for (const Texture& texture : textures_loaded) {
+            glDeleteTextures(1, &texture.id);
+        }
+
+        for (Mesh& mesh : meshes) {
+            mesh.deleteGLObjects();
+        }
+    }
 
 
 private:
@@ -206,10 +218,27 @@ private:
 
     unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false) {
         m_widget->makeCurrent();
+        std::cout << "TextureFromFile: path=" << path << std::endl;
 
         Debug::glErrorCheck();
 
         string filename = string(path);
+        // fish texture filepath wrong in model so hardcode it
+        if (filename == "../cv/ruhi_fish/fish__2texture.png" || filename == "..\\cv\\ruhi_fish\\fish__2texture.png") {
+            filename = "../textures/fish__2texture.png";
+        }
+        // same for zebra textures. and only use diffuse texture
+        if (filename == "C:/Users/Pavelko/AppData/Local/Temp/3dx6Temp/Zebra_Mat_Diffuse.jpg"
+                || filename == "C:\\Users\\Pavelko\\AppData\\Local\\Temp\\3dx6Temp\\Zebra_Mat_Diffuse.jpg") {
+            filename = "../textures/Zebra_Mat_Diffuse.jpeg";
+        }
+        if (filename == "C:/Users/Pavelko/AppData/Local/Temp/3dx6Temp/Zebra_Mat_Specular_zebra_spec.jpg"
+                || filename == "C:\\Users\\Pavelko\\AppData\\Local\\Temp\\3dx6Temp\\Zebra_Mat_Specular_zebra_spec.jpg"
+                || filename == "C:/Users/Pavelko/AppData/Local/Temp/3dx6Temp/Zebra_Mat_Bump_zebra_nm_2k.jpg"
+                || filename == "C:\\Users\\Pavelko\\AppData\\Local\\Temp\\3dx6Temp\\Zebra_Mat_Bump_zebra_nm_2k.jpg") {
+            std::cout << "ignoring texture: " << filename << std::endl;
+            return 0;
+        }
         filename = directory + '/' + filename;
 
         unsigned int textureID;

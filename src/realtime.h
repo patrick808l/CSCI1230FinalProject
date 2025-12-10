@@ -80,7 +80,7 @@ private:
 
     void shadowMap(const SceneLightData& lightData, int lightIndex);
     bool m_haveMadeFBO = false;
-    void makeFBO();
+    void makeShadowFBO();
 
     const static int numShadowMaps = 16;
     GLuint m_depthTextures[numShadowMaps];

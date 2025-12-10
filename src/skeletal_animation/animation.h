@@ -24,22 +24,23 @@ public:
 
     // Animation(const std::string& animationPath, Model* model) {}
 
-    void init(const std::string& animationPath, Model* model) {
+    void init(const std::string& animationPath, Model* model, int animationIndex = 0) {
         Assimp::Importer importer;
 
         std::filesystem::path basepath = std::filesystem::current_path().parent_path().parent_path();
-        std::cout << "animation.h: loading animation from " << (basepath / std::filesystem::path(animationPath)).string() << std::endl;
 
         const aiScene* scene = importer.ReadFile((basepath / std::filesystem::path(animationPath)).string(), aiProcess_Triangulate);
         assert(scene && scene->mRootNode);
-        auto animation = scene->mAnimations[0];
+        std::cout << "animation.h: loaded animation " << animationIndex << " of " << (scene->mNumAnimations - 1) << " from " << (basepath / std::filesystem::path(animationPath)).string() << std::endl;
+        // std::cout << "number of animations: " << scene->mNumAnimations << std::endl;
+        auto animation = scene->mAnimations[animationIndex];
         m_Duration = animation->mDuration;
         m_TicksPerSecond = animation->mTicksPerSecond;
         aiMatrix4x4 globalTransformation = scene->mRootNode->mTransformation;
         globalTransformation = globalTransformation.Inverse();
         ReadHierarchyData(m_RootNode, scene->mRootNode);
         ReadMissingBones(animation, *model);
-        std::cout << "Animation constructor done" << std::endl;
+        // std::cout << "Animation constructor done" << std::endl;
     }
 
     ~Animation() {}

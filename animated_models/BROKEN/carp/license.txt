@@ -1,0 +1,11 @@
+Model Information:
+* title:	Carp Fish
+* source:	https://sketchfab.com/3d-models/carp-fish-ef0c406d4ca84242a0464abecb7d7037
+* author:	huykhoi2407 (https://sketchfab.com/huykhoi2407)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Carp Fish" (https://sketchfab.com/3d-models/carp-fish-ef0c406d4ca84242a0464abecb7d7037) by huykhoi2407 (https://sketchfab.com/huykhoi2407) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
