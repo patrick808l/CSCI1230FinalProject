@@ -89,6 +89,7 @@ private:
     // int shadowHeight = 1024;
     const int shadowWidth = 2048;
     const int shadowHeight = 2048;
+    const int m_shadowBaseUnit = 4;
 
     glm::mat4 m_lightOrthoMatrix;
     glm::mat4 m_lightPerspectiveMatrix;

@@ -203,7 +203,7 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
     glUniformMatrix4fv(depthProjMatrixLoc, 1, GL_FALSE, &depthProjMatrix[0][0]);
     glUniformMatrix4fv(depthViewMatrixLoc, 1, GL_FALSE, &depthViewMatrix[0][0]);
 
-    glActiveTexture(GL_TEXTURE0 + texIndex);
+    glActiveTexture(GL_TEXTURE0 + m_shadowBaseUnit + texIndex);
     glBindTexture(GL_TEXTURE_2D, m_depthTextures[texIndex]);
     glBindFramebuffer(GL_FRAMEBUFFER, m_shadowFBO);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthTextures[texIndex], 0);
@@ -280,13 +280,12 @@ void Realtime::paintGL() {
     GLint fogEnabledLoc = glGetUniformLocation(m_default_shader, "fogEnabled");
     glUniform1i(fogEnabledLoc, settings.extraCredit2);
 
-    int shadowBaseUnit = 8;
     for (int texIndex = 0; texIndex < numShadowMaps; texIndex++) {
-        glActiveTexture(GL_TEXTURE0 + shadowBaseUnit + texIndex);
+        glActiveTexture(GL_TEXTURE0 + m_shadowBaseUnit + texIndex);
         glBindTexture(GL_TEXTURE_2D, m_depthTextures[texIndex]);
         std::string texUniform = "depthTextures[" + std::to_string(texIndex) + "]";
         GLint textureLoc = glGetUniformLocation(m_default_shader, texUniform.c_str());
-        glUniform1i(textureLoc, shadowBaseUnit + texIndex);
+        glUniform1i(textureLoc, m_shadowBaseUnit + texIndex);
     }
 
 

@@ -259,7 +259,7 @@ private:
 
             Debug::glErrorCheck();
 
-            glActiveTexture(GL_TEXTURE12);
+            glActiveTexture(GL_TEXTURE3);
             glBindTexture(GL_TEXTURE_2D, textureID);
             glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
