@@ -428,14 +428,11 @@ void Realtime::parseScene() {
     m_shapeManager.parseMeshes(this, m_renderData.shapes);
 
     m_sceneLoaded = true;
+    generateLSystemTreeLightRoom();
 }
 
 void Realtime::sceneChanged() {
     parseScene();
-    generateLSystemTreesRand(15.0f,50.0f, 15.0f, 50.0f, 3);
-    generateLSystemTreesRand(-50.0f,-15.0f, 15.0f, 50.0f, 3);
-    generateLSystemTreesRand(15.0f,50.0f, -50.0f, -15.0f, 3);
-    generateLSystemTreesRand(-50.0f,-15.0f, -50.0f, -15.0f, 3);
     createTextureAndNormal();
 
     update(); // asks for a PaintGL() call to occur
@@ -701,6 +698,33 @@ void Realtime::generateLSystemTreesRand(float xStart, float xEnd, float zStart, 
         float z = randFloat(zStart, zEnd);
         generateLSystemTree(glm::vec3(x, -2.0f, z));
     }
+}
+
+// Handplace trees for light_room.json
+void Realtime::generateLSystemTreeLightRoom(){
+    // left exterior of the building
+    generateLSystemTree(glm::vec3(17.0f, -2.0f, 8.0f));
+    generateLSystemTree(glm::vec3(16.0f, -2.0f, 6.0f));
+    generateLSystemTree(glm::vec3(19.0f, -2.0f, -9.0f));
+    generateLSystemTree(glm::vec3(18.0f, -2.0f, -7.0f));
+
+    // front exterior of the building
+    generateLSystemTree(glm::vec3(8.0f, -2.0f, 18.0f));
+    generateLSystemTree(glm::vec3(1.0f, -2.0f, 17.0f));
+    generateLSystemTree(glm::vec3(-2.0f, -2.0f, 17.0f));
+    generateLSystemTree(glm::vec3(-8.0f, -2.0f, 16.0f));
+
+    // back exterior of the building
+    generateLSystemTree(glm::vec3(8.0f, -2.0f, -18.0f));
+    generateLSystemTree(glm::vec3(6.0f, -2.0f, -17.0f));
+    generateLSystemTree(glm::vec3(-8.0f, -2.0f, -16.0f));
+    generateLSystemTree(glm::vec3(-7.0f, -2.0f, -19.0f));
+
+    // right exterior of the building
+    generateLSystemTree(glm::vec3(-17.0f, -2.0f, 8.0f));
+    generateLSystemTree(glm::vec3(-16.0f, -2.0f, 6.0f));
+    generateLSystemTree(glm::vec3(-19.0f, -2.0f, -9.0f));
+    generateLSystemTree(glm::vec3(-16.0f, -2.0f, -7.0f));
 }
 
 float Realtime::randFloat(float minVal, float maxVal) {
