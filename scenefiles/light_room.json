@@ -245,7 +245,7 @@
       ]
     },
     {
-      "name": "Shelf_Front_Left",
+      "name": "Shelf_Front_Right",
       "translate": [-7, -1.02, -7],
       "groups": [
         {
@@ -316,490 +316,188 @@
               ]
             },
             {
-              "name": "Shelf_Tags_Left",
-              "translate": [0, 0, 0.75],
-              "scale": [0.3, 0.15, 0.02],
+              "name": "Shelf_Objects",
               "groups": [
                 {
-                  "name": "Shelf_Tags_Left_Top",
-                  "translate": [0, 4.5, 0],
+                  "name": "Top_Shelf_Objects",
+                  "translate": [0, 0.87, 0],
                   "groups": [
                     {
-                      "name": "Tag_1",
-                      "translate": [-6.5, 0, 0],
-                      "primitives": [
+                      "name": "Shelf_Object_1",
+                      "groups": [
                         {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [-1, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [-1.25, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
                         }
                       ]
                     },
                     {
-                      "name": "Tag_2",
-                      "translate": [0, 0, 0],
-                      "primitives": [
+                      "name": "Shelf_Object_2",
+                      "groups": [
                         {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
                         }
                       ]
                     },
                     {
-                      "name": "Tag_3",
-                      "translate": [6.5, 0, 0],
-                      "primitives": [
+                      "name": "Shelf_Object_3",
+                      "groups": [
                         {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [1.25, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [1.25, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
                         }
                       ]
                     }
                   ]
                 },
                 {
-                  "name": "Shelf_Tags_Left_Bottom",
-                  "translate": [0, -0.5, 0],
+                  "name": "Bottom_Shelf_Objects",
+                  "translate": [0, 0.1, 0],
                   "groups": [
                     {
-                      "name": "Tag_1",
-                      "translate": [-6.5, 0, 0],
-                      "primitives": [
+                      "name": "Shelf_Object_1",
+                      "groups": [
                         {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [1.25, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [1.325, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
                         }
                       ]
                     },
                     {
-                      "name": "Tag_2",
-                      "translate": [0, 0, 0],
-                      "primitives": [
+                      "name": "Shelf_Object_2",
+                      "groups": [
                         {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
                         }
                       ]
                     },
                     {
-                      "name": "Tag_3",
-                      "translate": [6.5, 0, 0],
-                      "primitives": [
+                      "name": "Shelf_Object_3",
+                      "groups": [
                         {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "Shelf_Tags_Right",
-              "translate": [0, 0, -0.75],
-              "scale": [0.3, 0.15, 0.02],
-              "groups": [
-                {
-                  "name": "Shelf_Tags_Right_Top",
-                  "translate": [0, 4.5, 0],
-                  "groups": [
-                    {
-                      "name": "Tag_1",
-                      "translate": [-6.5, 0, 0],
-                      "primitives": [
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [-1, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
                         {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [-1, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
                         }
                       ]
                     },
                     {
-                      "name": "Tag_2",
-                      "translate": [0, 0, 0],
-                      "primitives": [
+                      "name": "Shelf_Object_2",
+                      "groups": [
                         {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [-1.75, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-1.8, 0, 0.2],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-1.7, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
                         }
                       ]
-                    },
-                    {
-                      "name": "Tag_3",
-                      "translate": [6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Shelf_Tags_Right_Bottom",
-                  "translate": [0, -0.5, 0],
-                  "groups": [
-                    {
-                      "name": "Tag_1",
-                      "translate": [-6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_2",
-                      "translate": [0, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_3",
-                      "translate": [6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Shelf_Back_Left",
-      "translate": [-7, -1.02, 7],
-      "groups": [
-        {
-          "name": "Shelf_Body",
-          "groups": [
-            {
-              "name": "Shelf_Post_FL",
-              "translate": [-2.55, 0, 0.75],
-              "scale": [0.15, 2.5, 0.15],
-              "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
-              ]
-            },
-            {
-              "name": "Shelf_Post_FR",
-              "translate": [2.55, 0, 0.75],
-              "scale": [0.15, 2.5, 0.15],
-              "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
-              ]
-            },
-            {
-              "name": "Shelf_Post_BL",
-              "translate": [-2.55, 0, -0.75],
-              "scale": [0.15, 2.5, 0.15],
-              "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
-              ]
-            },
-            {
-              "name": "Shelf_Post_BR",
-              "translate": [2.55, 0, -0.75],
-              "scale": [0.15, 2.5, 0.15],
-              "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
-              ]
-            }
-          ]
-        },       
-        {
-          "name": "Shelves",
-          "groups": [
-            {
-              "name": "Shelf_Leaves",
-              "scale": [5.5, 0.05, 1.5],
-              "groups": [
-                {
-                  "name": "Proto_Shelf_Top",
-                  "translate": [0, 15.0, 0],
-                  "primitives": [
-                    {
-                      "type": "cube",
-                      "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
-                    }
-                  ]
-                },
-                {
-                  "name": "Proto_Shelf_Bottom",
-                  "primitives": [
-                    {
-                      "type": "cube",
-                      "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "Shelf_Tags_Left",
-              "translate": [0, 0, 0.75],
-              "scale": [0.3, 0.15, 0.02],
-              "groups": [
-                {
-                  "name": "Shelf_Tags_Left_Top",
-                  "translate": [0, 4.5, 0],
-                  "groups": [
-                    {
-                      "name": "Tag_1",
-                      "translate": [-6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_2",
-                      "translate": [0, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_3",
-                      "translate": [6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Shelf_Tags_Left_Bottom",
-                  "translate": [0, -0.5, 0],
-                  "groups": [
-                    {
-                      "name": "Tag_1",
-                      "translate": [-6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_2",
-                      "translate": [0, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_3",
-                      "translate": [6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "Shelf_Tags_Right",
-              "translate": [0, 0, -0.75],
-              "scale": [0.3, 0.15, 0.02],
-              "groups": [
-                {
-                  "name": "Shelf_Tags_Right_Top",
-                  "translate": [0, 4.5, 0],
-                  "groups": [
-                    {
-                      "name": "Tag_1",
-                      "translate": [-6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_2",
-                      "translate": [0, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_3",
-                      "translate": [6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Shelf_Tags_Right_Bottom",
-                  "translate": [0, -0.5, 0],
-                  "groups": [
-                    {
-                      "name": "Tag_1",
-                      "translate": [-6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_2",
-                      "translate": [0, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    },
-                    {
-                      "name": "Tag_3",
-                      "translate": [6.5, 0, 0],
-                      "primitives": [
-                        {
-                          "type": "cube",
-                          "ambient": [0.3, 0.3, 0.3],
-                          "diffuse": [1.0, 0.92, 0.35]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Shelf_Front_Right",
-      "translate": [7, -1.02, -7],
-      "groups": [
-        {
-          "name": "Shelf_Body",
-          "groups": [
-            {
-              "name": "Shelf_Post_FL",
-              "translate": [-2.55, 0, 0.75],
-              "scale": [0.15, 2.5, 0.15],
-              "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
-              ]
-            },
-            {
-              "name": "Shelf_Post_FR",
-              "translate": [2.55, 0, 0.75],
-              "scale": [0.15, 2.5, 0.15],
-              "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
-              ]
-            },
-            {
-              "name": "Shelf_Post_BL",
-              "translate": [-2.55, 0, -0.75],
-              "scale": [0.15, 2.5, 0.15],
-              "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
-              ]
-            },
-            {
-              "name": "Shelf_Post_BR",
-              "translate": [2.55, 0, -0.75],
-              "scale": [0.15, 2.5, 0.15],
-              "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
-              ]
-            }
-          ]
-        },       
-        {
-          "name": "Shelves",
-          "groups": [
-            {
-              "name": "Shelf_Leaves",
-              "scale": [5.5, 0.05, 1.5],
-              "groups": [
-                {
-                  "name": "Proto_Shelf_Top",
-                  "translate": [0, 15.0, 0],
-                  "primitives": [
-                    {
-                      "type": "cube",
-                      "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
-                    }
-                  ]
-                },
-                {
-                  "name": "Proto_Shelf_Bottom",
-                  "primitives": [
-                    {
-                      "type": "cube",
-                      "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
                     }
                   ]
                 }
@@ -1045,6 +743,1060 @@
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
                       "diffuse": [0.3, 0.3, 0.35]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Objects",
+              "groups": [
+                {
+                  "name": "Top_Shelf_Objects",
+                  "translate": [0, 0.87, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [-1, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [-1.25, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [1.25, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [1.25, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Bottom_Shelf_Objects",
+                  "translate": [0, 0.1, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [1.25, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [1.325, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [-1, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [-1, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [-1.75, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-1.8, 0, 0.2],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-1.7, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Left",
+              "translate": [0, 0, 0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Left_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Left_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Right",
+              "translate": [0, 0, -0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Right_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Right_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shelf_Back_Right",
+      "translate": [-7, -1.02, 7],
+      "groups": [
+        {
+          "name": "Shelf_Body",
+          "groups": [
+            {
+              "name": "Shelf_Post_FL",
+              "translate": [-2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            },
+            {
+              "name": "Shelf_Post_FR",
+              "translate": [2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BL",
+              "translate": [-2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BR",
+              "translate": [2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            }
+          ]
+        },       
+        {
+          "name": "Shelves",
+          "groups": [
+            {
+              "name": "Shelf_Leaves",
+              "scale": [5.5, 0.05, 1.5],
+              "groups": [
+                {
+                  "name": "Proto_Shelf_Top",
+                  "translate": [0, 15.0, 0],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35]
+                    }
+                  ]
+                },
+                {
+                  "name": "Proto_Shelf_Bottom",
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Objects",
+              "groups": [
+                {
+                  "name": "Top_Shelf_Objects",
+                  "translate": [0, 0.87, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [-1, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [-1.25, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [1.25, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [1.25, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Bottom_Shelf_Objects",
+                  "translate": [0, 0.1, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [1.25, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [1.325, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [-1, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [-1, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [-1.75, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-1.8, 0, 0.2],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-1.7, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Left",
+              "translate": [0, 0, 0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Left_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Left_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Right",
+              "translate": [0, 0, -0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Right_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Right_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shelf_Back_Left",
+      "translate": [7, -1.02, -7],
+      "groups": [
+        {
+          "name": "Shelf_Body",
+          "groups": [
+            {
+              "name": "Shelf_Post_FL",
+              "translate": [-2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            },
+            {
+              "name": "Shelf_Post_FR",
+              "translate": [2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BL",
+              "translate": [-2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BR",
+              "translate": [2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            }
+          ]
+        },       
+        {
+          "name": "Shelves",
+          "groups": [
+            {
+              "name": "Shelf_Leaves",
+              "scale": [5.5, 0.05, 1.5],
+              "groups": [
+                {
+                  "name": "Proto_Shelf_Top",
+                  "translate": [0, 15.0, 0],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35]
+                    }
+                  ]
+                },
+                {
+                  "name": "Proto_Shelf_Bottom",
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Objects",
+              "groups": [
+                {
+                  "name": "Top_Shelf_Objects",
+                  "translate": [0, 0.87, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [-1, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [-1.25, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [1.25, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [1.25, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Bottom_Shelf_Objects",
+                  "translate": [0, 0.1, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [1.25, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [1.325, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [-1, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [-1, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [-1.75, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-1.8, 0, 0.2],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-1.7, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 }
