@@ -93,6 +93,11 @@ void Realtime::initializeGL() {
     }
     std::cout << "Initialized GL: Version " << glewGetString(GLEW_VERSION) << std::endl;
 
+    GLint numTextureUnits;
+    glGetIntegerv(GL_MAX_TEXTURE_UNITS, &numTextureUnits);
+    std::cout << "texture slots available per shader stage: " << numTextureUnits << std::endl;
+
+
     // Allows OpenGL to draw objects appropriately on top of one another
     glEnable(GL_DEPTH_TEST);
     // Tells OpenGL to only draw the front face
@@ -110,7 +115,7 @@ void Realtime::initializeGL() {
         ":/resources/shaders/shadowmap.frag"
     );
 
-    makeFBO();
+    makeShadowFBO();
 
     m_shapeManager.init(this);
     m_shapeManager.updateShapeVertices(this, settings.shapeParameter1, settings.shapeParameter2);
@@ -124,7 +129,7 @@ void Realtime::initializeGL() {
 /**
  * @brief make framebuffer and depth textures for shadow mapping
  */
-void Realtime::makeFBO() {
+void Realtime::makeShadowFBO() {
     this->makeCurrent();
 
     if (m_haveMadeFBO) {
@@ -213,7 +218,7 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
     // skeletal mesh
     GLint isSkeletalMeshLoc = glGetUniformLocation(m_shadowmap_shader, "isSkeletalMesh");
     glUniform1i(isSkeletalMeshLoc, true);
-    m_shapeManager.drawAnimatedModelShadow(this, m_shadowFBO, m_shadowmap_shader);
+    m_shapeManager.drawAnimatedModelShadow(this, m_shadowFBO, shadowWidth, shadowHeight, m_shadowmap_shader);
     glUniform1i(isSkeletalMeshLoc, false);
 
     // uniforms for each shape. Bind corresponding vao and make draw call for every shape.
@@ -405,7 +410,7 @@ void Realtime::resizeGL(int w, int h) {
     // Students: anything requiring OpenGL calls when the program starts should be done here
     m_camera.init(m_renderData.cameraData, w, h);
 
-    makeFBO();
+    makeShadowFBO();
 
     postprocessor->onResize(w * m_devicePixelRatio, h * m_devicePixelRatio);
 }

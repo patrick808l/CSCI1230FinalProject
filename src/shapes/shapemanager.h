@@ -33,7 +33,7 @@ public:
     void updateAnimation(float deltaTime);
     void prepareModelUniforms(QOpenGLWidget* widget, GLuint shader);
     void drawAnimatedModelDefault(QOpenGLWidget* widget, PostProcessor *postprocessor, bool post_processing_enabled, GLuint shader);
-    void drawAnimatedModelShadow(QOpenGLWidget* widget, GLuint shadowFBO, GLuint shader);
+    void drawAnimatedModelShadow(QOpenGLWidget* widget, GLuint shadowFBO, int shadowWidth, int shadowHeight, GLuint shader);
 private:
     bool m_initialized = false;
 
@@ -52,6 +52,7 @@ private:
     Model m_model;
     Animation m_animation;
     Animator m_animator;
+    glm::mat4 m_modelFinalTransform;
     RenderShapeData m_modelShapeData;
     bool m_playerIsModel = false;
 };

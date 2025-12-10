@@ -33,6 +33,7 @@ public:
             m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * dt;
             // std::cout << "ticks per second = " << m_CurrentAnimation->GetTicksPerSecond() << ", dt = " << dt << ", duration = " << m_CurrentAnimation->GetDuration() << std::endl;
             m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
+            // m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration() / 8);
             CalculateBoneTransform(&m_CurrentAnimation->GetRootNode(), glm::mat4(1.0f));
         }
     }

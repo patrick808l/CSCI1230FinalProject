@@ -32,6 +32,7 @@ public:
 
         const aiScene* scene = importer.ReadFile((basepath / std::filesystem::path(animationPath)).string(), aiProcess_Triangulate);
         assert(scene && scene->mRootNode);
+        std::cout << "aiScene has animations: " << scene->HasAnimations() << std::endl;
         auto animation = scene->mAnimations[0];
         m_Duration = animation->mDuration;
         m_TicksPerSecond = animation->mTicksPerSecond;

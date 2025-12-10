@@ -1,0 +1,11 @@
+Model Information:
+* title:	Eagle
+* source:	https://sketchfab.com/3d-models/eagle-dc34aa716318405d974883908181fb41
+* author:	kenchoo (https://sketchfab.com/kenchoo)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Eagle" (https://sketchfab.com/3d-models/eagle-dc34aa716318405d974883908181fb41) by kenchoo (https://sketchfab.com/kenchoo) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

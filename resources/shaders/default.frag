@@ -90,6 +90,8 @@ uniform sampler2D texture_diffuse1;
 void main() {
     if (isSkeletalMesh) {
         fragColor = texture(texture_diffuse1, uv);
+        // fragColor = vec4(uv[0], uv[1], 0, 1);
+        // fragColor = vec4(0, 0, 1, 1);
         return;
     }
 
