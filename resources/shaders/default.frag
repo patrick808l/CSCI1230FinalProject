@@ -76,6 +76,7 @@ struct Light{
     vec3 attenCoeff;
     float angle;
     float penumbra;
+    int shadowIndex;
 };
 uniform Light lights[64];
 
@@ -116,8 +117,8 @@ void main() {
             attenFactor = 1.0;
             dirToLight = -normalize(lights[i].dir);
 
-            if (shadowsEnabled) {
-                visibility = computeShadowVisibility(i, posWorldSpace);
+            if (shadowsEnabled && lights[i].shadowIndex >= 0) {
+                visibility = computeShadowVisibility(lights[i].shadowIndex, posWorldSpace);
             }
             break;
         case 2: // spot light
@@ -142,18 +143,13 @@ void main() {
                 attenFactor = 0;
             }
 
-            if (shadowsEnabled) {
-                visibility = computeShadowVisibility(i, posWorldSpace);
+            if (shadowsEnabled && lights[i].shadowIndex >= 0) {
+                visibility = computeShadowVisibility(lights[i].shadowIndex, posWorldSpace);
             }
             break;
         default:
             break;
         }
-
-        // vec3 sc = shadowCoords[i].xyz / shadowCoords[i].w;
-        // if (sc.x < 0 || sc.x > 1 || sc.y < 0 || sc.y > 1 || sc.z < 0 || sc.z > 1) {
-        //     visibility = 1.0; // outside shadow map
-        // }
 
 
         //float NdotL = dot(normalize(normalWorldSpace), vec3(dirToLight));

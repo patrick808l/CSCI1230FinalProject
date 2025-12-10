@@ -294,8 +294,10 @@ void Realtime::paintGL() {
 
     for (const SceneLightData& lightData : m_renderData.lights) {
 
+        int myShadowIndex = lightData.shadows ? shadowIdx : -1;
+
         // upload depthBiasVP only for shadow-casting lights
-        if (lightData.shadows) {
+        if (myShadowIndex > -1) {
             glm::mat4 depthProjMatrix, depthViewMatrix, depthBiasVP;
 
             if (lightData.type == LightType::LIGHT_DIRECTIONAL) {
@@ -341,6 +343,9 @@ void Realtime::paintGL() {
         glUniform3fv(attenCoeffLoc, 1, &lightData.function[0]);
         glUniform1f(angleLoc, lightData.angle);
         glUniform1f(penumbraLoc, lightData.penumbra);
+
+        GLint shadowIndexLoc = glGetUniformLocation(m_default_shader,(lightsUniform + ".shadowIndex").c_str());
+        glUniform1i(shadowIndexLoc, myShadowIndex);
 
         lightIdx++;
     }
