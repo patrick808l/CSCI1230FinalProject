@@ -16,7 +16,7 @@ void ShapeManager::init(QOpenGLWidget* widget) {
     m_sphere.initGLObjects(widget);
     m_cylinder.initGLObjects(widget);
 
-    std::string activeModel = "fish";
+    std::string activeModel = "woodpecker";
     m_modelFinalTransform = glm::mat4{1.f};
 
     if (activeModel == "vampire") {
@@ -27,17 +27,16 @@ void ShapeManager::init(QOpenGLWidget* widget) {
         m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(90.f), glm::vec3{0, 1, 0});
     }
     // else if (activeModel == "wolf-dae") {
-    //     m_model.init(widget, "animated_models/wolf-dae/Wolf_One_dae.dae");
-    //     m_animation.init("animated_models/wolf-dae/Wolf_dae.dae", &m_model);
+    //     m_model.init(widget, "animated_models/wolf/wolf-dae/Wolf_One_dae.dae");
+    //     m_animation.init("animated_models/wolf/wolf-dae/Wolf_dae.dae", &m_model);
     //     m_animator.init(&m_animation);
     // } else if (activeModel == "wolf-blend") {
-    //     m_model.init(widget, "animated_models/wolf-blend/Wolf model for the blender game engine_blend.blend");
-    //     m_animation.init("animated_models/wolf-blend/Wolf_With_Baked_Action_Animations_For_Export.blend", &m_model);
+    //     m_model.init(widget, "animated_models/wolf/wolf-blend/Wolf model for the blender game engine_blend.blend");
+    //     m_animation.init("animated_models/wolf/wolf-blend/Wolf_With_Baked_Action_Animations_For_Export.blend", &m_model);
     //     m_animator.init(&m_animation);
     // } else if (activeModel == "wolf-fbx") {
-    //     m_model.init(widget, "animated_models/wolf-fbx/Wolf.fbx");
-    //     // "C:\cs1230\CSCI1230FinalProject\animated_models\wolf-fbx\Wolf_One_fbx_6.1_ASCII.fbx"
-    //     m_animation.init("animated_models/wolf-fbx/Wolf.fbx", &m_model);
+    //     m_model.init(widget, "animated_models/wolf/wolf-fbx/Wolf.fbx");
+    //     m_animation.init("animated_models/wolf/wolf-fbx/Wolf.fbx", &m_model);
     //     m_animator.init(&m_animation);
 
     //     m_modelFinalTransform = glm::scale(m_modelFinalTransform, glm::vec3{0.05f});
@@ -56,12 +55,23 @@ void ShapeManager::init(QOpenGLWidget* widget) {
     //     m_animator.init(&m_animation);
     // }
     else if (activeModel == "eagle") {
+        /// Eagle broken
         m_model.init(widget, "animated_models/eagle/eagle.dae");
         m_animation.init("animated_models/eagle/eagle.dae", &m_model);
-        m_animator.init(&m_animation);
+        m_animator.init(&m_animation, 0.1f);
 
         m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(90.f), glm::vec3{0, 1, 0});
         m_modelFinalTransform = glm::scale(m_modelFinalTransform, glm::vec3{2.f});
+        m_modelFinalTransform = glm::translate(m_modelFinalTransform, glm::vec3{0.f, 0.5f, 0.f});
+    }
+    else if (activeModel == "woodpecker") {
+        m_model.init(widget, "animated_models/woodpecker/woodpecker.dae");
+        m_animation.init("animated_models/woodpecker/woodpecker.dae", &m_model);
+        m_animator.init(&m_animation, 0.2f);
+
+        m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(90.f), glm::vec3{0, 1, 0});
+        m_modelFinalTransform = glm::scale(m_modelFinalTransform, glm::vec3{2.f});
+        m_modelFinalTransform = glm::translate(m_modelFinalTransform, glm::vec3{0.f, 0.25f, 0.f});
     }
 
     m_initialized = true;

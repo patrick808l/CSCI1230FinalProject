@@ -1,0 +1,11 @@
+Model Information:
+* title:	Woodpecker
+* source:	https://sketchfab.com/3d-models/woodpecker-7b6c1f3b93c0489280dc693044acfc1f
+* author:	kenchoo (https://sketchfab.com/kenchoo)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Woodpecker" (https://sketchfab.com/3d-models/woodpecker-7b6c1f3b93c0489280dc693044acfc1f) by kenchoo (https://sketchfab.com/kenchoo) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

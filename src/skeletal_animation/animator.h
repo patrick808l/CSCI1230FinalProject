@@ -26,14 +26,19 @@ public:
         }
     }
 
+    void init(Animation* animation, float durationModifier) {
+        init(animation);
+        m_durationModifier = durationModifier;
+    }
+
     void UpdateAnimation(float dt) {
         // std::cout << "animator.UpdateAnimation dt=" << dt << std::endl;
         m_DeltaTime = dt;
         if (m_CurrentAnimation) {
             m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * dt;
             // std::cout << "ticks per second = " << m_CurrentAnimation->GetTicksPerSecond() << ", dt = " << dt << ", duration = " << m_CurrentAnimation->GetDuration() << std::endl;
-            m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
-            // m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration() / 8);
+            // m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
+            m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration() * m_durationModifier);
             CalculateBoneTransform(&m_CurrentAnimation->GetRootNode(), glm::mat4(1.0f));
         }
     }
@@ -78,5 +83,5 @@ private:
     Animation* m_CurrentAnimation;
     float m_CurrentTime;
     float m_DeltaTime;
-
+    float m_durationModifier = 1.f;
 };
