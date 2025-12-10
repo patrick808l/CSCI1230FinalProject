@@ -31,7 +31,15 @@
         {
           "type": "cube",
           "ambient": [0.3, 0.3, 0.3],
-          "diffuse": [0.3, 0.3, 0.35]
+          "diffuse": [0.3, 0.3, 0.35],
+		  "shininess": 1, 
+		  "blend": 1.0,
+		  "textureFile": "textures/Ground_Dirt_008_baseColor.png",
+		  "textureU": 50.0,
+		  "textureV": 50.0,
+		  "normalMapFile": "textures/Ground_Dirt_008_normal.png",
+		  "normalMapU": 50.0,
+		  "normalMapV": 50.0
         }
       ]
     },
@@ -46,7 +54,15 @@
             {
               "type": "cube",
               "ambient": [0.5, 0.5, 0.5],
-              "diffuse": [0.3, 0.3, 0.35]
+              "diffuse": [0.3, 0.3, 0.35],
+			  "shininess": 2, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Wood_Floor_009_basecolor.png",
+			  "textureU": 20.0,
+			  "textureV": 20.0,
+			  "normalMapFile": "textures/Wood_Floor_009_normal.png",
+			  "normalMapU": 20.0,
+			  "normalMapV": 20.0
             }
           ]
         },
@@ -58,7 +74,15 @@
             {
               "type": "cube",
               "ambient": [0.5, 0.5, 0.5],
-              "diffuse": [0.3, 0.3, 0.35]
+              "diffuse": [0.3, 0.3, 0.35],
+			  "shininess": 3, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Tiles_Hexagon_Geometric_001_basecolor.png",
+			  "textureU": 20.0,
+			  "textureV": 20.0,
+			  "normalMapFile": "textures/Tiles_Hexagon_Geometric_001_normal.png",
+			  "normalMapU": 20.0,
+			  "normalMapV": 20.0
             }
           ]
         },
@@ -73,8 +97,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -85,8 +117,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -97,8 +137,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -109,8 +157,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 8.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 8.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -121,8 +177,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.3, 0.3, 0.3],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -136,8 +200,16 @@
                   "primitives": [
                     {
                       "type": "cube",
-                      "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
                     }
                   ]
                 },
@@ -148,8 +220,16 @@
                   "primitives": [
                     {
                       "type": "cube",
-                      "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
                     }
                   ]
                 }
@@ -165,8 +245,16 @@
                   "primitives": [
                     {
                       "type": "cube",
-                      "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
                     }
                   ]
                 },
@@ -177,8 +265,16 @@
                   "primitives": [
                     {
                       "type": "cube",
-                      "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
                     }
                   ]
                 }
@@ -219,8 +315,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -231,8 +335,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 6.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 6.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -243,8 +355,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 6.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 6.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -255,8 +375,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -267,8 +395,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -279,8 +415,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -291,8 +435,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -308,7 +460,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
                     }
                   ]
                 },
@@ -320,7 +480,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
                     }
                   ]
                 }
@@ -337,7 +505,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
                     }
                   ]
                 },
@@ -349,7 +525,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
                     }
                   ]
                 }
@@ -389,8 +573,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -401,8 +593,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -413,8 +613,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -425,8 +633,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 8.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 8.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -437,8 +653,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -453,7 +677,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
                     }
                   ]
                 },
@@ -465,7 +697,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
                     }
                   ]
                 }
@@ -482,7 +722,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
                     }
                   ]
                 },
@@ -494,7 +742,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
                     }
                   ]
                 }
@@ -535,8 +791,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -547,8 +811,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
                 }
               ]
             },
@@ -559,8 +831,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -571,8 +851,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 8.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 8.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -583,8 +871,16 @@
               "primitives": [
                 {
                   "type": "cube",
-                  "ambient": [0.5, 0.5, 0.5],
-                  "diffuse": [0.4, 0.4, 0.45]
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
                 }
               ]
             },
@@ -599,7 +895,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
                     }
                   ]
                 },
@@ -611,7 +915,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
                     }
                   ]
                 }
@@ -628,7 +940,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
                     }
                   ]
                 },
@@ -640,7 +960,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.5, 0.5, 0.5],
-                      "diffuse": [0.0, 0.0, 0.0]
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
                     }
                   ]
                 }

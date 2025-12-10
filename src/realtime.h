@@ -15,6 +15,7 @@
 #include <QTime>
 #include <QTimer>
 #include <random>
+#include <settings.h>
 
 #include "utils/sceneparser.h"
 #include "camera/camera.h"
@@ -105,7 +106,7 @@ private:
     void activeTexture(const SceneMaterial& shapeMat);
 
     // l-systems
-    bool l_systems_enabled = false;
+    bool l_systems_enabled = settings.extraCredit3;
     void generateLSystemTree(glm::vec3 startPos);
     void generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count);
     std::mt19937 m_rand;  // for random number

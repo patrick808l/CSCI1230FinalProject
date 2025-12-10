@@ -437,7 +437,10 @@ void Realtime::parseScene() {
 
 void Realtime::sceneChanged() {
     parseScene();
-    generateLSystemTreesRand(-1.5f, 1.5f, -1.5f, 1.5f, 3);
+    generateLSystemTreesRand(15.0f,50.0f, 15.0f, 50.0f, 3);
+    generateLSystemTreesRand(-50.0f,-15.0f, 15.0f, 50.0f, 3);
+    generateLSystemTreesRand(15.0f,50.0f, -50.0f, -15.0f, 3);
+    generateLSystemTreesRand(-50.0f,-15.0f, -50.0f, -15.0f, 3);
     createTextureAndNormal();
 
     update(); // asks for a PaintGL() call to occur
@@ -632,15 +635,15 @@ void Realtime::activeTexture(const SceneMaterial& shapeMat){
  */
 // Generate a single L-System tree at the input vec3 position.
 void Realtime::generateLSystemTree(glm::vec3 startPos){
-    if (!l_systems_enabled) return;
+    if (!settings.extraCredit3) return;
 
     std::string seed = "F";
     std::unordered_map<char, std::string> rules = {
         { 'F', "F[+F][&F]F[-F][^F]F" }
     };
 
-    float step = 0.5f;
-    float angle = glm::radians(45.f);
+    float step = randFloat(0.5f, 1.5f);
+    float angle = glm::radians(randFloat(20.f, 45.f));
     int loopCount = 2;
 
     LSystem myLS(seed, rules, step, angle);
@@ -654,12 +657,12 @@ void Realtime::generateLSystemTree(glm::vec3 startPos){
 
 // Generate trees with random starting locations that falls within the range of x and z.
 void Realtime::generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count){
-    if (!l_systems_enabled) return;
+    if (!settings.extraCredit3) return;
 
     for(int i = 0; i < count; i++){
         float x = randFloat(xStart, xEnd);
         float z = randFloat(zStart, zEnd);
-        generateLSystemTree(glm::vec3(x, 1.0f, z));
+        generateLSystemTree(glm::vec3(x, -2.0f, z));
     }
 }
 
