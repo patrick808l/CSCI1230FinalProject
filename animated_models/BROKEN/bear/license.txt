@@ -1,0 +1,11 @@
+Model Information:
+* title:	Black Bear from COTW game
+* source:	https://sketchfab.com/3d-models/black-bear-from-cotw-game-231164fb7ef44de8a529b5d12a324a33
+* author:	Game-animal ripper (https://sketchfab.com/game-ripper)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Black Bear from COTW game" (https://sketchfab.com/3d-models/black-bear-from-cotw-game-231164fb7ef44de8a529b5d12a324a33) by Game-animal ripper (https://sketchfab.com/game-ripper) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -227,6 +227,18 @@ private:
         if (filename == "../cv/ruhi_fish/fish__2texture.png" || filename == "..\\cv\\ruhi_fish\\fish__2texture.png") {
             filename = "../textures/fish__2texture.png";
         }
+        // same for zebra textures. and only use diffuse texture
+        if (filename == "C:/Users/Pavelko/AppData/Local/Temp/3dx6Temp/Zebra_Mat_Diffuse.jpg"
+                || filename == "C:\\Users\\Pavelko\\AppData\\Local\\Temp\\3dx6Temp\\Zebra_Mat_Diffuse.jpg") {
+            filename = "../textures/Zebra_Mat_Diffuse.jpeg";
+        }
+        if (filename == "C:/Users/Pavelko/AppData/Local/Temp/3dx6Temp/Zebra_Mat_Specular_zebra_spec.jpg"
+                || filename == "C:\\Users\\Pavelko\\AppData\\Local\\Temp\\3dx6Temp\\Zebra_Mat_Specular_zebra_spec.jpg"
+                || filename == "C:/Users/Pavelko/AppData/Local/Temp/3dx6Temp/Zebra_Mat_Bump_zebra_nm_2k.jpg"
+                || filename == "C:\\Users\\Pavelko\\AppData\\Local\\Temp\\3dx6Temp\\Zebra_Mat_Bump_zebra_nm_2k.jpg") {
+            std::cout << "ignoring texture: " << filename << std::endl;
+            return 0;
+        }
         filename = directory + '/' + filename;
 
         unsigned int textureID;
