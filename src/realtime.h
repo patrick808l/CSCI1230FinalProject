@@ -110,6 +110,7 @@ private:
     bool l_systems_enabled = settings.extraCredit3;
     void generateLSystemTree(glm::vec3 startPos);
     void generateLSystemTreesRand(float xStart, float xEnd, float zStart, float zEnd, int count);
+    void generateLSystemTreeLightRoom();
     std::mt19937 m_rand;  // for random number
     float randFloat(float minVal, float maxVal);
 };
