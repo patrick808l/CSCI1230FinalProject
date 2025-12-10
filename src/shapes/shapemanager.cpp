@@ -200,6 +200,11 @@ void ShapeManager::forceNewAnimation(int animationIndex) {
     }
 }
 
+/**
+ * @brief ShapeManager::setAnimation
+ * animated model can be viewed at https://sketchfab.com/3d-models/zebramotions-2546097d0ea94ba88452ce62c041fb87
+ * @param animationName
+ */
 void ShapeManager::setAnimation(std::string animationName) {
     if (m_activeModel == "zebra") {
         if (animationName == "idle") {
@@ -216,6 +221,23 @@ void ShapeManager::setAnimation(std::string animationName) {
             queueNewAnimation(11);
         } else if (animationName == "walk backward") {
             forceNewAnimation(16);
+        } else if (animationName == "kick one leg") {
+            forceNewAnimation(0);
+            queueNewAnimation(11);
+        } else if (animationName == "rear") {
+            forceNewAnimation(1);
+            queueNewAnimation(11);
+        } else if (animationName == "kick two legs") {
+            forceNewAnimation(2);
+            queueNewAnimation(11);
+        } else if (animationName == "eat") {
+            forceNewAnimation(3);
+        } else if (animationName == "idle 2") {
+            forceNewAnimation(9);
+            queueNewAnimation(11);
+        } else if (animationName == "idle 3") {
+            forceNewAnimation(10);
+            queueNewAnimation(11);
         } else {
             std::cerr << "setAnimation receieved unrecognized animationName: " << animationName << std::endl;
         }
@@ -234,8 +256,20 @@ std::string ShapeManager::getCurrentAnimationName() {
         }
 
         switch (animationIndex) {
+        case 0:
+            return "kick one leg";
+        case 1:
+            return "rear";
+        case 2:
+            return "kick two legs";
+        case 3:
+            return "eat";
         case 4:
             return "gallop";
+        case 9:
+            return "idle 2";
+        case 10:
+            return "idle 3";
         case 11:
             return "idle";
         case 13:

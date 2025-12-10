@@ -546,8 +546,17 @@ void Realtime::timerEvent(QTimerEvent *event) {
             m_shapeManager.setAnimation("jump");
         }
     }
+    if (m_keyMap[Qt::Key::Key_K]) {
+        m_shapeManager.setAnimation("kick one leg");
+    }
+    if (m_keyMap[Qt::Key::Key_E]) {
+        m_shapeManager.setAnimation("eat");
+    }
 
-    if (m_camera.isOnGround() && m_shapeManager.getCurrentAnimationName() != "jump" && !moving) {
+    std::string curAnimationName = m_shapeManager.getCurrentAnimationName();
+    if (m_camera.isOnGround() && !moving && curAnimationName != "jump"
+            && curAnimationName != "idle 2" && curAnimationName != "idle 3"
+            && curAnimationName != "kick one leg" && curAnimationName != "eat") {
         m_shapeManager.setAnimation("idle");
     }
 
@@ -564,6 +573,12 @@ void Realtime::timerEvent(QTimerEvent *event) {
     }
     if (m_keyMap[Qt::Key::Key_I]) {
         m_shapeManager.setAnimation("idle");
+    }
+    if (m_keyMap[Qt::Key::Key_2]) {
+        m_shapeManager.setAnimation("idle 2");
+    }
+    if (m_keyMap[Qt::Key::Key_3]) {
+        m_shapeManager.setAnimation("idle 3");
     }
 
     // step shapes forward
