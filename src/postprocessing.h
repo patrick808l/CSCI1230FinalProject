@@ -29,6 +29,7 @@ struct PostProcessingConfig {
     float cg_contrast = 1.05;
     float cg_saturation = 1.08;
     float cg_gamma = 1.0;
+    float cg_temperature = 0.3;
 
     glm::vec3 cg_lift = glm::vec3(0.0f);
     glm::vec3 cg_gain = glm::vec3(1.0f);

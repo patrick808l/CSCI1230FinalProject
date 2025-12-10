@@ -105,7 +105,7 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [2.0, 2.0, 2.0],
+                  "color": [3.0, 3.0, 3.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
@@ -129,7 +129,7 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [2.0, 2.0, 2.0],
+                  "color": [3.0, 3.0, 3.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
@@ -153,7 +153,7 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [2.0, 2.0, 2.0],
+                  "color": [3.0, 3.0, 3.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
@@ -177,7 +177,7 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [2.0, 2.0, 2.0],
+                  "color": [3.0, 3.0, 3.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,
@@ -201,7 +201,7 @@
               "lights": [
                 {
                   "type": "spot",
-                  "color": [2.0, 2.0, 2.0],
+                  "color": [3.0, 3.0, 3.0],
                   "attenuationCoeff": [1.0, 0.2, 0.05],
                   "direction": [0, -1, 0],
                   "angle": 90,

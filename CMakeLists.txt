@@ -19,6 +19,12 @@ find_package(Qt6 REQUIRED COMPONENTS Gui)
 find_package(Qt6 REQUIRED COMPONENTS OpenGL)
 find_package(Qt6 REQUIRED COMPONENTS OpenGLWidgets)
 find_package(Qt6 REQUIRED COMPONENTS Xml)
+# assimp for rigged model loading
+# set(ASSIMP_DIR "C:/vcpkg/installed/x64-windows/share/assimp/assimpConfig.cmake")
+# list(APPEND CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-windows/share/assimp/assimpConfig.cmake")
+find_package(assimp REQUIRED) #CONFIG
+# message(STATUS "Assimp_INCLUDE_DIRS: ${ASSIMP_INCLUDE_DIRS}")
+# message(STATUS "Assimp_LIBRARIES: ${ASSIMP_LIBRARIES}")
 
 # Allows you to include files from within those directories, without prefixing their filepaths
 include_directories(src)
@@ -53,6 +59,26 @@ add_executable(${PROJECT_NAME}
     src/utils/objfilereader.h src/utils/objfilereader.cpp
     src/shapes/staticmesh.h src/shapes/staticmesh.cpp
     src/postprocessing.h src/postprocessing.cpp
+
+    src/vertexcreator.cpp src/vertexcreator.h
+    src/skeletal_animation/model_animation.h
+    src/skeletal_animation/animdata.h
+    src/skeletal_animation/assimp_glm_helpers.h
+    src/skeletal_animation/skeletal_mesh.h
+    src/skeletal_animation/animator.h
+    src/skeletal_animation/animation.h
+    src/skeletal_animation/bone.h
+    src/utils/stb_image_impl.cpp
+    src/utils/stb_image.h
+
+    src/vertexcreator.cpp src/vertexcreator.h
+
+    src/force.h src/force.cpp
+    src/collider.h src/collider.cpp
+    src/rigidbody.h src/rigidbody.cpp
+    src/lsystem.h src/lsystem.cpp
+
+
 )
 
 # GLM: this creates its library and allows you to `#include "glm/..."`
@@ -70,6 +96,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt::OpenGLWidgets
     Qt::Xml
     StaticGLEW
+    assimp::assimp
 )
 
 # Specifies other files
@@ -89,6 +116,7 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
 	resources/shaders/gaussian_blur.frag
 	resources/shaders/invert.frag
 	resources/shaders/color_grading.frag
+	resources/shaders/red_edge_glow.frag
 )
 
 # GLEW: this provides support for Windows (including 64-bit)
@@ -100,11 +128,11 @@ if (WIN32)
   )
 endif()
 
-# Set this flag to silence warnings on Windows
-if (MSVC OR MSYS OR MINGW)
-  set(CMAKE_CXX_FLAGS "-Wno-volatile")
-endif()
-# Set this flag to silence warnings on MacOS
-if (APPLE)
-  set(CMAKE_CXX_FLAGS "-Wno-deprecated-volatile")
-endif()
+# # Set this flag to silence warnings on Windows
+# if (MSVC OR MSYS OR MINGW)
+#   set(CMAKE_CXX_FLAGS "-Wno-volatile")
+# endif()
+# # Set this flag to silence warnings on MacOS
+# if (APPLE)
+#   set(CMAKE_CXX_FLAGS "-Wno-deprecated-volatile")
+# endif()

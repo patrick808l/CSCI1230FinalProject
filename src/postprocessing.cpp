@@ -50,10 +50,17 @@ void PostProcessor::init(GLuint defaultFBO, int w, int h, QOpenGLWidget *myParen
             glUniform1f(glGetUniformLocation(program, "u_contrast"), config.cg_contrast);
             glUniform1f(glGetUniformLocation(program, "u_saturation"), config.cg_saturation);
             glUniform1f(glGetUniformLocation(program, "u_gamma"), config.cg_gamma);
+            glUniform1f(glGetUniformLocation(program, "u_temperature"), config.cg_temperature);
 
             glUniform3fv(glGetUniformLocation(program, "u_lift"), 1, &config.cg_lift[0]);
             glUniform3fv(glGetUniformLocation(program, "u_gain"), 1, &config.cg_gain[0]);
         }
+    });
+
+    config.shaders.push_back({
+        config.color_grading = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert",":/resources/shaders/red_edge_glow.frag"),
+        false,
+        [&](GLuint program, float /*time*/) {}
     });
 
     //Add UV coordinates
