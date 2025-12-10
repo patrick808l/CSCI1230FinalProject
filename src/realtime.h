@@ -82,7 +82,7 @@ private:
     bool m_haveMadeFBO = false;
     void makeShadowFBO();
 
-    const static int numShadowMaps = 16;
+    const static int numShadowMaps = 12;
     GLuint m_depthTextures[numShadowMaps];
     GLuint m_shadowFBO;
     // int shadowWidth = 1024;
