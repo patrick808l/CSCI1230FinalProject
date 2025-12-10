@@ -4,6 +4,8 @@
 
 WASD - move player
 
+W+R - run forward
+
 Drag mouse - change camera angle
 
 E - eat

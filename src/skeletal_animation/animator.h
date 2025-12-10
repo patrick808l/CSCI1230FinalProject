@@ -69,7 +69,8 @@ public:
     }
 
     /**
-     * @brief force a new animation to take effect immediately, unless it is already the active animation
+     * @brief force a new animation to take effect immediately,
+     * unless it is already the current animation
      * @param pAnimation
      */
     void ForceAnimation(Animation* pAnimation) {

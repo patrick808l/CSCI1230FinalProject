@@ -64,6 +64,7 @@ void ShapeManager::init(QOpenGLWidget* widget) {
         // idle initially
         m_animator.init(m_animations[11].get());
 
+        m_modelFinalTransform = glm::translate(m_modelFinalTransform, glm::vec3{0.f, -0.5f, 0.f});
         m_modelFinalTransform = glm::scale(m_modelFinalTransform, glm::vec3{0.01f});
         m_modelFinalTransform = glm::rotate(m_modelFinalTransform, glm::radians(90.f), glm::vec3{0, 1, 0});
     }

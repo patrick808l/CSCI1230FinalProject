@@ -514,7 +514,12 @@ void Realtime::timerEvent(QTimerEvent *event) {
     if (m_keyMap[Qt::Key::Key_W]) {
         m_camera.moveForward(deltaTime);
         if (m_camera.isOnGround()) {
-            m_shapeManager.setAnimation("trot");
+            if (m_keyMap[Qt::Key::Key_R]) {
+                m_shapeManager.setAnimation("gallop");
+                m_camera.moveForward(deltaTime);
+            } else {
+                m_shapeManager.setAnimation("trot");
+            }
             moving = true;
         }
     }
@@ -539,7 +544,7 @@ void Realtime::timerEvent(QTimerEvent *event) {
     }
     if (m_keyMap[Qt::Key::Key_J]) {
         // determine if cooldown is in effect
-        if (m_camera.jump(0.1, 40)) {
+        if (m_camera.jump(0.2, 40)) {
             m_shapeManager.setAnimation("jump");
         }
     }

@@ -73,14 +73,16 @@ public:
         unsigned int specularNr = 1;
         unsigned int normalNr   = 1;
         unsigned int heightNr   = 1;
+        std::cout << "skeletal_mesh Draw textures.size()=" << textures.size() << std::endl;
         for(unsigned int i = 0; i < textures.size(); i++)
         {
-            // use texture slots 6,7,...
-            int texOffset = 6;
+            // use texture slots 3,4,...
+            int texOffset = 3;
             glActiveTexture(GL_TEXTURE0 + texOffset + i); // active proper texture unit before binding
             // retrieve texture number (the N in diffuse_textureN)
             string number;
             string name = textures[i].type;
+            std::cout << "binding texture " << name << " to slot " << (i+3) << std::endl;
             if(name == "texture_diffuse")
                 number = std::to_string(diffuseNr++);
             else if(name == "texture_specular")

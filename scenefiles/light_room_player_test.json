@@ -1,0 +1,2921 @@
+{
+  "name": "WideInteriorBoxWithCeilingLight",
+  "globalData": {
+    "ambientCoeff": 1.0,
+    "diffuseCoeff": 0.6,
+    "specularCoeff": 0.4,
+    "transparentCoeff": 0
+  },
+  "cameraData": {
+    "position": [10, 4, 10],
+    "up": [0, 1, 0],
+    "look": [-1, -0.2, -1],
+    "heightAngle": 30
+  },
+  "groups": [
+    {
+        "name": "player model",
+        "translate": [ 1, 0.62, 1 ],
+        "rotate": [ 0, 1, 0, 0 ],
+        "scale": [ 0.67, 0.67, 0.67 ],
+        "primitives": [
+            {
+                "type": "animatedModel",
+                "diffuse": [ 1, 1, 1 ],
+                "specular": [ 1, 1, 1 ],
+                "ambient": [ 0.5, 0.5, 0.5 ],
+                "shininess": 1,
+                "is_player": true,
+                "collide": true,
+                "is_ground": false,
+                "mass": 2,
+                "forces": [
+                    {
+                    "type": "constant",
+                    "translation": [ 0, -8, 0 ],
+                    "torque": [ 0, 0, 0 ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+      "lights": [
+        {
+          "color": [5, 5, 5],
+          "type": "directional",
+          "direction": [-1.2, -1.0, -0.6],
+          "shadows": true
+        }
+      ]
+    },
+    {
+      "name": "Ceiling_Fixtures",
+      "groups": [
+        {
+          "name": "Fixture_Center_0_0",
+          "groups": [
+            {
+              "name": "CeilingCylinder",
+              "translate": [0, 2.4, 0],
+              "scale": [0.3, 1.0, 0.3],
+              "primitives": [
+                {
+                  "type": "cylinder",
+                  "ambient": [0.2, 0.2, 0.2],
+                  "diffuse": [0.7, 0.7, 0.75],
+                  "specular": [1.0, 1.0, 1.0],
+                  "shininess": 40
+                }
+              ]
+            },
+            {
+              "name": "CeilingCylinder2",
+              "translate": [-5, 2.4, -5],
+              "scale": [0.3, 1.0, 0.3],
+              "primitives": [
+                {
+                  "type": "cylinder",
+                  "ambient": [0.2, 0.2, 0.2],
+                  "diffuse": [0.7, 0.7, 0.75],
+                  "specular": [1.0, 1.0, 1.0],
+                  "shininess": 40
+                }
+              ]
+            },
+            {
+              "name": "CeilingCylinder3",
+              "translate": [5, 2.4, 5],
+              "scale": [0.3, 1.0, 0.3],
+              "primitives": [
+                {
+                  "type": "cylinder",
+                  "ambient": [0.2, 0.2, 0.2],
+                  "diffuse": [0.7, 0.7, 0.75],
+                  "specular": [1.0, 1.0, 1.0],
+                  "shininess": 40
+                }
+              ]
+            },
+            {
+              "name": "CeilingCylinder4",
+              "translate": [5, 2.4, -5],
+              "scale": [0.3, 1.0, 0.3],
+              "primitives": [
+                {
+                  "type": "cylinder",
+                  "ambient": [0.2, 0.2, 0.2],
+                  "diffuse": [0.7, 0.7, 0.75],
+                  "specular": [1.0, 1.0, 1.0],
+                  "shininess": 40
+                }
+              ]
+            },
+            {
+              "name": "CeilingCylinder5",
+              "translate": [-5, 2.4, 5],
+              "scale": [0.3, 1.0, 0.3],
+              "primitives": [
+                {
+                  "type": "cylinder",
+                  "ambient": [0.2, 0.2, 0.2],
+                  "diffuse": [0.7, 0.7, 0.75],
+                  "specular": [1.0, 1.0, 1.0],
+                  "shininess": 40
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight",
+              "translate": [0, 1.4, 0],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [2.0, 2.0, 2.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, -1, 0],
+                  "angle": 90,
+                  "penumbra": 30,
+                  "shadows": true
+                },
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, 1, 0],
+                  "angle": 10,
+                  "penumbra": 0,
+                  "shadows": false
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight2",
+              "translate": [-5, 1.4, -5],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [2.0, 2.0, 2.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, -1, 0],
+                  "angle": 90,
+                  "penumbra": 30,
+                  "shadows": true
+                },
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, 1, 0],
+                  "angle": 10,
+                  "penumbra": 0,
+                  "shadows": false
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight3",
+              "translate": [5, 1.4, 5],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [2.0, 2.0, 2.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, -1, 0],
+                  "angle": 90,
+                  "penumbra": 30,
+                  "shadows": true
+                },
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, 1, 0],
+                  "angle": 10,
+                  "penumbra": 0,
+                  "shadows": false
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight4",
+              "translate": [5, 1.4, -5],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [2.0, 2.0, 2.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, -1, 0],
+                  "angle": 90,
+                  "penumbra": 30,
+                  "shadows": true
+                },
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, 1, 0],
+                  "angle": 10,
+                  "penumbra": 0,
+                  "shadows": false
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight5",
+              "translate": [-5, 1.4, 5],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [2.0, 2.0, 2.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, -1, 0],
+                  "angle": 90,
+                  "penumbra": 30,
+                  "shadows": true
+                },
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, 1, 0],
+                  "angle": 10,
+                  "penumbra": 0,
+                  "shadows": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    
+    {
+      "name": "Ground",
+      "translate": [0, -2, 0],
+      "scale": [100, 0.1, 100],
+      "primitives": [
+        {
+          "type": "cube",
+          "ambient": [0.3, 0.3, 0.3],
+          "diffuse": [0.3, 0.3, 0.35],
+          "shininess": 1,
+          "blend": 1.0,
+          "textureFile": "textures/Ground_Dirt_008_baseColor.png",
+          "textureU": 50.0,
+          "textureV": 50.0,
+          "normalMapFile": "textures/Ground_Dirt_008_normal.png",
+          "normalMapU": 50.0,
+          "normalMapV": 50.0,
+          "collide": true,
+          "energy_loss": 0.95,
+          "is_ground": true
+        }
+      ]
+    },
+    {
+        "name": "shopping cart",
+        "primitives": [
+        {
+            "ambient": [0.1, 0.1, 0.1],
+            "diffuse": [0.5, 0.5, 0.5],
+            "type": "mesh",
+            "meshFile": "meshes/shopping_cart.obj",
+            "blend": 1.0,
+            "textureFile": "textures/shopping_cart_diffuse.png",
+            "textureU": 1.0,
+            "textureV": 1.0,
+            "collide": true,
+            "energy_loss": 0.95,
+            "mass": 1,
+            "is_ground": false,
+            "forces": [
+                {
+                "type": "constant",
+                "translation": [ 0, -2, 0 ],
+                "torque": [ 0, 0, 0 ]
+                }
+            ]
+        }
+        ],
+        "translate": [1.2, 4, -2.1],
+        "rotate": [0, 1, 0, 0],
+        "scale": [0.015, 0.015, 0.015]
+    },
+    {
+      "name": "Shelf_Front_Right",
+      "translate": [-7, -1.02, -7],
+      "groups": [
+        {
+          "name": "Shelf_Body",
+          "groups": [
+            {
+              "name": "Shelf_Post_FL",
+              "translate": [-2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_FR",
+              "translate": [2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BL",
+              "translate": [-2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BR",
+              "translate": [2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            }
+          ]
+        },       
+        {
+          "name": "Shelves",
+          "groups": [
+            {
+              "name": "Shelf_Leaves",
+              "scale": [5.5, 0.05, 1.5],
+              "groups": [
+                {
+                  "name": "Proto_Shelf_Top",
+                  "translate": [0, 15.0, 0],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
+                    }
+                  ]
+                },
+                {
+                  "name": "Proto_Shelf_Bottom",
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Objects",
+              "groups": [
+                {
+                  "name": "Top_Shelf_Objects",
+                  "translate": [0, 0.87, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [-1, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.05, 0.09, 0.05], "diffuse": [0.18, 0.34, 0.18] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [-1.25, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.04, 0.07, 0.06], "diffuse": [0.14, 0.26, 0.22] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.06, 0.12, 0.07], "diffuse": [0.22, 0.46, 0.26] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.09, 0.14, 0.05], "diffuse": [0.35, 0.55, 0.18] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.03, 0.08, 0.03], "diffuse": [0.12, 0.31, 0.12] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [1.25, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.07, 0.12, 0.09], "diffuse": [0.26, 0.48, 0.36] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [1.25, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.04, 0.10, 0.05], "diffuse": [0.16, 0.40, 0.20] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Bottom_Shelf_Objects",
+                  "translate": [0, 0.1, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [1.25, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.08, 0.15, 0.08], "diffuse": [0.30, 0.60, 0.32] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [1.325, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.10, 0.16, 0.06], "diffuse": [0.40, 0.66, 0.22] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.05, 0.11, 0.06], "diffuse": [0.20, 0.44, 0.24] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.12, 0.14, 0.04], "diffuse": [0.55, 0.62, 0.16] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.06, 0.14, 0.05], "diffuse": [0.24, 0.58, 0.20] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [-1, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.03, 0.07, 0.04], "diffuse": [0.11, 0.27, 0.14] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [-1, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.09, 0.16, 0.10], "diffuse": [0.36, 0.68, 0.42] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [-1.75, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.07, 0.13, 0.11], "diffuse": [0.28, 0.52, 0.46] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-1.8, 0, 0.2],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.05, 0.12, 0.04], "diffuse": [0.19, 0.50, 0.16] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-1.7, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.08, 0.17, 0.08], "diffuse": [0.33, 0.72, 0.33] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }                      
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shelf_Back_Right",
+      "translate": [7, -1.02, 7],
+      "groups": [
+        {
+          "name": "Shelf_Body",
+          "groups": [
+            {
+              "name": "Shelf_Post_FL",
+              "translate": [-2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_FR",
+              "translate": [2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BL",
+              "translate": [-2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BR",
+              "translate": [2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            }
+          ]
+        },       
+        {
+          "name": "Shelves",
+          "groups": [
+            {
+              "name": "Shelf_Leaves",
+              "scale": [5.5, 0.05, 1.5],
+              "groups": [
+                {
+                  "name": "Proto_Shelf_Top",
+                  "translate": [0, 15.0, 0],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
+                    }
+                  ]
+                },
+                {
+                  "name": "Proto_Shelf_Bottom",
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Objects",
+              "groups": [
+                {
+                  "name": "Top_Shelf_Objects",
+                  "translate": [0, 0.87, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [-1, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.10, 0.05, 0.10], "diffuse": [0.38, 0.18, 0.40] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [-1.25, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.06, 0.08, 0.12], "diffuse": [0.22, 0.30, 0.48] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.12, 0.06, 0.09], "diffuse": [0.48, 0.22, 0.36] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.08, 0.07, 0.13], "diffuse": [0.30, 0.26, 0.52] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.05, 0.06, 0.11], "diffuse": [0.18, 0.24, 0.44] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [1.25, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.07, 0.09, 0.14], "diffuse": [0.26, 0.34, 0.56] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [1.25, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.12, 0.05, 0.12], "diffuse": [0.52, 0.18, 0.52] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Bottom_Shelf_Objects",
+                  "translate": [0, 0.1, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [1.25, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.10, 0.06, 0.08], "diffuse": [0.42, 0.24, 0.34] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [1.325, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.09, 0.05, 0.12], "diffuse": [0.36, 0.20, 0.50] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.06, 0.10, 0.13], "diffuse": [0.22, 0.40, 0.55] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.13, 0.06, 0.10], "diffuse": [0.56, 0.24, 0.40] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.08, 0.08, 0.14], "diffuse": [0.32, 0.32, 0.58] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [-1, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.05, 0.05, 0.10], "diffuse": [0.20, 0.20, 0.40] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [-1, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.11, 0.07, 0.13], "diffuse": [0.46, 0.28, 0.56] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [-1.75, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.09, 0.07, 0.12], "diffuse": [0.36, 0.28, 0.50] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-1.8, 0, 0.2],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.06, 0.09, 0.14], "diffuse": [0.24, 0.36, 0.60] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-1.7, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.12, 0.05, 0.09], "diffuse": [0.50, 0.18, 0.34] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Left",
+              "translate": [0, 0, 0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Left_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Left_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Right",
+              "translate": [0, 0, -0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Right_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Right_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shelf_Back_Right",
+      "translate": [-7, -1.02, 7],
+      "groups": [
+        {
+          "name": "Shelf_Body",
+          "groups": [
+            {
+              "name": "Shelf_Post_FL",
+              "translate": [-2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_FR",
+              "translate": [2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BL",
+              "translate": [-2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BR",
+              "translate": [2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            }
+          ]
+        },       
+        {
+          "name": "Shelves",
+          "groups": [
+            {
+              "name": "Shelf_Leaves",
+              "scale": [5.5, 0.05, 1.5],
+              "groups": [
+                {
+                  "name": "Proto_Shelf_Top",
+                  "translate": [0, 15.0, 0],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
+                    }
+                  ]
+                },
+                {
+                  "name": "Proto_Shelf_Bottom",
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Objects",
+              "groups": [
+                {
+                  "name": "Top_Shelf_Objects",
+                  "translate": [0, 0.87, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [-1, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.19, 0.01, 0.08], "diffuse": [0.64, 0.03, 0.28] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [-1.25, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.07, 0.22, 0.2], "diffuse": [0.22, 0.74, 0.68] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.27, 0.03, 0.13], "diffuse": [0.89, 0.09, 0.42] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.01, 0.07, 0.15], "diffuse": [0.03, 0.22, 0.51] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.01, 0.06, 0.2], "diffuse": [0.03, 0.2, 0.65] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [1.25, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.16, 0.07, 0.18], "diffuse": [0.54, 0.22, 0.59] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [1.25, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.24, 0.0, 0.24], "diffuse": [0.81, 0.01, 0.81] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Bottom_Shelf_Objects",
+                  "translate": [0, 0.1, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [1.25, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.21, 0.1, 0.05], "diffuse": [0.7, 0.34, 0.16] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [1.325, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.29, 0.1, 0.03], "diffuse": [0.96, 0.34, 0.09] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.03, 0.26, 0.18], "diffuse": [0.1, 0.85, 0.6] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.24, 0.22, 0.16], "diffuse": [0.81, 0.73, 0.54] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.29, 0.11, 0.17], "diffuse": [0.97, 0.38, 0.55] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [-1, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.19, 0.01, 0.08], "diffuse": [0.64, 0.03, 0.28] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [-1, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.07, 0.22, 0.2], "diffuse": [0.22, 0.74, 0.68] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [-1.75, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.27, 0.03, 0.13], "diffuse": [0.89, 0.09, 0.42] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-1.8, 0, 0.2],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.01, 0.07, 0.15], "diffuse": [0.03, 0.22, 0.51] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-1.7, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.01, 0.06, 0.2], "diffuse": [0.03, 0.2, 0.65] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Left",
+              "translate": [0, 0, 0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Left_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Left_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Right",
+              "translate": [0, 0, -0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Right_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Right_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shelf_Back_Left",
+      "translate": [7, -1.02, -7],
+      "groups": [
+        {
+          "name": "Shelf_Body",
+          "groups": [
+            {
+              "name": "Shelf_Post_FL",
+              "translate": [-2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_FR",
+              "translate": [2.55, 0, 0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BL",
+              "translate": [-2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            },
+            {
+              "name": "Shelf_Post_BR",
+              "translate": [2.55, 0, -0.75],
+              "scale": [0.15, 2.5, 0.15],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
+              ]
+            }
+          ]
+        },       
+        {
+          "name": "Shelves",
+          "groups": [
+            {
+              "name": "Shelf_Leaves",
+              "scale": [5.5, 0.05, 1.5],
+              "groups": [
+                {
+                  "name": "Proto_Shelf_Top",
+                  "translate": [0, 15.0, 0],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
+                    }
+                  ]
+                },
+                {
+                  "name": "Proto_Shelf_Bottom",
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.3, 0.3, 0.3],
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Objects",
+              "groups": [
+                {
+                  "name": "Top_Shelf_Objects",
+                  "translate": [0, 0.87, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [-1, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.08, 0.07, 0.07], "diffuse": [0.32, 0.28, 0.27] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [-1.25, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.07, 0.08, 0.08], "diffuse": [0.26, 0.32, 0.31] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.08, 0.06, 0.07], "diffuse": [0.33, 0.24, 0.28] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.06, 0.07, 0.09], "diffuse": [0.22, 0.28, 0.36] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.07, 0.07, 0.06], "diffuse": [0.29, 0.30, 0.23] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [1.25, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.07, 0.07, 0.08], "diffuse": [0.27, 0.29, 0.34] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [1.25, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.08, 0.07, 0.06], "diffuse": [0.34, 0.29, 0.22] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Bottom_Shelf_Objects",
+                  "translate": [0, 0.1, 0],
+                  "groups": [
+                    {
+                      "name": "Shelf_Object_1",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_1_Cube",
+                          "translate": [1.25, 0, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.07, 0.08, 0.07], "diffuse": [0.25, 0.34, 0.27] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_1_Cylinder",
+                          "translate": [1.325, 0, 0.2],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.08, 0.07, 0.07], "diffuse": [0.31, 0.27, 0.27] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [0, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.06, 0.08, 0.09], "diffuse": [0.21, 0.31, 0.38] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-0.3, 0, 0.1],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.08, 0.08, 0.07], "diffuse": [0.33, 0.33, 0.28] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-0.3, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.07, 0.06, 0.08], "diffuse": [0.28, 0.23, 0.32] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_3",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_3_Cube",
+                          "translate": [-1, 0.05, -0.4],
+                          "scale": [0.35, 0.35, 0.35],
+                          "primitives": [
+                            { "type": "cube", "ambient": [0.08, 0.07, 0.08], "diffuse": [0.32, 0.27, 0.33] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_3_Cone",
+                          "translate": [-1, 0.3, -0.4],
+                          "scale": [0.2, 0.2, 0.2],
+                          "primitives": [
+                            { "type": "cone", "ambient": [0.07, 0.07, 0.09], "diffuse": [0.26, 0.26, 0.37] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Shelf_Object_2",
+                      "groups": [
+                        {
+                          "name": "Shelf_Object_2_Cylinder1",
+                          "translate": [-1.75, 0, 0],
+                          "scale": [0.15, 0.3, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.08, 0.06, 0.06], "diffuse": [0.34, 0.24, 0.24] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder2",
+                          "translate": [-1.8, 0, 0.2],
+                          "scale": [0.1, 0.25, 0.1],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.06, 0.08, 0.07], "diffuse": [0.22, 0.33, 0.27] }
+                          ]
+                        },
+                        {
+                          "name": "Shelf_Object_2_Cylinder3",
+                          "translate": [-1.7, 0, -0.3],
+                          "scale": [0.15, 0.35, 0.15],
+                          "primitives": [
+                            { "type": "cylinder", "ambient": [0.07, 0.06, 0.08], "diffuse": [0.29, 0.24, 0.35] }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Left",
+              "translate": [0, 0, 0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Left_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Left_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Shelf_Tags_Right",
+              "translate": [0, 0, -0.75],
+              "scale": [0.3, 0.15, 0.02],
+              "groups": [
+                {
+                  "name": "Shelf_Tags_Right_Top",
+                  "translate": [0, 4.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Shelf_Tags_Right_Bottom",
+                  "translate": [0, -0.5, 0],
+                  "groups": [
+                    {
+                      "name": "Tag_1",
+                      "translate": [-6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_2",
+                      "translate": [0, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tag_3",
+                      "translate": [6.5, 0, 0],
+                      "primitives": [
+                        {
+                          "type": "cube",
+                          "ambient": [0.3, 0.3, 0.3],
+                          "diffuse": [1.0, 0.92, 0.35]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Room_Walls",
+      "groups": [
+        {
+          "name": "Floor",
+          "translate": [0, -1.99, 0],
+          "scale": [28, 0.1, 28],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [0.5, 0.5, 0.5],
+              "diffuse": [0.3, 0.3, 0.35],
+              "shininess": 2,
+              "blend": 1.0,
+              "textureFile": "textures/Wood_Floor_009_basecolor.png",
+              "textureU": 20.0,
+              "textureV": 20.0,
+              "normalMapFile": "textures/Wood_Floor_009_normal.png",
+              "normalMapU": 20.0,
+              "normalMapV": 20.0
+            }
+          ]
+        },
+        {
+          "name": "Ceiling",
+          "translate": [0, 2, 0],
+          "scale": [28, 0.1, 28],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [0.5, 0.5, 0.5],
+              "diffuse": [0.3, 0.3, 0.35],
+              "shininess": 3,
+              "blend": 1.0,
+              "textureFile": "textures/Tiles_Hexagon_Geometric_001_basecolor.png",
+              "textureU": 20.0,
+              "textureV": 20.0,
+              "normalMapFile": "textures/Tiles_Hexagon_Geometric_001_normal.png",
+              "normalMapU": 20.0,
+              "normalMapV": 20.0
+            }
+          ]
+        },
+
+        {
+          "name": "BackWall",
+          "groups": [
+            {
+              "name": "BackWall_Top",
+              "translate": [0, 1.5, -14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 15.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 15.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Bottom",
+              "translate": [0, -1.5, -14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 15.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 15.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Left",
+              "translate": [-11.5, 0, -14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Center",
+              "translate": [0, 0, -14],
+              "scale": [10, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 8.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 8.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Right",
+              "translate": [11.5, 0, -14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "BackWindow_-7_VertBar",
+                  "translate": [-7, 0, -14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.3, 0.2],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                },
+                {
+                  "name": "BackWindow_-7_HorizBar",
+                  "translate": [-7, 0, -14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.3, 0.2],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "BackWindow_7_VertBar",
+                  "translate": [7, 0, -14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                },
+                {
+                  "name": "BackWindow_7_HorizBar",
+                  "translate": [7, 0, -14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_-7_SunPoint",
+              "translate": [-7, 0, -13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [2.0, 0.05, 0.005]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_7_SunPoint",
+              "translate": [7, 0, -13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [2.0, 0.05, 0.005]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "FrontWall",
+          "groups": [
+            {
+              "name": "FrontWall_Top",
+              "translate": [0, 1.5, 14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 15.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 15.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Bottom_Left",
+              "translate": [-8, -1.5, 14],
+              "scale": [12, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 6.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 6.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Bottom_Right",
+              "translate": [8, -1.5, 14],
+              "scale": [12, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 6.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 6.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Left",
+              "translate": [-11.5, 0, 14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Center_Left",
+              "translate": [-3.5, 0, 14],
+              "scale": [3, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Center_Right",
+              "translate": [3.5, 0, 14],
+              "scale": [3, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Right",
+              "translate": [11.5, 0, 14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+
+            {
+              "name": "FrontWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "FrontWindow_-7_VertBar",
+                  "translate": [-7, 0, 14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                },
+                {
+                  "name": "FrontWindow_-7_HorizBar",
+                  "translate": [-7, 0, 14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "FrontWindow_7_VertBar",
+                  "translate": [7, 0, 14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                },
+                {
+                  "name": "FrontWindow_7_HorizBar",
+                  "translate": [7, 0, 14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_-7_SunPoint",
+              "translate": [-7, 0, 13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [2.0, 0.05, 0.005]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_7_SunPoint",
+              "translate": [7, 0, 13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [2.0, 0.05, 0.005]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LeftWall",
+          "groups": [
+            {
+              "name": "LeftWall_Top",
+              "translate": [-14, 1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 15.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 15.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Bottom",
+              "translate": [-14, -1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 15.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 15.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Left",
+              "translate": [-14, 0, -11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Center",
+              "translate": [-14, 0, 0],
+              "scale": [0.1, 2, 10],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 8.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 8.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Right",
+              "translate": [-14, 0, 11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "LeftWindow_-7_VertBar",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                },
+                {
+                  "name": "LeftWindow_-7_HorizBar",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "LeftWindow_7_VertBar",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                },
+                {
+                  "name": "LeftWindow_7_HorizBar",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_-7_SunPoint",
+              "translate": [-13.5, 0, -7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [2.0, 0.05, 0.005]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_7_SunPoint",
+              "translate": [-13.5, 0, 7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [2.0, 0.05, 0.005]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "RightWall",
+          "groups": [
+            {
+              "name": "RightWall_Top",
+              "translate": [14, 1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 15.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 15.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Bottom",
+              "translate": [14, -1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 15.0,
+                  "textureV": 1.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 15.0,
+                  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Left",
+              "translate": [14, 0, -11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Center",
+              "translate": [14, 0, 0],
+              "scale": [0.1, 2, 10],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 8.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 8.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Right",
+              "translate": [14, 0, 11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+                  "shininess": 1,
+                  "blend": 1.0,
+                  "textureFile": "textures/Wood_026_basecolor.png",
+                  "textureU": 4.0,
+                  "textureV": 3.0,
+                  "normalMapFile": "textures/Wood_026_normal.png",
+                  "normalMapU": 4.0,
+                  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "RightWindow_-7_VertBar",
+                  "translate": [14, 0, -7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                },
+                {
+                  "name": "RightWindow_-7_HorizBar",
+                  "translate": [14, 0, -7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "RightWindow_7_VertBar",
+                  "translate": [14, 0, 7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                },
+                {
+                  "name": "RightWindow_7_HorizBar",
+                  "translate": [14, 0, 7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+                      "shininess": 1,
+                      "blend": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_-7_SunPoint",
+              "translate": [13.5, 0, -7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [2.0, 0.05, 0.005]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_7_SunPoint",
+              "translate": [13.5, 0, 7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [2.0, 0.05, 0.005]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
