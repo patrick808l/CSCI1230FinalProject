@@ -4,12 +4,12 @@ out vec4 FragColor;
 
 uniform sampler2D u_texture;
 
-uniform int   u_enabled;
+uniform int u_enabled;
 uniform float u_contrast;
 uniform float u_saturation;
 uniform float u_gamma;
-uniform vec3  u_lift;
-uniform vec3  u_gain;
+uniform vec3 u_lift;
+uniform vec3 u_gain;
 
 vec3 applySaturation(vec3 c, float s) {
     float l = dot(c, vec3(0.2126, 0.7152, 0.0722));
@@ -23,8 +23,8 @@ void main() {
         return;
     }
 
-    c = c + u_lift;     // lift shadows
-    c = c * u_gain;     // gain highlights
+    c = c + u_lift; // lift shadows
+    c = c * u_gain; // gain highlights
 
     // contrast around mid-gray
     c = (c - 0.5) * u_contrast + 0.5;

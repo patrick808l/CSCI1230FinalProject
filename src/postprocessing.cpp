@@ -20,6 +20,7 @@ void PostProcessor::init(GLuint defaultFBO, int w, int h, QOpenGLWidget *myParen
     config.bloom_filter = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/bloom_filter.frag");
     config.gaussian_blur = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert",":/resources/shaders/gaussian_blur.frag");
     config.bloom_composite = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/bloom_composite.frag");
+    config.color_grading = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert",":/resources/shaders/color_grading.frag");
 
     // config.shaders.push_back(
     //     {
@@ -39,6 +40,21 @@ void PostProcessor::init(GLuint defaultFBO, int w, int h, QOpenGLWidget *myParen
     //         }
     //     }
     // );
+
+    config.shaders.push_back({
+        config.color_grading,
+        false, // runs after tone mapping
+        [&](GLuint program, float /*time*/) {
+            glUniform1i(glGetUniformLocation(program, "u_enabled"), config.color_grading_enabled);
+
+            glUniform1f(glGetUniformLocation(program, "u_contrast"), config.cg_contrast);
+            glUniform1f(glGetUniformLocation(program, "u_saturation"), config.cg_saturation);
+            glUniform1f(glGetUniformLocation(program, "u_gamma"), config.cg_gamma);
+
+            glUniform3fv(glGetUniformLocation(program, "u_lift"), 1, &config.cg_lift[0]);
+            glUniform3fv(glGetUniformLocation(program, "u_gain"), 1, &config.cg_gain[0]);
+        }
+    });
 
     //Add UV coordinates
     std::vector<GLfloat> fullscreen_quad_data =
@@ -216,7 +232,7 @@ void PostProcessor::paintTexture(GLuint texture, PostProcessingShader shaderStru
     }
 
     Realtime* r = static_cast<Realtime*>(parent);
-    // shaderStruct.bindUniforms(shader, r->timer.elapsed() / 1000.0);
+    shaderStruct.bindUniforms(shader, 0.0f);
 
     glBindVertexArray(m_fullscreen_vao);
     glDrawArrays(GL_TRIANGLES, 0, 6);

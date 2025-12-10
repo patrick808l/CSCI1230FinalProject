@@ -24,11 +24,21 @@ struct PostProcessingConfig {
 
     std::vector<PostProcessingShader> shaders{};
 
+    bool color_grading_enabled = true;
+    float cg_exposure = 0.0;
+    float cg_contrast = 1.05;
+    float cg_saturation = 1.08;
+    float cg_gamma = 1.0;
+
+    glm::vec3 cg_lift = glm::vec3(0.0f);
+    glm::vec3 cg_gain = glm::vec3(1.0f);
+
     GLuint tone_mapping = 0;
     GLuint default_shader = 0;
     GLuint bloom_filter = 0;
     GLuint bloom_composite = 0;
     GLuint gaussian_blur = 0;
+    GLuint color_grading = 0;
 };
 
 class Realtime;
