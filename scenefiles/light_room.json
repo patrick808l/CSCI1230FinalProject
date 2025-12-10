@@ -256,7 +256,15 @@
               "translate": [-2.55, 0, 0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -264,7 +272,15 @@
               "translate": [2.55, 0, 0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -272,7 +288,15 @@
               "translate": [-2.55, 0, -0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -280,7 +304,15 @@
               "translate": [2.55, 0, -0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             }
           ]
@@ -299,7 +331,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
                     }
                   ]
                 },
@@ -309,7 +349,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
                     }
                   ]
                 }
@@ -519,7 +567,15 @@
               "translate": [-2.55, 0, 0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -527,7 +583,15 @@
               "translate": [2.55, 0, 0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -535,7 +599,15 @@
               "translate": [-2.55, 0, -0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -543,7 +615,15 @@
               "translate": [2.55, 0, -0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             }
           ]
@@ -562,7 +642,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
                     }
                   ]
                 },
@@ -572,7 +660,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
                     }
                   ]
                 }
@@ -952,7 +1048,15 @@
               "translate": [-2.55, 0, 0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -960,7 +1064,15 @@
               "translate": [2.55, 0, 0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -968,7 +1080,15 @@
               "translate": [-2.55, 0, -0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -976,7 +1096,15 @@
               "translate": [2.55, 0, -0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             }
           ]
@@ -995,7 +1123,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
                     }
                   ]
                 },
@@ -1005,7 +1141,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
                     }
                   ]
                 }
@@ -1385,7 +1529,15 @@
               "translate": [-2.55, 0, 0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -1393,7 +1545,15 @@
               "translate": [2.55, 0, 0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -1401,7 +1561,15 @@
               "translate": [-2.55, 0, -0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             },
             {
@@ -1409,7 +1577,15 @@
               "translate": [2.55, 0, -0.75],
               "scale": [0.15, 2.5, 0.15],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+				  "textureU": 1.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+				  "normalMapU": 1.0,
+				  "normalMapV": 3.0 }
               ]
             }
           ]
@@ -1428,7 +1604,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
                     }
                   ]
                 },
@@ -1438,7 +1622,15 @@
                     {
                       "type": "cube",
                       "ambient": [0.3, 0.3, 0.3],
-                      "diffuse": [0.3, 0.3, 0.35]
+                      "diffuse": [0.3, 0.3, 0.35],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Metal_Corrugated_Galvanized_001_basecolor.png",
+					  "textureU": 6.0,
+					  "textureV": 2.0,
+					  "normalMapFile": "textures/Metal_Corrugated_Galvanized_001_normal.png",
+					  "normalMapU": 6.0,
+					  "normalMapV": 2.0
                     }
                   ]
                 }

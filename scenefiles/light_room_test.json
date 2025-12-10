@@ -1,0 +1,1496 @@
+{
+  "name": "WideInteriorBoxWithCeilingLight",
+  "globalData": {
+    "ambientCoeff": 1.0,
+    "diffuseCoeff": 0.6,
+    "specularCoeff": 0.4,
+    "transparentCoeff": 0
+  },
+  "cameraData": {
+    "position": [10, 4, 10],
+    "up": [0, 1, 0],
+    "look": [-1, -0.2, -1],
+    "heightAngle": 30
+  },
+  "groups": [
+    {
+      "lights": [
+        {
+          "color": [8, 8, 8],
+          "type": "directional",
+          "direction": [-1.2, -1.0, -0.6],
+          "shadows": true
+        }
+      ]
+    },
+    {
+      "name": "Ground",
+      "translate": [0, -2, 0],
+      "scale": [100, 0.1, 100],
+      "primitives": [
+        {
+          "type": "cube",
+          "ambient": [0.3, 0.3, 0.3],
+          "diffuse": [0.3, 0.3, 0.35],
+		  "shininess": 1, 
+		  "blend": 1.0,
+		  "textureFile": "textures/Ground_Dirt_008_baseColor.png",
+		  "textureU": 50.0,
+		  "textureV": 50.0,
+		  "normalMapFile": "textures/Ground_Dirt_008_normal.png",
+		  "normalMapU": 50.0,
+		  "normalMapV": 50.0
+        }
+      ]
+    },
+    {
+      "name": "Room_Walls",
+      "groups": [
+        {
+          "name": "Floor",
+          "translate": [0, -1.99, 0],
+          "scale": [28, 0.1, 28],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [0.5, 0.5, 0.5],
+              "diffuse": [0.3, 0.3, 0.35],
+			  "shininess": 2, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Wood_Floor_009_basecolor.png",
+			  "textureU": 20.0,
+			  "textureV": 20.0,
+			  "normalMapFile": "textures/Wood_Floor_009_normal.png",
+			  "normalMapU": 20.0,
+			  "normalMapV": 20.0
+            }
+          ]
+        },
+        {
+          "name": "Ceiling",
+          "translate": [0, 2, 0],
+          "scale": [28, 0.1, 28],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [0.5, 0.5, 0.5],
+              "diffuse": [0.3, 0.3, 0.35],
+			  "shininess": 3, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Tiles_Hexagon_Geometric_001_basecolor.png",
+			  "textureU": 20.0,
+			  "textureV": 20.0,
+			  "normalMapFile": "textures/Tiles_Hexagon_Geometric_001_normal.png",
+			  "normalMapU": 20.0,
+			  "normalMapV": 20.0
+            }
+          ]
+        },
+
+        {
+          "name": "BackWall",
+          "groups": [
+            {
+              "name": "BackWall_Top",
+              "translate": [0, 1.5, -14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Bottom",
+              "translate": [0, -1.5, -14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Left",
+              "translate": [-11.5, 0, -14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Center",
+              "translate": [0, 0, -14],
+              "scale": [10, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 8.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 8.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "BackWall_Mid_Right",
+              "translate": [11.5, 0, -14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "BackWindow_-7_VertBar",
+                  "translate": [-7, 0, -14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
+                    }
+                  ]
+                },
+                {
+                  "name": "BackWindow_-7_HorizBar",
+                  "translate": [-7, 0, -14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                },
+				{
+                  "name": "BackWindow_-7_Glass",
+                  "translate": [-7, 0, -14],
+                  "scale": [4, 2, 0.05],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.2, 0.2, 0.2],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Glass_Blocks_001_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Glass_Blocks_001_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "BackWindow_7_VertBar",
+                  "translate": [7, 0, -14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
+                    }
+                  ]
+                },
+                {
+                  "name": "BackWindow_7_HorizBar",
+                  "translate": [7, 0, -14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.1, 0.1, 0.1],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                },
+				{
+                  "name": "BackWindow_7_Glass",
+                  "translate": [7, 0, -14],
+                  "scale": [4, 2, 0.05],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.2, 0.2, 0.2],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Glass_Blocks_001_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Glass_Blocks_001_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_-7_SunPoint",
+              "translate": [-7, 0, -13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "BackWindow_7_SunPoint",
+              "translate": [7, 0, -13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "FrontWall",
+          "groups": [
+            {
+              "name": "FrontWall_Top",
+              "translate": [0, 1.5, 14],
+              "scale": [28, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Bottom_Left",
+              "translate": [-8, -1.5, 14],
+              "scale": [12, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 6.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 6.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Bottom_Right",
+              "translate": [8, -1.5, 14],
+              "scale": [12, 1, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 6.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 6.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Left",
+              "translate": [-11.5, 0, 14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Center_Left",
+              "translate": [-3.5, 0, 14],
+              "scale": [3, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Center_Right",
+              "translate": [3.5, 0, 14],
+              "scale": [3, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "FrontWall_Mid_Right",
+              "translate": [11.5, 0, 14],
+              "scale": [5, 2, 0.1],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            
+            {
+              "name": "FrontWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "FrontWindow_-7_VertBar",
+                  "translate": [-7, 0, 14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
+                    }
+                  ]
+                },
+                {
+                  "name": "FrontWindow_-7_HorizBar",
+                  "translate": [-7, 0, 14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "FrontWindow_7_VertBar",
+                  "translate": [7, 0, 14],
+                  "scale": [0.2, 2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
+                    }
+                  ]
+                },
+                {
+                  "name": "FrontWindow_7_HorizBar",
+                  "translate": [7, 0, 14],
+                  "scale": [4, 0.2, 0.1],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_-7_SunPoint",
+              "translate": [-7, 0, 13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "FrontWindow_7_SunPoint",
+              "translate": [7, 0, 13.5],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LeftWall",
+          "groups": [
+            {
+              "name": "LeftWall_Top",
+              "translate": [-14, 1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Bottom",
+              "translate": [-14, -1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Left",
+              "translate": [-14, 0, -11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Center",
+              "translate": [-14, 0, 0],
+              "scale": [0.1, 2, 10],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 8.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 8.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWall_Mid_Right",
+              "translate": [-14, 0, 11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "LeftWindow_-7_VertBar",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
+                    }
+                  ]
+                },
+                {
+                  "name": "LeftWindow_-7_HorizBar",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                },
+				{
+                  "name": "LeftWindow_-7_Glass",
+                  "translate": [-14, 0, -7],
+                  "scale": [0.05, 2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.2, 0.2, 0.2],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Glass_Blocks_001_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Glass_Blocks_001_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "LeftWindow_7_VertBar",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
+                    }
+                  ]
+                },
+                {
+                  "name": "LeftWindow_7_HorizBar",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                },
+				{
+                  "name": "LeftWindow_7_Glass",
+                  "translate": [-14, 0, 7],
+                  "scale": [0.05, 2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.2, 0.2, 0.2],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Glass_Blocks_001_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Glass_Blocks_001_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_-7_SunPoint",
+              "translate": [-13.5, 0, -7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "LeftWindow_7_SunPoint",
+              "translate": [-13.5, 0, 7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [2.5, 2.5, 2.5],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "name": "RightWall",
+          "groups": [
+            {
+              "name": "RightWall_Top",
+              "translate": [14, 1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Bottom",
+              "translate": [14, -1.5, 0],
+              "scale": [0.1, 1, 28],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 15.0,
+				  "textureV": 1.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 15.0,
+				  "normalMapV": 1.0
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Left",
+              "translate": [14, 0, -11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Center",
+              "translate": [14, 0, 0],
+              "scale": [0.1, 2, 10],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 8.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 8.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "RightWall_Mid_Right",
+              "translate": [14, 0, 11.5],
+              "scale": [0.1, 2, 5],
+              "primitives": [
+                {
+                  "type": "cube",
+                  "ambient": [0.1, 0.1, 0.1],
+                  "diffuse": [0.4, 0.4, 0.45],
+				  "shininess": 1, 
+				  "blend": 1.0,
+				  "textureFile": "textures/Wood_026_basecolor.png",
+				  "textureU": 4.0,
+				  "textureV": 3.0,
+				  "normalMapFile": "textures/Wood_026_normal.png",
+				  "normalMapU": 4.0,
+				  "normalMapV": 3.0
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_-7_Bars",
+              "groups": [
+                {
+                  "name": "RightWindow_-7_VertBar",
+                  "translate": [14, 0, -7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
+                    }
+                  ]
+                },
+                {
+                  "name": "RightWindow_-7_HorizBar",
+                  "translate": [14, 0, -7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                },
+				{
+                  "name": "RightWindow_-7_Glass",
+                  "translate": [14, 0, -7],
+                  "scale": [0.05, 2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.2, 0.2, 0.2],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Glass_Blocks_001_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Glass_Blocks_001_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_7_Bars",
+              "groups": [
+                {
+                  "name": "RightWindow_7_VertBar",
+                  "translate": [14, 0, 7],
+                  "scale": [0.1, 2, 0.2],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 3.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 3.0
+                    }
+                  ]
+                },
+                {
+                  "name": "RightWindow_7_HorizBar",
+                  "translate": [14, 0, 7],
+                  "scale": [0.1, 0.2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.5, 0.5, 0.5],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Wood_032_basecolor.png",
+					  "textureU": 3.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Wood_032_normal.png",
+					  "normalMapU": 3.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                },
+				{
+                  "name": "RightWindow_7_Glass",
+                  "translate": [14, 0, 7],
+                  "scale": [0.05, 2, 4],
+                  "primitives": [
+                    {
+                      "type": "cube",
+                      "ambient": [0.2, 0.2, 0.2],
+                      "diffuse": [0.0, 0.0, 0.0],
+					  "shininess": 1, 
+					  "blend": 1.0,
+					  "textureFile": "textures/Glass_Blocks_001_basecolor.png",
+					  "textureU": 1.0,
+					  "textureV": 1.0,
+					  "normalMapFile": "textures/Glass_Blocks_001_normal.png",
+					  "normalMapU": 1.0,
+					  "normalMapV": 1.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_-7_SunPoint",
+              "translate": [13.5, 0, -7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            },
+            {
+              "name": "RightWindow_7_SunPoint",
+              "translate": [13.5, 0, 7],
+              "lights": [
+                {
+                  "type": "point",
+                  "color": [4, 4, 4],
+                  "attenuationCoeff": [1.0, 0.2, 0.05]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "FloatingSphere",
+      "translate": [0, -0.5, 0],
+      "scale": [0.5, 0.5, 0.5],
+      "primitives": [
+        {
+          "type": "sphere",
+          "ambient": [0.2, 0.2, 0.2],
+          "diffuse": [0.7, 0.7, 0.75],
+          "specular": [1.0, 1.0, 1.0],
+          "shininess": 40
+        }
+      ]
+    },
+    {
+      "name": "Ceiling_Fixtures",
+      "groups": [
+        {
+          "name": "Fixture_Center_0_0",
+          "groups": [
+            {
+              "name": "CeilingCylinder",
+              "translate": [0, 2.4, 0],
+              "scale": [0.3, 1.0, 0.3],
+              "primitives": [
+                {
+                  "type": "cylinder",
+                  "ambient": [0.2, 0.2, 0.2],
+                  "diffuse": [0.7, 0.7, 0.75],
+                  "specular": [1.0, 1.0, 1.0],
+                  "shininess": 40
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight",
+              "translate": [0, 1.4, 0],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, -1, 0],
+                  "angle": 90,
+                  "penumbra": 90
+                }
+              ]
+            },
+            {
+              "name": "CeilingSpotLight2",
+              "translate": [0, 1.4, 0],
+              "lights": [
+                {
+                  "type": "spot",
+                  "color": [10.0, 10.0, 10.0],
+                  "attenuationCoeff": [1.0, 0.2, 0.05],
+                  "direction": [0, 1, 0],
+                  "angle": 10,
+                  "penumbra": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+	{
+      
+      "name": "Shelf1",
+      "translate": [
+        1.44,
+        0,
+        0.49
+      ],
+      "rotate": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "groups": [
+        {
+          
+          "name": "Shelf_Right",
+          "translate": [
+            0,
+            -0.29,
+            1.35
+          ],
+          "rotate": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "scale": [
+            0.76,
+            3.33,
+            0.29
+          ],
+          "primitives": [
+            {
+              "type": "cube",
+              "diffuse": [
+                0.4,
+                0.4,
+                0.4
+              ],
+              "specular": [
+                0,
+                0,
+                0
+              ],
+              "ambient": [
+                0,
+                0,
+                0
+              ],
+              "shininess": 1, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+			  "textureU": 3.0,
+			  "textureV": 3.0,
+			  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+			  "normalMapU": 3.0,
+			  "normalMapV": 3.0}
+          ]
+        },
+        {
+          
+          "name": "Shelf_Left",
+          "translate": [
+            0,
+            -0.29,
+            -1.35
+          ],
+          "rotate": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "scale": [
+            0.76,
+            3.33,
+            0.29
+          ],
+          "primitives": [
+            {
+              "type": "cube",
+              "diffuse": [
+                0.4,
+                0.4,
+                0.4
+              ],
+              "specular": [
+                0,
+                0,
+                0
+              ],
+              "ambient": [
+                0,
+                0,
+                0
+              ],
+              "shininess": 1, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Sci-fi_Metal_Walkway_001_basecolor.png",
+			  "textureU": 3.0,
+			  "textureV": 3.0,
+			  "normalMapFile": "textures/Sci-fi_Metal_Walkway_001_normal.png",
+			  "normalMapU": 3.0,
+			  "normalMapV": 3.0}
+          ]
+        },
+        {
+          
+          "name": "Shelf_Top_Mid",
+          "translate": [
+            0,
+            0.22,
+            0
+          ],
+          "rotate": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "scale": [
+            0.76,
+            0.19,
+            2.45
+          ],
+          "primitives": [
+            {
+              "type": "cube",
+              "diffuse": [
+                0.4,
+                0.4,
+                0.4
+              ],
+              "specular": [
+                0,
+                0,
+                0
+              ],
+              "ambient": [
+                0,
+                0,
+                0
+              ],
+              "shininess": 1, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Tiles_067_basecolor.png",
+			  "textureU": 1.0,
+			  "textureV": 3.0,
+			  "normalMapFile": "textures/Tiles_067_normal.png",
+			  "normalMapU": 1.0,
+			  "normalMapV": 3.0}
+          ]
+        },
+        {
+          
+          "name": "Shelf_Bot_Mid",
+          "translate": [
+            0,
+            -0.83,
+            0
+          ],
+          "rotate": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "scale": [
+            0.76,
+            0.19,
+            2.45
+          ],
+          "primitives": [
+            {
+              "type": "cube",
+              "diffuse": [
+                0.4,
+                0.4,
+                0.4
+              ],
+              "specular": [
+                0,
+                0,
+                0
+              ],
+              "ambient": [
+                0,
+                0,
+                0
+              ],
+              "shininess": 1, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Tiles_067_basecolor.png",
+			  "textureU": 1.0,
+			  "textureV": 3.0,
+			  "normalMapFile": "textures/Tiles_067_normal.png",
+			  "normalMapU": 1.0,
+			  "normalMapV": 3.0}
+          ]
+        },
+        {
+          
+          "name": "Shelf_Bot",
+          "translate": [
+            0,
+            -1.84,
+            0
+          ],
+          "rotate": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "scale": [
+            0.76,
+            0.19,
+            2.45
+          ],
+          "primitives": [
+            {
+              "type": "cube",
+              "diffuse": [
+                0.4,
+                0.4,
+                0.4
+              ],
+              "specular": [
+                0,
+                0,
+                0
+              ],
+              "ambient": [
+                0,
+                0,
+                0
+              ],
+              "shininess": 1, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Tiles_067_basecolor.png",
+			  "textureU": 1.0,
+			  "textureV": 3.0,
+			  "normalMapFile": "textures/Tiles_067_normal.png",
+			  "normalMapU": 1.0,
+			  "normalMapV": 3.0}
+          ]
+        },
+        {
+          
+          "name": "Shelf_Top",
+          "translate": [
+            0,
+            1.18,
+            0
+          ],
+          "rotate": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "scale": [
+            0.76,
+            0.19,
+            2.45
+          ],
+          "primitives": [
+            {
+              "type": "cube",
+              "diffuse": [
+                0.39,
+                0.4,
+                0.41
+              ],
+              "specular": [
+                0,
+                0,
+                0
+              ],
+              "ambient": [
+                0,
+                0,
+                0
+              ],
+              "shininess": 1, 
+			  "blend": 1.0,
+			  "textureFile": "textures/Tiles_067_basecolor.png",
+			  "textureU": 1.0,
+			  "textureV": 3.0,
+			  "normalMapFile": "textures/Tiles_067_normal.png",
+			  "normalMapU": 1.0,
+			  "normalMapV": 3.0}
+          ]
+        }
+      ],
+      "primitives": []
+    }
+  ]
+}
