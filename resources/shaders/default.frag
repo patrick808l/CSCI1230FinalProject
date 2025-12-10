@@ -1,6 +1,6 @@
 #version 330 core
 
-const int numShadowMaps = 16;
+const int numShadowMaps = 12;
 
 in vec4 posWorldSpace;
 in vec3 normalWorldSpace;
@@ -80,7 +80,7 @@ struct Light{
 uniform Light lights[64];
 
 // texture helper functions
-vec4 blendDiffuseWithText();
+vec4 blendTex();
 vec3 getNormalValue();
 
 // skeletal mesh
@@ -160,9 +160,8 @@ void main() {
         float NdotL = dot(normal, vec3(dirToLight));
         if (NdotL < 0) continue;
 
-        //vec4 diffuseTerm = kd * cDiffuse * NdotL;
-        vec4 diffuse = blendDiffuseWithText();
-        vec4 diffuseTerm = diffuse * NdotL;
+        vec4 diffuse = blendTex();
+        vec4 diffuseTerm = kd * diffuse * NdotL;
 
         vec3 reflectedLightDir = reflect(vec3(-dirToLight), normalize(normalWorldSpace));
         float RdotV = dot(reflectedLightDir, vec3(dirToCam));
@@ -188,18 +187,18 @@ void main() {
 
 }
 
-vec4 blendDiffuseWithText(){
+vec4 blendTex() {
+    vec4 base = cDiffuse;
 
-    vec4 diffuse = kd * cDiffuse;
+    if (myTextures.textureIsUsed && blend != 0.0f) {
 
-    if(myTextures.textureIsUsed && blend != 0.0f){
         vec2 uvRepeat = uv * myTextures.textureRepeat;
-        vec4 textureColor = texture(myTextures.textureSampler, uvRepeat);
-        return (1.f - blend) * diffuse + blend * textureColor;
+        vec4 tex = texture(myTextures.textureSampler, uvRepeat);
+        base = mix(base, tex, blend);
+
     }
-    else{
-        return diffuse;
-    }
+
+    return base;
 }
 
 vec3 getNormalValue(){
