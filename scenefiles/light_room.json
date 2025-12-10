@@ -378,7 +378,15 @@
                           "translate": [-1, 0, -0.4],
                           "scale": [0.2, 0.2, 0.2],
                           "primitives": [
-                            { "type": "cube", "ambient": [0.05, 0.09, 0.05], "diffuse": [0.18, 0.34, 0.18] }
+                            { "type": "cube", "ambient": [0.05, 0.09, 0.05], "diffuse": [0.18, 0.34, 0.18],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_cereal_basecolor.png",
+							  "textureU": 1.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 1.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -386,7 +394,15 @@
                           "translate": [-1.25, 0, 0.2],
                           "scale": [0.2, 0.2, 0.2],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.04, 0.07, 0.06], "diffuse": [0.14, 0.26, 0.22] }
+                            { "type": "cylinder", "ambient": [0.04, 0.07, 0.06], "diffuse": [0.14, 0.26, 0.22],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_soda_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         }
                       ]
@@ -399,7 +415,15 @@
                           "translate": [0, 0, 0],
                           "scale": [0.15, 0.3, 0.15],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.06, 0.12, 0.07], "diffuse": [0.22, 0.46, 0.26] }
+                            { "type": "cylinder", "ambient": [0.06, 0.12, 0.07], "diffuse": [0.22, 0.46, 0.26],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_soda_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -407,7 +431,15 @@
                           "translate": [-0.3, 0, 0.1],
                           "scale": [0.1, 0.25, 0.1],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.09, 0.14, 0.05], "diffuse": [0.35, 0.55, 0.18] }
+                            { "type": "cylinder", "ambient": [0.09, 0.14, 0.05], "diffuse": [0.35, 0.55, 0.18],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_soda_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -415,7 +447,15 @@
                           "translate": [-0.3, 0, -0.3],
                           "scale": [0.15, 0.35, 0.15],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.03, 0.08, 0.03], "diffuse": [0.12, 0.31, 0.12] }
+                            { "type": "cylinder", "ambient": [0.03, 0.08, 0.03], "diffuse": [0.12, 0.31, 0.12],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_soda_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         }
                       ]
@@ -428,7 +468,15 @@
                           "translate": [1.25, 0.05, -0.4],
                           "scale": [0.35, 0.35, 0.35],
                           "primitives": [
-                            { "type": "cube", "ambient": [0.07, 0.12, 0.09], "diffuse": [0.26, 0.48, 0.36] }
+                            { "type": "cube", "ambient": [0.07, 0.12, 0.09], "diffuse": [0.26, 0.48, 0.36],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_cereal_basecolor.png",
+							  "textureU": 1.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 1.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -455,7 +503,15 @@
                           "translate": [1.25, 0, -0.4],
                           "scale": [0.2, 0.2, 0.2],
                           "primitives": [
-                            { "type": "cube", "ambient": [0.08, 0.15, 0.08], "diffuse": [0.30, 0.60, 0.32] }
+                            { "type": "cube", "ambient": [0.08, 0.15, 0.08], "diffuse": [0.30, 0.60, 0.32],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_cereal_basecolor.png",
+							  "textureU": 1.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 1.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -463,7 +519,15 @@
                           "translate": [1.325, 0, 0.2],
                           "scale": [0.2, 0.2, 0.2],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.10, 0.16, 0.06], "diffuse": [0.40, 0.66, 0.22] }
+                            { "type": "cylinder", "ambient": [0.10, 0.16, 0.06], "diffuse": [0.40, 0.66, 0.22],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         }
                       ]
@@ -476,7 +540,15 @@
                           "translate": [0, 0, 0],
                           "scale": [0.15, 0.3, 0.15],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.05, 0.11, 0.06], "diffuse": [0.20, 0.44, 0.24] }
+                            { "type": "cylinder", "ambient": [0.05, 0.11, 0.06], "diffuse": [0.20, 0.44, 0.24],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -484,7 +556,15 @@
                           "translate": [-0.3, 0, 0.1],
                           "scale": [0.1, 0.25, 0.1],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.12, 0.14, 0.04], "diffuse": [0.55, 0.62, 0.16] }
+                            { "type": "cylinder", "ambient": [0.12, 0.14, 0.04], "diffuse": [0.55, 0.62, 0.16],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -492,7 +572,15 @@
                           "translate": [-0.3, 0, -0.3],
                           "scale": [0.15, 0.35, 0.15],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.06, 0.14, 0.05], "diffuse": [0.24, 0.58, 0.20] }
+                            { "type": "cylinder", "ambient": [0.06, 0.14, 0.05], "diffuse": [0.24, 0.58, 0.20],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         }
                       ]
@@ -505,7 +593,15 @@
                           "translate": [-1, 0.05, -0.4],
                           "scale": [0.35, 0.35, 0.35],
                           "primitives": [
-                            { "type": "cube", "ambient": [0.03, 0.07, 0.04], "diffuse": [0.11, 0.27, 0.14] }
+                            { "type": "cube", "ambient": [0.03, 0.07, 0.04], "diffuse": [0.11, 0.27, 0.14],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_cereal_basecolor.png",
+							  "textureU": 1.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 1.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -526,7 +622,15 @@
                           "translate": [-1.75, 0, 0],
                           "scale": [0.15, 0.3, 0.15],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.07, 0.13, 0.11], "diffuse": [0.28, 0.52, 0.46] }
+                            { "type": "cylinder", "ambient": [0.07, 0.13, 0.11], "diffuse": [0.28, 0.52, 0.46],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -534,7 +638,15 @@
                           "translate": [-1.8, 0, 0.2],
                           "scale": [0.1, 0.25, 0.1],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.05, 0.12, 0.04], "diffuse": [0.19, 0.50, 0.16] }
+                            { "type": "cylinder", "ambient": [0.05, 0.12, 0.04], "diffuse": [0.19, 0.50, 0.16],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         },
                         {
@@ -542,7 +654,15 @@
                           "translate": [-1.7, 0, -0.3],
                           "scale": [0.15, 0.35, 0.15],
                           "primitives": [
-                            { "type": "cylinder", "ambient": [0.08, 0.17, 0.08], "diffuse": [0.33, 0.72, 0.33] }
+                            { "type": "cylinder", "ambient": [0.08, 0.17, 0.08], "diffuse": [0.33, 0.72, 0.33],
+							  "shininess": 1, 
+							  "blend": 1.0,
+							  "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+							  "textureU": 2.0,
+							  "textureV": 1.0,
+							  "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+							  "normalMapU": 2.0,
+							  "normalMapV": 1.0 }
                           ]
                         }
                       ]
