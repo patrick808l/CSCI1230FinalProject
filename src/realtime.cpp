@@ -33,7 +33,7 @@ Realtime::Realtime(QWidget *parent)
     // If you must use this function, do not edit anything above this
 
     m_lightOrthoMatrix = glm::ortho(-25.f, 25.f, -25.f, 25.f, 1.f, 50.f);
-    m_lightPerspectiveMatrix = glm::perspective(glm::radians(45.f), (float)shadowWidth / shadowHeight, 1.f, 50.f);
+    m_lightPerspectiveMatrix = glm::perspective(glm::radians(90.f), (float)shadowWidth / shadowHeight, 1.f, 50.f);
     m_biasMatrix = glm::mat4{
         0.5, 0.0, 0.0, 0.0,
         0.0, 0.5, 0.0, 0.0,
@@ -185,7 +185,7 @@ void Realtime::shadowMap(const SceneLightData& lightData, int texIndex) {
         depthViewMatrix = getLightViewMatrix(lightPos, -lightData.dir, false);
         break;
     case LightType::LIGHT_SPOT:
-        depthProjMatrix = glm::perspective(lightData.angle, (float)shadowWidth / shadowHeight, 1.f, 50.f);
+        depthProjMatrix = m_lightPerspectiveMatrix;
         depthViewMatrix = getLightViewMatrix(lightData.pos, -lightData.dir, true);
         break;
     }
@@ -300,7 +300,7 @@ void Realtime::paintGL() {
                 depthViewMatrix = getLightViewMatrix(lightPos, -lightData.dir, false);
             }
             else if (lightData.type == LightType::LIGHT_SPOT) {
-                depthProjMatrix = glm::perspective(lightData.angle, (float)shadowWidth / shadowHeight, 1.f, 50.f);
+                depthProjMatrix = m_lightPerspectiveMatrix;
                 depthViewMatrix = getLightViewMatrix(lightData.pos, -lightData.dir, true);
             }
 
