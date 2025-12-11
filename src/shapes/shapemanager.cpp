@@ -307,6 +307,7 @@ void ShapeManager::prepareModelUniforms(QOpenGLWidget* widget, GLuint shader) {
         modelMatrix = modelMatrix * m_modelFinalTransform;
     } else {
         modelMatrix = m_modelFinalTransform;
+        modelMatrix = glm::translate(modelMatrix, glm::vec3{0, -10, 0});
     }
     GLint modelMatrixLoc = glGetUniformLocation(shader, "modelMatrix");
     glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &modelMatrix[0][0]);
