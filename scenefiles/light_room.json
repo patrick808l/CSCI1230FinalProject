@@ -42,12 +42,132 @@
                 "forces": [
                     {
                     "type": "constant",
-                    "translation": [ 0, -8, 0 ],
+                    "translation": [ 0, -5, 0 ],
                     "torque": [ 0, 0, 0 ]
                     }
                 ]
             }
         ]
+    },
+    {
+      "name": "cartL",
+      "groups": [
+        {
+          "translate": [
+            1.5,
+            -1,
+            -8
+          ],
+          "scale": [0.015, 0.015, 0.015],
+          "rotate": [0, 1, 0, 90],
+          "primitives": [
+            {
+              "type": "mesh",
+            "meshFile": "meshes/shopping_cart.obj",
+            "blend": 1.0,
+            "textureFile": "textures/shopping_cart_diffuse.png",
+            "textureU": 1.0,
+            "textureV": 1.0,
+              "ambient": [
+                0.2572515863209599,
+                0.11958367897741007,
+                0.04303244699661457
+              ],
+              "diffuse": [
+                0.5347821253787146,
+                0.7144361981306429,
+                0.053189301688676194
+              ],
+              "specular": [
+                0.22946852528312922,
+                0.3426629754748818,
+                0.17371395299781378
+              ],
+              "shininess": 3,
+              "t_offset": 0,
+              "collide": true,
+              "is_ground": false,
+              "energy_loss": 0,
+              "mass": 1,
+              "forces": [
+                {
+                  "type": "constant",
+                  "translation": [
+                    0,
+                    0,
+                    -2
+                  ],
+                  "torque": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cartR",
+      "groups": [
+        {
+          "translate": [
+            -1.5,
+            -1,
+            -8
+          ],
+          "scale": [0.015, 0.015, 0.015],
+          "rotate": [0, 1, 0, -90],
+          "primitives": [
+            {
+              "type": "mesh",
+            "meshFile": "meshes/shopping_cart.obj",
+            "blend": 1.0,
+            "textureFile": "textures/shopping_cart_diffuse.png",
+            "textureU": 1.0,
+            "textureV": 1.0,
+              "ambient": [
+                0.04303244699661457,
+                0.11958367897741007,
+                0.2572515863209599
+              ],
+              "diffuse": [
+                0.053189301688676194,
+                0.7144361981306429,
+                0.5347821253787146
+              ],
+              "specular": [
+                0.17371395299781378,
+                0.3426629754748818,
+                0.22946852528312922
+              ],
+              "shininess": 3,
+              "t_offset": 0,
+              "collide": true,
+              "is_ground": false,
+              "energy_loss": 0,
+              "mass": 1,
+              "forces": [
+                {
+                  "type": "constant",
+                  "translation": [
+                    0,
+                    0,
+                    -2
+                  ],
+                  "torque": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
         "name": "shopping cart",
@@ -64,7 +184,7 @@
             "collide": true,
             "energy_loss": 0.95,
             "mass": 1,
-            "is_ground": false,
+            "is_ground": true,
             "forces": [
                 {
                 "type": "constant",
@@ -110,20 +230,20 @@
         }
         ],
         "translate": [
-        10,
+        8,
         -1.5,
-        10
+        23
         ],
         "rotate": [
         0,
         1,
         0,
-        0
+        45
         ],
         "scale": [
-        0.03,
-        0.03,
-        0.03
+        0.024,
+        0.024,
+        0.024
     ]},
     {
       "name": "Ceiling_Fixtures",

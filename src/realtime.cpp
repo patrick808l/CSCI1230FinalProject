@@ -544,7 +544,7 @@ void Realtime::timerEvent(QTimerEvent *event) {
     }
     if (m_keyMap[Qt::Key::Key_J]) {
         // determine if cooldown is in effect
-        if (m_camera.jump(0.2, 40)) {
+        if (m_camera.jump(0.2, 45)) {
             m_shapeManager.setAnimation("jump");
         }
     }
