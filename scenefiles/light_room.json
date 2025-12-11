@@ -460,7 +460,14 @@
               "diffuse": [0.3, 0.3, 0.35],
               "collide": true,
               "is_ground": true,
-              "energy_loss": 0.0
+              "energy_loss": 0.0,
+              "blend": 1.0,
+          "textureFile": "textures/Marble_Gray_002_basecolor.png",
+          "textureU": 1.0,
+          "textureV": 1.0,
+          "normalMapFile": "textures/Marble_Gray_002_normal.png",
+          "normalMapU": 1.0,
+          "normalMapV": 1.0
             }
           ]
         },
@@ -475,7 +482,14 @@
               "primitives": [
                 { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
               "is_ground": true,
-              "energy_loss": 0.0 }
+              "energy_loss": 0.0,
+            "blend": 1.0,
+          "textureFile": "textures/Marble_Gray_002_basecolor.png",
+          "textureU": 1.0,
+          "textureV": 1.0,
+          "normalMapFile": "textures/Marble_Gray_002_normal.png",
+          "normalMapU": 1.0,
+          "normalMapV": 1.0		 }
               ]
             }
           ]
@@ -487,7 +501,14 @@
           "primitives": [
             { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
               "is_ground": false,
-              "energy_loss": 1.0 }
+              "energy_loss": 1.0,
+            "blend": 1.0,
+          "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+          "textureU": 1.0,
+          "textureV": 1.0,
+          "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+          "normalMapU": 1.0,
+          "normalMapV": 1.0 }
           ]
         },
         {
@@ -497,7 +518,14 @@
           "primitives": [
             { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
               "is_ground": false,
-              "energy_loss": 1.0 }
+              "energy_loss": 1.0,
+            "blend": 1.0,
+          "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+          "textureU": 1.0,
+          "textureV": 1.0,
+          "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+          "normalMapU": 1.0,
+          "normalMapV": 1.0 }
           ]
         }
       ]
