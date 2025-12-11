@@ -312,6 +312,26 @@ void RigidBody::collide() {
                     // calculate new momentum (assume ground is static, absorbs energy, and delivers momentum back)
                     glm::vec3 flipped_moment = ((-2.0f + absorb) * std::min(glm::dot(c.normal_ws, mybody->P), 0.0f)) * c.normal_ws;
                     mybody->P += flipped_moment;
+                } else if (ocollider->is_player) {
+                    // ball to player
+                    Force f;
+                    f.is_dynamic = false;
+                    f.t0 = mybody->t;
+                    f.t1 = mybody->t + 1;
+                    f.torque = glm::vec3(0, 0, 0);
+                    f.trans = c.normal_ws * 10.0f;
+                    f.m_type = impulse;
+                    mybody->forces.push_back(f);
+                } else if (mycollider->is_player) {
+                    // player to ball
+                    Force f;
+                    f.is_dynamic = false;
+                    f.t0 = obody->t;
+                    f.t1 = obody->t + 1;
+                    f.torque = glm::vec3(0, 0, 0);
+                    f.trans = -c.normal_ws * 10.0f;
+                    f.m_type = impulse;
+                    obody->forces.push_back(f);
                 } else {
                     // "ball-to-ball"
 

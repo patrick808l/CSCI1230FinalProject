@@ -61,6 +61,7 @@ int random_id = 0;
 Collider::Collider(const ScenePrimitive& primitive, glm::mat4 matrix) {
     this->id = random_id++;
     this->body = nullptr;
+    this->is_player = primitive.is_player;
 
     this->is_ground = primitive.is_ground;
     this->energy_loss = primitive.energy_loss;

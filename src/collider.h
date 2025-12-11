@@ -30,6 +30,7 @@ public:
     int id;
     // unsafe pointer to rigid body (cannot type correctly b/c of recursive imports)
     void* body;
+    bool is_player;
 
     /// - A value of 0 indicates no energy is lost (meaning kinetic energy is conserved by this object, collisions bounce)
     /// - A value of 1 indicates all energy is lost (meaning energy is lost, collisions stop movement)
