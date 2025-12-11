@@ -445,7 +445,115 @@
         }
       ]
     },
-    
+    {
+      "name": "Table",
+      "translate": [-10, 0, 0],
+      "groups": [
+        {
+          "name": "Table_Top",
+          "translate": [0, -1, 0],
+          "scale": [1.5, 0.05, 3.0],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [0.3, 0.3, 0.3],
+              "diffuse": [0.3, 0.3, 0.35],
+              "collide": true,
+              "is_ground": true,
+              "energy_loss": 0.0
+            }
+          ]
+        },
+        {
+          "name": "Table_Legs",
+          "translate": [0, -1, 0],
+          "groups": [
+            {
+              "name": "Table_Leg_1",
+              "translate": [0, -0.5, 0],
+              "scale": [0.2, 1, 0.2],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
+              "is_ground": true,
+              "energy_loss": 0.0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cylinder_On_Table",
+          "translate": [0, -0.5, -0.5],
+          "scale": [0.85, 1, 0.85],
+          "primitives": [
+            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
+              "is_ground": false,
+              "energy_loss": 1.0 }
+          ]
+        },
+        {
+          "name": "Cylinder_On_Table_2",
+          "translate": [0, -0.675, 0.5],
+          "scale": [0.6, 0.65, 0.6],
+          "primitives": [
+            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
+              "is_ground": false,
+              "energy_loss": 1.0 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table_2",
+      "translate": [10, 0, 0],
+      "groups": [
+        {
+          "name": "Table_Top",
+          "translate": [0, -1, 0],
+          "scale": [1.5, 0.05, 3.0],
+          "primitives": [
+            {
+              "type": "cube",
+              "ambient": [0.3, 0.3, 0.3],
+              "diffuse": [0.3, 0.3, 0.35]
+            }
+          ]
+        },
+        {
+          "name": "Table_Legs",
+          "translate": [0, -1, 0],
+          "groups": [
+            {
+              "name": "Table_Leg_1",
+              "translate": [0, -0.5, 0],
+              "scale": [0.2, 1, 0.2],
+              "primitives": [
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cylinder_On_Table",
+          "translate": [0, -0.5, 0.5],
+          "scale": [0.85, 1, 0.85],
+          "primitives": [
+            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
+              "is_ground": false,
+              "energy_loss": 1.0 }
+          ]
+        },
+        {
+          "name": "Cylinder_On_Table_2",
+          "translate": [0, -0.675, -0.5],
+          "scale": [0.6, 0.65, 0.6],
+          "primitives": [
+            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
+              "is_ground": false,
+              "energy_loss": 1.0 }
+          ]
+        }
+      ]
+    },
     {
       "name": "Ground",
       "translate": [0, -2, 0],
