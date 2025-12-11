@@ -514,7 +514,15 @@
             {
               "type": "cube",
               "ambient": [0.3, 0.3, 0.3],
-              "diffuse": [0.3, 0.3, 0.35]
+              "diffuse": [0.3, 0.3, 0.35],
+			  "shininess": 1,
+          "blend": 1.0,
+          "textureFile": "textures/Marble_Gray_002_basecolor.png",
+          "textureU": 1.0,
+          "textureV": 1.0,
+          "normalMapFile": "textures/Marble_Gray_002_normal.png",
+          "normalMapU": 1.0,
+          "normalMapV": 1.0
             }
           ]
         },
@@ -527,7 +535,15 @@
               "translate": [0, -0.5, 0],
               "scale": [0.2, 1, 0.2],
               "primitives": [
-                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35] }
+                { "type": "cube", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35],
+"shininess": 1,
+          "blend": 1.0,
+          "textureFile": "textures/Marble_Gray_002_basecolor.png",
+          "textureU": 1.0,
+          "textureV": 1.0,
+          "normalMapFile": "textures/Marble_Gray_002_normal.png",
+          "normalMapU": 1.0,
+          "normalMapV": 1.0			}
               ]
             }
           ]
@@ -537,7 +553,16 @@
           "translate": [0, -0.5, 0.5],
           "scale": [0.85, 1, 0.85],
           "primitives": [
-            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
+            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], 
+"shininess": 1,
+          "blend": 1.0,
+          "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+          "textureU": 1.0,
+          "textureV": 1.0,
+          "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+          "normalMapU": 1.0,
+          "normalMapV": 1.0,
+			"collide": true,
               "is_ground": false,
               "energy_loss": 1.0 }
           ]
@@ -547,7 +572,15 @@
           "translate": [0, -0.675, -0.5],
           "scale": [0.6, 0.65, 0.6],
           "primitives": [
-            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], "collide": true,
+            { "type": "cylinder", "ambient": [0.3, 0.3, 0.3], "diffuse": [0.3, 0.3, 0.35], 
+"shininess": 1,
+          "blend": 1.0,
+          "textureFile": "textures/Metal_Corrugated_013_tuna_basecolor.png",
+          "textureU": 1.0,
+          "textureV": 1.0,
+          "normalMapFile": "textures/Metal_Corrugated_013_normal.png",
+          "normalMapU": 1.0,
+          "normalMapV": 1.0, "collide": true,
               "is_ground": false,
               "energy_loss": 1.0 }
           ]
