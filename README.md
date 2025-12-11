@@ -32,6 +32,23 @@ Features - Nathan:
 
   Collaboration - Nathan:
   - Used ChatGPT to debug color grading shader
+ 
+Features - Patrick:
+- Textures with Normal Mapping/Bump Mapping: Allows objects to have textures and uses normal map or height map to compute normals and adds additional surface details.
+- L-System: Generate trees based on the string and rules. Trees will show if the L-System is checked in the UI before scene parse.
+
+Collaboration - Patrick:
+- Many textures in this project are provided by https://3dtextures.me/, which are licensed as CC0 (https://3dtextures.me/about/).
+
+- A few of the texture images from https://3dtextures.me/ are edited and generated from ChatGPT 5.1:
+Prompts:
+(Provided ChatGPT with Metal_Corrugated_013_basecolor.png from https://3dtextures.me/)
+"can you add soda label on top of this texture file so it can be use as a texture file for a soda can"
+"can you make another image, instead of cereal do a tuna label"
+"Can you add chicken noodle soup label onto this texture"
+(Provided ChatGPT with Geometric_wallpaper_basecolor.png from https://3dtextures.me/)
+"Can you edit this texture? add a cookie label"
+"can you add the cereal label but onto this texture instead"
 
 Feature - Ethan:
 - Rigid body translation: Rigid bodies are simulated translating under a variety of forces: impulse (which only occur over a fixed timestep), periodic (which flip direction every period), and constant (which are always applied). The application of forces onto state (e.g. position, rotation, momentum) are calculated using a simple Euler solver.
